@@ -1,0 +1,33 @@
+@media (max-width: 991px) {
+    .navbar-collapse {
+        position: fixed;
+        top: 0;
+        right: -100%; /* Initially off-screen */
+        width: 200px; /* Adjust as needed */
+        background-color: white;
+        box-shadow: 0 2px 4px rgba(0,0,0,0.1); /* Optional: Add shadow */
+        transition: right 0.3s ease; /* Smooth transition */
+        z-index: 1051; /* Ensure above other content */
+    }
+
+    .navbar-collapse.show {
+        right: 0; /* Slide in from the right when shown */
+    }
+
+    .navbar-nav {
+        flex-direction: column;
+        align-items: center; /* Center-align items */
+        padding-top: 1rem;
+    }
+
+    .nav-link {
+        text-align: center; /* Center-align text */
+        width: 100%; /* Full width */
+        padding: 0.5rem 1rem; /* Adjust padding */
+    }
+
+    .dropdown-menu {
+        right: 0; /* Ensure dropdown opens to the right */
+        left: auto;
+    }
+}

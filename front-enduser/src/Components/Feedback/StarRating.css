@@ -1,0 +1,26 @@
+/* StarRating.css */
+
+.star-rating {
+    display: flex;
+  }
+  
+  .star-rating label {
+    font-size: 2rem;
+    color: #ccc;
+    cursor: pointer;
+  }
+  
+  .star-rating label:hover,
+  .star-rating label:hover ~ label,
+  .star-rating input:focus ~ label {
+    color: #f1c40f; /* Change color on hover/focus */
+  }
+  
+  .star-rating input {
+    display: none; /* Hide radio buttons */
+  }
+  
+  .star-rating .filled {
+    color: #f1c40f; /* Filled star color */
+  }
+  

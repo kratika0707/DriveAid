@@ -1,0 +1,22 @@
+#hero {
+    height: 600px; /* or any desired height */
+   
+    background-repeat: no-repeat;
+  }
+  
+  .padding-large {
+    padding: 2rem;
+  }
+  
+  .header-top1 {
+    font-size: 2rem;
+    font-weight: 550;
+    color:black;
+    letter-spacing: 0.01rem;
+    line-height: normal;
+  }
+  
+  .arrow-icon {
+    margin-left: 0.5rem;
+  }
+  
