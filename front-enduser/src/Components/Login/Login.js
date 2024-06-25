@@ -11,6 +11,7 @@ import toast from 'react-hot-toast';
 import PhoneInput from 'react-phone-input-2';
 
 const Login = ({ phone, onLoginSuccess, urlback }) => {
+  
   const [loginPhone, setLoginPhone] = useState('');
   const [otp, setOtp] = useState('');
   const [user, setUser] = useState(null);
@@ -98,7 +99,7 @@ const Login = ({ phone, onLoginSuccess, urlback }) => {
         toast.success("OTP sent successfully!");
       }).catch((error) => {
         console.log(error)
-        setShowotp(false); 
+        
         toast.error("Failed to send OTP!")
       });
   }

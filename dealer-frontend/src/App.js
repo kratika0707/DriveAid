@@ -6,6 +6,8 @@ import Navbar from './Components/Withoutlogin/Navbar/Navbar';
 import Home from './Components/Withoutlogin/Home/Home';
 import Register from './Components/Withoutlogin/Register/Register';
 import DealerLogin from './Components/Withoutlogin/Register/DealerLogin';
+import MechanicLogin from './Components/Withoutlogin/Register/MechanicLogin';
+import MHome from './Components/MechanicHome/MHome';
 function App() {
   return (
 
@@ -16,6 +18,9 @@ function App() {
           <Route index element={<Home/>}/>
           <Route path="/dealer/register" element={<Register/>}/>
           <Route path="/dealer/login" element={<DealerLogin/>}/>
+          <Route path='/dealer/:dealerId' element={<DHome/>}/>
+          <Route path='/mechanic/login' element={<MechanicLogin/>}/>
+          <Route path='/mechanic/:mechanicId' element={<MHome/>}/>
         </Routes>
       </BrowserRouter>
     </>

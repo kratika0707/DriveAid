@@ -1,15 +1,15 @@
 import React, { useState, useContext } from 'react';
 import { useNavigate } from 'react-router-dom';
 import { AuthContext } from '../../../Context/AuthContext';
-
-const DealerLogin = () => {
-  const [phone, setPhone] = useState('');
+const MechanicLogin = () => {
+    const [phone, setPhone] = useState('');
   const [password, setPassword] = useState('');
   const [error, setError] = useState('');
   const [isLoading, setIsLoading] = useState(false);
   const navigate = useNavigate();
-  const { login } = useContext(AuthContext);
-  const urlback = "http://localhost:5000/api/dealers/login"; // Ensure this matches the backend URL
+  const { mechlogin } = useContext(AuthContext);
+  const urlback = "http://localhost:5000/api/mechanic/login";
+
 
   const handleSubmit = async (e) => {
     e.preventDefault();
@@ -31,9 +31,10 @@ const DealerLogin = () => {
       }
 
       const data = await response.json();
-      login(phone, data.dealerId); // Save user and dealerId in authState
-      navigate(`/dealer/${data.dealerId}`);
-      console.log('Login successful, dealerId:', data.dealerId);
+      mechlogin(phone, data.mechanicId); // Save user and dealerId in authState
+      console.log('Login successful, mechanicId:', data.mechanicId);
+      navigate(`/mechanic/${data.mechanicId}`);
+      console.log('Login successful, mechanicId:', data.mechanicId);
     } catch (error) {
       setError(error.message);
     } finally {
@@ -43,7 +44,7 @@ const DealerLogin = () => {
 
   return (
     <>
-    <div className="container">
+      <div className="container">
       <form onSubmit={handleSubmit}>
         <div className="mb-3">
           <label htmlFor="exampleInputPhone" className="form-label">Contact Number</label>
@@ -73,7 +74,7 @@ const DealerLogin = () => {
       </form>
     </div>
     </>
-  );
-};
+  )
+}
 
-export default DealerLogin;
+export default MechanicLogin

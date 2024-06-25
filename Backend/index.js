@@ -6,7 +6,7 @@ const jwt = require("jsonwebtoken");
 const multer = require("multer");
 const path = require("path");
 const cors = require("cors");
-
+const bodyParser = require('body-parser');
 app.use(express.json());
 app.use(cors());
 require('dotenv').config();
@@ -27,7 +27,7 @@ const middleware=(req,res,next)=>{
     console.log("Hello");
     next();
 }
-
+app.use(bodyParser.json());
 const DB = process.env.MONGODB_URI;
 /*
 mongoose.connect(DB).then(() => {
