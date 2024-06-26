@@ -1,6 +1,7 @@
 const express = require('express');
 const router = express.Router();
 const Service = require('../model/Service');
+const { bookService,getHistory } = require('../Controllers/servicecontroller');
 
 router.post('/', async (req, res) => {
     try {
@@ -12,5 +13,6 @@ router.post('/', async (req, res) => {
     }
 });
 
-
+router.post('/book',bookService);
+router.get('/history/:userid',getHistory);
 module.exports = router;

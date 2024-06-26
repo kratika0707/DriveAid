@@ -8,6 +8,7 @@ import Register from './Components/Withoutlogin/Register/Register';
 import DealerLogin from './Components/Withoutlogin/Register/DealerLogin';
 import MechanicLogin from './Components/Withoutlogin/Register/MechanicLogin';
 import MHome from './Components/MechanicHome/MHome';
+import Notification from './Components/Notifications/Notification';
 function App() {
   return (
 
@@ -21,6 +22,7 @@ function App() {
           <Route path='/dealer/:dealerId' element={<DHome/>}/>
           <Route path='/mechanic/login' element={<MechanicLogin/>}/>
           <Route path='/mechanic/:mechanicId' element={<MHome/>}/>
+          <Route path="/dealer/notifications/:dealerId" element={<Notification/>}/>
         </Routes>
       </BrowserRouter>
     </>

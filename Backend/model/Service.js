@@ -4,7 +4,7 @@ const service = new mongoose.Schema({
     userid:{
         type:String,
         required:true,
-        unique:true
+        
     },
     location: {
         latitude: {
@@ -36,6 +36,12 @@ const service = new mongoose.Schema({
     issue:{
         type:String,
         required:true
+    },
+    dealerId:{
+        type:String,
+    },
+    mechanicId:{
+        type:String
     }
 })
 

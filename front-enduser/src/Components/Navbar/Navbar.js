@@ -1,14 +1,21 @@
-import React, { useState, useEffect } from 'react';
+import React, { useState, useEffect,useContext } from 'react';
 import { Icon } from '@iconify/react';
 import menuHamburger from '@iconify-icons/system-uicons/menu-hamburger';
 import Modal from 'react-modal';
 import { Link as ScrollLink } from 'react-scroll';
 import Login from '../Login/Login';
+import { useSelector, useDispatch } from 'react-redux';
 
+import { login,logout } from '../../Redux/Features/userslice';
 const Navbar = () => {
   const [isLoggedIn, setIsLoggedIn] = useState(false);
   const [showLoginModal, setShowLoginModal] = useState(false);
-
+  const isAuthenticated = useSelector(state => state.user.isAuthenticated);
+  const user = useSelector(state => state.user.user);
+  const userId = useSelector(state => state.user.userId);
+ 
+  const dispatch = useDispatch();
+  
   useEffect(() => {
     // Check login status from local storage or other persistent storage
     const userId = localStorage.getItem('userId');
@@ -17,27 +24,19 @@ const Navbar = () => {
     }
   }, []);
 
-  const handleLoginSuccess = (user) => {
-    setIsLoggedIn(true);
-    setShowLoginModal(false);
-    console.log(user);
-    localStorage.setItem('userId', user.id); // Save user ID to local storage
-  };
+  // const handleLoginSuccess = (user) => {
+  //   setIsLoggedIn(true);
+  //   setShowLoginModal(false);
+  //   console.log(user);
+  //   localStorage.setItem('userId', user.id); // Save user ID to local storage
+  // };
 
-  const handleLogout = () => {
+  const handlelogout = () => {
     setIsLoggedIn(false);
-    localStorage.removeItem('userId'); // Remove user ID from local storage
+    dispatch(logout());
     window.location.href = '/'; // Redirect to home page after logout
   };
 
-  const handleHistoryClick = (e) => {
-    if (!isLoggedIn) {
-      e.preventDefault();
-      setShowLoginModal(true);
-    } else {
-      window.location.href = '/history';
-    }
-  };
 
   return (
     <>
@@ -60,7 +59,7 @@ const Navbar = () => {
                   <a className="nav-link text-black text-uppercase mx-2 px-3 mb-2 mb-lg-0" aria-current="page" href="/">Home</a>
                 </li>
                 <li className="nav-item">
-                  <a className="nav-link text-black text-uppercase mx-2 px-3 mb-2 mb-lg-0" href="/history" onClick={handleHistoryClick}>History</a>
+                  <a className="nav-link text-black text-uppercase mx-2 px-3 mb-2 mb-lg-0" href="/history" >History</a>
                 </li>
                 <li className="nav-item">
                   <ScrollLink className="nav-link text-black text-uppercase mx-2 px-3 mb-2 mb-lg-0" to="service">Services</ScrollLink>
@@ -73,9 +72,9 @@ const Navbar = () => {
                     Service Request
                   </a>
                 </li>
-                {isLoggedIn ? (
+                {isAuthenticated ? (
                   <li className="nav-item">
-                    <button onClick={handleLogout} className="btn btn-outline-primary mx-2 px-3 py-2" style={{ backgroundColor: '#ea422b' }}>
+                    <button onClick={handlelogout} className="btn btn-outline-primary mx-2 px-3 py-2" style={{ backgroundColor: '#ea422b' }}>
                       Logout
                     </button>
                   </li>
@@ -105,7 +104,7 @@ const Navbar = () => {
           },
         }}
       >
-        <Login onLoginSuccess={handleLoginSuccess} />
+        <Login  />
       </Modal>
     </>
   );

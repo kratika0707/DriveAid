@@ -18,6 +18,12 @@ exports.loginUser = async (req, res) => {
             return res.status(200).json({ userId: existingUser.userId, message: 'User logged in successfully' });
         }
 
+        let existingUser1 = await User.findOne({ userId });
+
+        if (existingUser1) {
+            // If user with the same phone number exists, return the existing user's userId
+            return res.status(200).json({ userId: existingUser1.userId, message: 'User logged in successfully' });
+        }
         // If user does not exist, create a new user
         const newUser = new User({
             userId: userId,

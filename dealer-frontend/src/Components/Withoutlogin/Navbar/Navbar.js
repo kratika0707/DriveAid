@@ -5,7 +5,10 @@ import '../Navbar/Navbar.css';
 
 const Navbar = () => {
     const { authState, logout, mechauthState, mechlogout } = useContext(AuthContext);
-
+    function handledeallogout(){
+        logout();
+        window.location.href='/'
+    }
     return (
         <nav className="navbar navbar-expand-lg navbar-light bg-light">
             {!authState.isAuthenticated && !mechauthState.isAuthenticated ? (
@@ -36,11 +39,13 @@ const Navbar = () => {
                             <button className="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNavAltMarkup" aria-controls="navbarNavAltMarkup" aria-expanded="false" aria-label="Toggle navigation">
                                 <span className="navbar-toggler-icon"></span>
                             </button>
-
+                            <div>
+                                <Link to={`/dealer/notifications/${authState.dealerId}`}>Notifications</Link>
+                            </div>
                             <div className="collapse navbar-collapse me-5" id="navbarNavAltMarkup">
                                 <div className="navbar-nav ms-auto">
                                     <Link className="nav-link active me-5" aria-current="page" to={`/dealer/${authState.dealerId}`} style={{ fontWeight: '500', fontSize: '1.25rem', color: 'black' }}>Home</Link>
-                                    <button className="btn btn-primary me-5" onClick={logout}>Logout</button>
+                                    <button className="btn btn-primary me-5" onClick={handledeallogout}>Logout</button>
                                 </div>
                             </div>
                         </>

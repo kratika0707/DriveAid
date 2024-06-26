@@ -9,16 +9,20 @@ import { Toaster } from 'react-hot-toast';
 import { signInWithPhoneNumber } from 'firebase/auth';
 import toast from 'react-hot-toast';
 import PhoneInput from 'react-phone-input-2';
+import { useSelector, useDispatch } from 'react-redux';
+
+import { login, logout } from '../../Redux/Features/userslice';
+import { Navigate } from 'react-router-dom';
 
 const Login = ({ phone, onLoginSuccess, urlback }) => {
   
   const [loginPhone, setLoginPhone] = useState('');
   const [otp, setOtp] = useState('');
-  const [user, setUser] = useState(null);
   const [showotp, setShowotp] = useState(false);
+  const [useri, setUseri] = useState(null);
   const [errorMessage, setErrorMessage] = useState('');
-  const burl="http://localhost:5000/api/users/login";
-  
+  const burl = "http://localhost:5000/api/users/login";
+  const dispatch = useDispatch();
 
   const handleSendOtp = (e) => {
     e.preventDefault();
@@ -27,7 +31,6 @@ const Login = ({ phone, onLoginSuccess, urlback }) => {
       return;
     }
     setErrorMessage('');
-    // Logic to send OTP
     onSignup();
     setShowotp(true); // Show OTP input after sending OTP
   };
@@ -37,86 +40,63 @@ const Login = ({ phone, onLoginSuccess, urlback }) => {
   }, [phone]);
 
   useEffect(() => {
-    if (user) {
+    if (useri && loginPhone) {
       handleLogin();
     }
-  }, [user]);
+  }, [useri][loginPhone]);
 
-  const handleLogin = async (e) => {
-    /*
-    if (!user) {
-      console.error('User is not logged in.');
-      return;
-    }
-  */
+  const handleLogin = async () => {
     try {
       const response = await axios.post(burl, {
-        userId: user,
+        userId: useri,
         loginPhone: loginPhone,
       });
-      setUser(response.userId);
-      console.log('Success:', response.data);
-      onLoginSuccess(response.data.userId);
+      setUseri(response.userId);
+      dispatch(login({ user: loginPhone, userId: useri })); // Dispatch login action
+      
     } catch (error) {
       console.log(error);
     }
   };
-  
 
   function onCaptchVerify() {
     if (!window.recaptchaVerifier) {
-      window.recaptchaVerifier = new RecaptchaVerifier(auth,'recaptcha-container', {
+      window.recaptchaVerifier = new RecaptchaVerifier(auth, 'recaptcha-container', {
         size: 'invisible',
-        callback: (response) => {
-          onSignup()
-        },
+        callback: () => onSignup(),
         'expired-callback': () => {
           console.log("reCAPTCHA expired");
         }
       });
     }
   }
-  // function onSignup() {
-  //   const appVerifier = window.recaptchaVerifier;
-  //   const formatPh = '+' + loginPhone;
-  //   signInWithPhoneNumber(auth, formatPh, appVerifier)
-  //     .then((confirmationResult) => {
-  //       window.confirmationResult = confirmationResult;
-  //       toast.success("OTP sent successfully!");
-  //     }).catch((error) => {
-  //       console.log(error);
-  //       toast.error("Failed to send OTP!")
-  //     });
-  // }
+
   function onSignup() {
-    onCaptchVerify()
+    onCaptchVerify();
     const appVerifier = window.recaptchaVerifier;
     const formatPh = '+' + loginPhone;
-    console.log(formatPh);
     signInWithPhoneNumber(auth, formatPh, appVerifier)
       .then((confirmationResult) => {
         window.confirmationResult = confirmationResult;
         toast.success("OTP sent successfully!");
       }).catch((error) => {
-        console.log(error)
-        
-        toast.error("Failed to send OTP!")
+        console.log(error);
+        toast.error("Failed to send OTP!");
       });
   }
-  function onOTPVerify(){
-    window.confirmationResult.confirm(otp).then(async(res)=>{
-      console.log(res)
-      setUser(res.user.uid)
-      console.log(user)
+
+  function onOTPVerify() {
+    window.confirmationResult.confirm(otp).then(async (res) => {
+      setUseri(res.user.uid);
+      
       toast.success("Correct OTP");
-      //await handleLogin();
     })
-    .catch((err)=>{
+    .catch((err) => {
       console.log(err);
       toast.error("Invalid OTP. Please try again.");
-    })
-
+    });
   }
+
   return (
     <>
       <div className="container flex gap-1 items-center justify-center" style={{ height: 'auto', width: '40vw' }}>
@@ -124,22 +104,10 @@ const Login = ({ phone, onLoginSuccess, urlback }) => {
         <div id="recaptcha-container"></div>
         <h3 style={{ marginBottom: '2%' }}>Please Login!</h3>
         <div>
-          {/* <div className="mb-3" style={{ width: '60%' }}>
-            <label htmlFor="exampleInputEmail" className="form-label">Email Id</label>
-            <input
-              type="email"
-              className="form-control"
-              id="exampleInputEmail"
-              value={loginEmail}
-              onChange={(e) => setLoginEmail(e.target.value)}
-              style={{ height: '40px', fontSize: '85%',border:'1px solid black' }}
-              required
-            />
-          </div> */}
           {
             showotp ?
               <>
-                <div className="mb-3" >
+                <div className="mb-3">
                   <label htmlFor="exampleInputOtp" className="form-label">Enter OTP</label>
                   <OtpInput
                     className="otp-container"
@@ -161,14 +129,11 @@ const Login = ({ phone, onLoginSuccess, urlback }) => {
               :
               <>
                 <div className="mb-3" style={{ width: '70%' }}>
-                  <label ></label>
                   <PhoneInput
                     country={"in"}
-                    
-                    
                     value={loginPhone}
                     onChange={setLoginPhone}
-                    style={{ height: '100px', fontSize: '100%',marginBottom:'2%'}}
+                    style={{ height: '100px', fontSize: '100%', marginBottom: '2%' }}
                     required
                   />
                   {errorMessage && <div style={{ color: 'red', fontSize: '85%' }}>{errorMessage}</div>}
@@ -178,9 +143,6 @@ const Login = ({ phone, onLoginSuccess, urlback }) => {
                 </button>
               </>
           }
-
-
-
         </div>
       </div>
     </>

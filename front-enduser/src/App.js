@@ -14,6 +14,7 @@ import History from './Components/History/History';
 import Login from './Components/Login/Login';
 import Footer from './Components/Footer/Footer';
 import Logout from './Components/Login/Logout';
+import Servicehis from './Components/History/Servicehis';
 
 function App() {
   return (
@@ -31,6 +32,7 @@ function App() {
         <Route path='/login' element={<Login/>}/>
         <Route path='/footer' element={<Footer/>}/>
         <Route path='/logout' element={<Logout/>}/>
+        <Route path='/history/service' element={<Servicehis/>}/>
       </Routes>
       <Footer/>
     </BrowserRouter>

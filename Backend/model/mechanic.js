@@ -17,6 +17,11 @@ const mechanic = new mongoose.Schema({
         type: String,
         required: true
     },
+    available:{
+        type:Boolean,
+        required:true,
+        default:false
+    }
 
 })
 

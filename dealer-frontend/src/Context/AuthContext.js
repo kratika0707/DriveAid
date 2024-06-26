@@ -1,4 +1,4 @@
-import React, { createContext, useState } from 'react';
+import React, { createContext, useState, useEffect } from 'react';
 
 // Create a context
 export const AuthContext = createContext();
@@ -10,12 +10,28 @@ export const AuthProvider = ({ children }) => {
     dealerId: null
   });
 
+  useEffect(() => {
+    const storedDealerAuth = localStorage.getItem('dealerauth');
+    if (storedDealerAuth) {
+      setAuthState(JSON.parse(storedDealerAuth));
+    }
+  }, []);
+
+  // Initialize mechanic authentication from localStorage
+  useEffect(() => {
+    const storedMechAuth = localStorage.getItem('mechauth');
+    if (storedMechAuth) {
+      setMechAuthState(JSON.parse(storedMechAuth));
+    }
+  }, []);
+
   const login = (user, dealerId) => {
     setAuthState({
       isAuthenticated: true,
       user: user,
       dealerId: dealerId
     });
+    localStorage.setItem('dealerauth', JSON.stringify({isAuthenticated: true, user: user, dealerId: dealerId }));
   };
 
   const logout = () => {
@@ -24,6 +40,7 @@ export const AuthProvider = ({ children }) => {
       user: null,
       dealerId: null
     });
+    localStorage.removeItem('dealerauth');
   };
 
   const [mechauthState, setMechAuthState] = useState({
@@ -38,6 +55,7 @@ export const AuthProvider = ({ children }) => {
       user: user,
       mechanicId: mechanicId
     });
+    localStorage.setItem('mechauth', JSON.stringify({isAuthenticated: true, user: user, mechanicId: mechanicId }));
   };
 
   const mechlogout = () => {
@@ -46,6 +64,7 @@ export const AuthProvider = ({ children }) => {
       user: null,
       mechanicId: null
     });
+    localStorage.removeItem('mechauth');
   };
   return (
     <AuthContext.Provider value={{ authState, login, logout,mechauthState , mechlogin , mechlogout }}>
