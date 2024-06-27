@@ -73,11 +73,16 @@ const Navbar = () => {
                   </a>
                 </li>
                 {isAuthenticated ? (
+                  <>
+                  <li className="nav-item">
+                  <a className="nav-link text-black text-uppercase mx-2 px-3 mb-2 mb-lg-0" href="/user/notification" >Notifications</a>
+                </li>
                   <li className="nav-item">
                     <button onClick={handlelogout} className="btn btn-outline-primary mx-2 px-3 py-2" style={{ backgroundColor: '#ea422b' }}>
                       Logout
                     </button>
                   </li>
+                  </>
                 ) : (
                   <li className="nav-item">
                     <button onClick={() => setShowLoginModal(true)} className="btn btn-outline-primary mx-2 px-3 py-2" style={{ backgroundColor: '#ea422b' }}>

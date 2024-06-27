@@ -19,11 +19,17 @@ const userRoutes = require('./router/auth-router');
 const serviceRoutes = require('./router/Servicerouter');
 const dealerRoutes = require('./router/dealer-router');
 const mechanicRoutes = require('./router/mechanic-router');
+const notificationRoutes = require('./router/notificationrouter');
+const usernotificationRoutes = require('./router/usernotificationrouter');
+
 
 app.use('/api/users', userRoutes);
 app.use('/api/services', serviceRoutes);
 app.use('/api/dealers', dealerRoutes);
 app.use('/api/mechanic', mechanicRoutes);
+app.use('api/notification',notificationRoutes);
+app.use('/api/usernotifications',usernotificationRoutes);
+
 
 const DB = process.env.MONGODB_URI;
 

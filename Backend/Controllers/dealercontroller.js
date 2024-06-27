@@ -1,8 +1,9 @@
 const Dealer = require('../model/Dealer');
 const bcrypt = require('bcryptjs');
 
+const Mechanic = require('../model/mechanic');
 
-
+const Notification=require('../model/Notifications');
 
 // Controller to handle dealer registration
 exports.registerDealer = async (req, res) => {
@@ -52,3 +53,33 @@ exports.loginDealer = async (req, res) => {
     res.status(500).json({ error: 'Server error' });
   }
 };
+
+
+
+
+exports.getMechanics = async (req, res) => {
+  try {
+    const { dealerid } = req.params;
+    const mechanics = await Mechanic.find({ dealerid: dealerid });
+    console.log('mechanics')
+    res.status(200).json(mechanics);
+  } catch (error) {
+    console.error('Error fetching mechanics history:', error);
+    res.status(500).json({ error: 'An error occurred while fetching mechanics history' });
+  }
+}
+
+
+
+
+exports.getNotifications =async(req,res) =>{
+  try {
+    const { dealerid } = req.params;
+    const notifications = await Notification.find({ dealerid: dealerid });
+    console.log('notifications')
+    res.status(200).json(notifications);
+  } catch (error) {
+    console.error('Error fetching notifications:', error);
+    res.status(500).json({ error: 'An error occurred while fetching notifications' });
+  }
+}

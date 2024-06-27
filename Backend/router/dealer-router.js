@@ -1,9 +1,16 @@
 const express = require('express');
 const router = express.Router();
 const Dealer = require('../model/Dealer');
-const { registerDealer,loginDealer } = require('../Controllers/dealercontroller');
+const { registerDealer,loginDealer, getMechanics,getNotifications } = require('../Controllers/dealercontroller');
+const {getServicesByDealer} = require('../Controllers/servicecontroller')
+
+
+
 
 // Route to handle direct creation of Dealer instance
+
+
+
 router.post('/', async (req, res) => {
     try {
         const dealer = new Dealer(req.body);
@@ -14,7 +21,16 @@ router.post('/', async (req, res) => {
     }
 });
 
+
+
+
+
+
 // Route to use the registerDealer controller function
 router.post('/register', registerDealer);
 router.post('/login', loginDealer);
+router.get('/:dealerId/mechanics',getMechanics);
+router.get(':dealerId/notifications',getNotifications);
+router.get('/:dealerId/services', getServicesByDealer);
+
 module.exports = router;

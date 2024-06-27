@@ -42,6 +42,15 @@ const Navbar = () => {
                             <div>
                                 <Link to={`/dealer/notifications/${authState.dealerId}`}>Notifications</Link>
                             </div>
+                            <div style={{marginLeft:'5%'}}>
+                            <Link to={`/dealer/mechanicadd/${authState.dealerId}`}>Add mechanics</Link>
+                            </div>
+                            <div style={{marginLeft:'5%'}}>
+                            <Link to={`/dealer/mechanics/${authState.dealerId}`}>Mechanics</Link>
+                            </div>
+                            <div style={{marginLeft:'5%'}}>
+                            <Link to={`/dealer/services/${authState.dealerId}`}>Services</Link>
+                            </div>
                             <div className="collapse navbar-collapse me-5" id="navbarNavAltMarkup">
                                 <div className="navbar-nav ms-auto">
                                     <Link className="nav-link active me-5" aria-current="page" to={`/dealer/${authState.dealerId}`} style={{ fontWeight: '500', fontSize: '1.25rem', color: 'black' }}>Home</Link>

@@ -8,7 +8,11 @@ import Register from './Components/Withoutlogin/Register/Register';
 import DealerLogin from './Components/Withoutlogin/Register/DealerLogin';
 import MechanicLogin from './Components/Withoutlogin/Register/MechanicLogin';
 import MHome from './Components/MechanicHome/MHome';
-import Notification from './Components/Notifications/Notification';
+import Notification from './Components/Dealer/Notifications/Notification';
+import Mechadd from './Components/Dealer/Mechanicadd/Mechadd';
+import Mechanics from './Components/Dealer/Mechanicadd/Mechanics';
+import Servicehistory from './Components/Dealer/Servicehistory/Servicehistory';
+import Servicesdealer from './Components/Dealer/Servicehistory/Servicesdealer';
 function App() {
   return (
 
@@ -23,6 +27,10 @@ function App() {
           <Route path='/mechanic/login' element={<MechanicLogin/>}/>
           <Route path='/mechanic/:mechanicId' element={<MHome/>}/>
           <Route path="/dealer/notifications/:dealerId" element={<Notification/>}/>
+          <Route path='/dealer/mechanicadd/:dealerId' element={<Mechadd/>}/>
+          <Route path='/dealer/mechanics/:dealerId' element={<Mechanics/>}/>
+          <Route path='/dealer/services/:dealerId' element={<Servicesdealer/>}/>
+          <Route path='/dealer/notifications/:dealerId/dealer/service/:serviceId' element={<Servicehistory/>}/>
         </Routes>
       </BrowserRouter>
     </>

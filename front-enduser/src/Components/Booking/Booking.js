@@ -1,11 +1,10 @@
-import React, { useState, useEffect, useContext } from 'react';
+import React, { useState, useEffect } from 'react';
 import image from '../Assets/3331465.jpg';
 import axios from 'axios';
 import Modal from 'react-modal';
 import Login from '../Login/Login';
 import { useSelector, useDispatch } from 'react-redux';
-
-import { login,logout } from '../../Redux/Features/userslice';
+import { login, logout } from '../../Redux/Features/userslice';
 
 Modal.setAppElement('#root');
 
@@ -21,24 +20,15 @@ const Booking = () => {
   const [error, setError] = useState(null);
   const [formSubmitted, setFormSubmitted] = useState(false);
   const [successMessage, setSuccessMessage] = useState('');
-  const isAuthenticated = useSelector(state => state.user.isAuthenticated);
-  const user = useSelector(state => state.user.user);
-  const userId = useSelector(state => state.user.userId);
- 
+  const isAuthenticated = useSelector((state) => state.user.isAuthenticated);
+  const user = useSelector((state) => state.user.user);
+  const userId = useSelector((state) => state.user.userId);
+
   const dispatch = useDispatch();
-  const [dateofservice, setdateofservice] = useState('');
-  const [timeofservice, settimeofservice] = useState('');
 
   useEffect(() => {
-    const getCurrentDateTime = () => {
-      const now = new Date();
-      const date = now.toISOString().split('T')[0];
-      const time = now.toLocaleTimeString();
-      setdateofservice(date);
-      settimeofservice(time);
-    };
-
-    getCurrentDateTime();
+    // Get user's location on component mount
+    getLocation();
   }, []);
 
   function getLocation() {
@@ -54,14 +44,14 @@ const Booking = () => {
             resolve(loc);
           },
           (error) => {
-            setError("Unable to retrieve your location.");
+            setError('Unable to retrieve your location.');
             reject(error);
           },
           { timeout: 10000 }
         );
       } else {
-        setError("Geolocation is not supported by your browser.");
-        reject(new Error("Geolocation is not supported by your browser."));
+        setError('Geolocation is not supported by your browser.');
+        reject(new Error('Geolocation is not supported by your browser.'));
       }
     });
   }
@@ -75,13 +65,17 @@ const Booking = () => {
 
     try {
       const loc = await getLocation();
+      const now = new Date();
+      const date = now.toISOString().split('T')[0];
+      const time = now.toLocaleTimeString();
+
       const data = {
-        userid:userId,
+        userid: userId,
         location: loc,
         carmodel,
         issue,
-        dateofservice,
-        timeofservice,
+        dateofservice: date,
+        timeofservice: time,
       };
 
       setFormSubmitted(true);
@@ -96,7 +90,6 @@ const Booking = () => {
       setTimeout(() => {
         setSuccessMessage('');
       }, 5000);
-
     } catch (e) {
       console.error('Error submitting form:', e);
     }
@@ -113,12 +106,11 @@ const Booking = () => {
 
   return (
     <>
-    
       <div className="container1" style={{ position: 'relative', height: '120vh', width: '100vw', margin: 0, padding: 0 }}>
         <img src={image} alt="car" style={{ position: 'absolute', top: 0, left: 0, height: '90%', width: '100vw', objectFit: 'cover', zIndex: '0' }} />
       </div>
       <div>
-      {successMessage && (
+        {successMessage && (
           <div className="alert alert-success mt-3" role="alert">
             {successMessage}
           </div>
@@ -167,9 +159,7 @@ const Booking = () => {
             ></textarea>
           </div>
           <button type="submit" className="btn btn-primary" style={{ height: '40px', width: 'auto', marginTop: '1%', lineHeight: '5px' }}>Submit</button>
-          
         </form>
-        
       </div>
 
       <Modal

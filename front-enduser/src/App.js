@@ -15,6 +15,7 @@ import Login from './Components/Login/Login';
 import Footer from './Components/Footer/Footer';
 import Logout from './Components/Login/Logout';
 import Servicehis from './Components/History/Servicehis';
+import Notifications from './Components/Notifications/Notifications';
 
 function App() {
   return (
@@ -33,6 +34,7 @@ function App() {
         <Route path='/footer' element={<Footer/>}/>
         <Route path='/logout' element={<Logout/>}/>
         <Route path='/history/service' element={<Servicehis/>}/>
+        <Route path='user/notification' element={<Notifications/>}/>
       </Routes>
       <Footer/>
     </BrowserRouter>
