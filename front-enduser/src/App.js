@@ -29,11 +29,11 @@ function App() {
         <Route path='/services' element={<Service/>}/>
         <Route path='/booking' element={<Booking/>}/>
         <Route path='/feedback' element={<Feedback/>}/>
-        <Route path='/history' element={<History/>}/>
+        <Route path='/user/history' element={<History/>}/>
         <Route path='/login' element={<Login/>}/>
         <Route path='/footer' element={<Footer/>}/>
         <Route path='/logout' element={<Logout/>}/>
-        <Route path='/history/service' element={<Servicehis/>}/>
+        <Route path='/user/history/user/notification/:userId/user/service/:ServiceId' element={<Servicehis/>}/>
         <Route path='user/notification' element={<Notifications/>}/>
       </Routes>
       <Footer/>

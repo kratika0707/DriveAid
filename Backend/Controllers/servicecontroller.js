@@ -1,8 +1,9 @@
 // controllers/serviceController.js
 const Service = require("../model/Service");
 const Dealer = require("../model/Dealer");
+const Mechanic =require("../model/mechanic");
 const { sendNotification } = require('../WebSocket');
-
+const UserNotification =require('../model/Usernotifications')
 
 // Assuming you have a Notification model
 const Notification = require('../model/Notifications');
@@ -79,7 +80,27 @@ exports.bookService = async (req, res) => {
         },
       });
 
-      
+      const newUserNotification = new UserNotification({
+        UserId: userid,
+        DealerId: nearestDealer._id,
+        serviceId: newService._id,
+        message: `A dealer has been assigned to your service request`,
+        link: `user/service/${newService._id}`
+      });
+
+      await newUserNotification.save();
+
+      sendNotification(userid, {
+        type: 'SERVICE_ASSIGNED',
+        payload: {
+          userId: userid,
+          serviceId: newService._id,
+          message: newUserNotification.message,
+          link: `user/service/${newService._id}`
+        },
+      });
+
+
     }
 
     
@@ -154,4 +175,24 @@ exports.getService =async(req,res)=>{
     console.error('Error fetching service:', error);
     res.status(500).json({ error: 'Server error' });
   }
+}
+
+exports.allocatemechanic= async(req,res)=>{
+  
+    try {
+      const { serviceId } = req.params;
+      const { mechanicId } = req.body;
+      const service = await Service.findById(serviceId);
+      if (!service) {
+        return res.status(404).send('Service not found');
+      }
+      service.mechanicId = mechanicId;
+      service.servicestatus = 3;
+      await service.save();
+      res.json(service);
+    } catch (error) {
+      res.status(500).send('Error allocating mechanic');
+    }
+  
+  
 }

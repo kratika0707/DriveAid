@@ -75,7 +75,7 @@ exports.getMechanics = async (req, res) => {
 exports.getNotifications =async(req,res) =>{
   try {
     const { dealerid } = req.params;
-    const notifications = await Notification.find({ dealerid: dealerid });
+    const notifications = await Notification.find({ dealerId: dealerid });
     console.log('notifications')
     res.status(200).json(notifications);
   } catch (error) {

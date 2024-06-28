@@ -1,5 +1,5 @@
 const User = require('../model/user');
-
+const UserNotification = require('../model/Usernotifications')
 exports.loginUser = async (req, res) => {
     console.log(req.body);
     const { userId, loginPhone } = req.body;
@@ -49,3 +49,17 @@ exports.logoutUser =async(req,res)=>{
       // For token-based authentication, you might need to handle token invalidation
       // Example: Add the token to a blacklist or similar mechanism
     };
+
+
+
+    exports.getNotifications =async(req,res) =>{
+        try {
+          const { userId } = req.params;
+          const Usernotifications = await UserNotification.find({ UserId: userId });
+          console.log(Usernotifications);
+          res.status(200).json(Usernotifications);
+        } catch (error) {
+          console.error('Error fetching notifications:', error);
+          res.status(500).json({ error: 'An error occurred while fetching notifications' });
+        }
+      }

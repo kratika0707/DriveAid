@@ -59,7 +59,7 @@ const Navbar = () => {
                   <a className="nav-link text-black text-uppercase mx-2 px-3 mb-2 mb-lg-0" aria-current="page" href="/">Home</a>
                 </li>
                 <li className="nav-item">
-                  <a className="nav-link text-black text-uppercase mx-2 px-3 mb-2 mb-lg-0" href="/history" >History</a>
+                  <a className="nav-link text-black text-uppercase mx-2 px-3 mb-2 mb-lg-0" href="/user/history" >History</a>
                 </li>
                 <li className="nav-item">
                   <ScrollLink className="nav-link text-black text-uppercase mx-2 px-3 mb-2 mb-lg-0" to="service">Services</ScrollLink>

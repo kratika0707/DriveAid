@@ -14,10 +14,10 @@ const Home = () => {
                             <p className="header-top text-black mb-3" style={{ fontWeight: '400', fontSize: '2rem' }}>Join Us to Serve Better</p>
 
                             <p className="header-top text-black mb-3" style={{ fontWeight: '400', fontSize: '1rem' }}>Unlock new opportunities: Register as a dealer and join our network of automotive excellence today</p>
-                            <a href="/dealer/register"><button type="button" className="btn  align-items-center my-2" style={{ border: '1px solid black' }}>
+                            {/* <a href="/dealer/register"><button type="button" className="btn  align-items-center my-2" style={{ border: '1px solid black' }}>
                                 Register as Dealer now
                             </button>
-                            </a>
+                            </a> */}
                         </div>
                     </div>
                 </div>

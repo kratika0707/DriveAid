@@ -1,7 +1,7 @@
 import React, { useEffect, useState, useContext } from 'react';
 import { Link } from 'react-router-dom';
 import axios from 'axios';
-import { useSelector, useDispatch } from 'react-redux';
+import { useSelector } from 'react-redux';
 
 const UserNotifications = () => {
   const [notifications, setNotifications] = useState([]);
@@ -14,6 +14,7 @@ const UserNotifications = () => {
   useEffect(() => {
     const fetchUserNotifications = async () => {
       try {
+        console.log(userId);
         const response = await axios.get(`http://localhost:5000/api/users/${userId}/notifications`);
         setNotifications(response.data);
       } catch (error) {
@@ -34,15 +35,16 @@ const UserNotifications = () => {
     };
 
     return () => ws.close(); // Close WebSocket connection on component unmount
-  }, [userId]);
+  }, [notifications,userId]);
 
   return (
-    <div style={{height:'auto', minHeight:'100vh'}}>
+    <div style={{height:'auto', minHeight:'100vh', marginTop:'10%'}}>
       <h2>Your Notifications</h2>
+      
       {notifications.map((notification, index) => (
         <div key={index}>
           <p>{notification.message}</p>
-          <Link to={`/user/services/${notification.serviceId}`}>View Service Details</Link>
+          <Link to={`user/history/user/notification/${userId}/user/service/${notification.serviceId}`}>View Service Details</Link>
         </div>
       ))}
     </div>

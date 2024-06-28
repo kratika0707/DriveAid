@@ -5,6 +5,7 @@ import Login from '../Login/Login';
 import { useSelector, useDispatch } from 'react-redux';
 
 import { login,logout } from '../../Redux/Features/userslice';
+import { Link } from 'react-router-dom';
 
 const History = () => {
   const [showLoginModal, setShowLoginModal] = useState(false);
@@ -44,15 +45,16 @@ const History = () => {
         {serviceHistory.length > 0 ? (
           <ul>
             {serviceHistory.map((service) => (
-              <a href="/history/service" key={service._id}>
-                <li>
+              <Link to={`user/notification/${userId}/user/service/${service._id}`} >
+                <li key={service._id}>
+                  <p>{service._id}</p>
                   <p>Date of Service: {service.dateofservice}</p>
                   <p>Time of Service: {service.timeofservice}</p>
                   <p>Car Model: {service.carmodel}</p>
                   <p>Issue: {service.issue}</p>
                   <p>Status: {service.servicestatus}</p>
                 </li>
-              </a>
+              </Link>
             ))}
           </ul>
         ) : (

@@ -30,7 +30,7 @@ const Notification = () => {
     };
 
     return () => ws.close();
-  }, [dealerId]);
+  }, [notifications,dealerId]);
 
   return (
     <div>
