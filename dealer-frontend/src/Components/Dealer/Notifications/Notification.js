@@ -7,38 +7,43 @@ const Notification = () => {
   const [notifications, setNotifications] = useState([]);
   const { authState } = useContext(AuthContext);
   const dealerId = authState.dealerId; // Get the dealerId from authState
+  const [highlightedNotifications, setHighlightedNotifications] = useState([]);
 
   useEffect(() => {
-    const fetchNotifications = async () => {
-      try {
-        const response = await axios.get(`http://localhost:5000/api/dealers/${dealerId}/notifications`);
-        setNotifications(response.data);
-      } catch (error) {
-        console.error('Error fetching notifications:', error);
-      }
-    };
-
     fetchNotifications();
+  }, [dealerId]);
 
+  const fetchNotifications = async () => {
+    try {
+      const response = await axios.get(`http://localhost:5000/api/dealers/${dealerId}/notifications`);
+      setNotifications(response.data);
+    } catch (error) {
+      console.error('Error fetching notifications:', error);
+    }
+  };
+
+  useEffect(() => {
     const ws = new WebSocket('ws://localhost:8080');
 
     ws.onmessage = (event) => {
       const message = JSON.parse(event.data);
       if (message.type === 'NEW_SERVICE_REQUEST' && message.payload.dealerId === dealerId) {
-        setNotifications((prev) => [...prev, message.payload]);
+        const newNotification = { ...message.payload, isNew: true };
+        setNotifications((prevNotifications) => [...prevNotifications, newNotification]);
+        setHighlightedNotifications((prev) => [...prev, newNotification]);
       }
     };
 
     return () => ws.close();
-  }, [notifications,dealerId]);
+  }, [dealerId]);
 
   return (
     <div>
       <h2>Notifications</h2>
       {notifications.map((notification, index) => (
-        <div key={index}>
+        <div key={index} style={{ backgroundColor: highlightedNotifications.includes(notification) ? 'yellow' : 'white' }}>
           <p>{notification.message}</p>
-          <Link to={notification.link}>View Service Request</Link>
+          <Link to={`${notification.link}/${notification.serviceId}`}>View Service Request</Link>
         </div>
       ))}
     </div>

@@ -56,7 +56,7 @@ exports.logoutUser =async(req,res)=>{
         try {
           const { userId } = req.params;
           const Usernotifications = await UserNotification.find({ UserId: userId });
-          console.log(Usernotifications);
+          console.log(req.params);
           res.status(200).json(Usernotifications);
         } catch (error) {
           console.error('Error fetching notifications:', error);

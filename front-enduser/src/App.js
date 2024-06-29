@@ -33,7 +33,7 @@ function App() {
         <Route path='/login' element={<Login/>}/>
         <Route path='/footer' element={<Footer/>}/>
         <Route path='/logout' element={<Logout/>}/>
-        <Route path='/user/history/user/notification/:userId/user/service/:ServiceId' element={<Servicehis/>}/>
+        <Route path='/:userId/user/service/:ServiceId' element={<Servicehis/>}/>
         <Route path='user/notification' element={<Notifications/>}/>
       </Routes>
       <Footer/>

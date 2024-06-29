@@ -30,7 +30,7 @@ router.post('/', async (req, res) => {
 router.post('/register', registerDealer);
 router.post('/login', loginDealer);
 router.get('/:dealerId/mechanics',getMechanics);
-router.get(':dealerId/notifications',getNotifications);
+router.get('/:dealerId/notifications',getNotifications);
 router.get('/:dealerId/services', getServicesByDealer);
 
 module.exports = router;

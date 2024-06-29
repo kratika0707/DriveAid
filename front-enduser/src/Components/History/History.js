@@ -45,7 +45,7 @@ const History = () => {
         {serviceHistory.length > 0 ? (
           <ul>
             {serviceHistory.map((service) => (
-              <Link to={`user/notification/${userId}/user/service/${service._id}`} >
+              <Link to={`/${userId}/user/service/${service._id}`} >
                 <li key={service._id}>
                   <p>{service._id}</p>
                   <p>Date of Service: {service.dateofservice}</p>

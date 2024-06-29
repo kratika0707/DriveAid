@@ -3,6 +3,7 @@ const Service = require("../model/Service");
 const Dealer = require("../model/Dealer");
 const Mechanic =require("../model/mechanic");
 const { sendNotification } = require('../WebSocket');
+const { sendNotificationtoUser} =require('../SocketServer');
 const UserNotification =require('../model/Usernotifications')
 
 // Assuming you have a Notification model
@@ -65,6 +66,7 @@ exports.bookService = async (req, res) => {
         dealerId: nearestDealer._id,
         serviceId: newService._id,
         message: `You have a new service request`,
+        link: `dealer/service`,
       });
 
       await newNotification.save();
@@ -85,15 +87,15 @@ exports.bookService = async (req, res) => {
         DealerId: nearestDealer._id,
         serviceId: newService._id,
         message: `A dealer has been assigned to your service request`,
-        link: `user/service/${newService._id}`
+        link: `user/service/`
       });
 
       await newUserNotification.save();
 
-      sendNotification(userid, {
+      sendNotificationtoUser(userid, {
         type: 'SERVICE_ASSIGNED',
         payload: {
-          userId: userid,
+          UserId: userid,
           serviceId: newService._id,
           message: newUserNotification.message,
           link: `user/service/${newService._id}`

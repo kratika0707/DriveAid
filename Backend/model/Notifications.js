@@ -7,7 +7,8 @@ const notificationSchema = new Schema({
   serviceId: { type: mongoose.Schema.Types.ObjectId, ref: 'Service', required: true },
   message: { type: String, required: true },
   read: { type: Boolean, default: false },
-  createdAt: { type: Date, default: Date.now }
+  createdAt: { type: Date, default: Date.now },
+  link:{type:String, rquired:true}
 });
 
 const Notification = mongoose.model('Notification', notificationSchema);

@@ -15,7 +15,7 @@ router.post('/', async (req, res) => {
 });
 router.post('/login',loginUser);
 router.post('/logout',logoutUser);
-router.get(':userId/notifications',getNotifications);
+router.get('/:userId/notifications',getNotifications);
 
 
 module.exports = router;
