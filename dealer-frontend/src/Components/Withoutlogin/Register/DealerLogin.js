@@ -32,7 +32,7 @@ const DealerLogin = () => {
 
       const data = await response.json();
       login(phone, data.dealerId); // Save user and dealerId in authState
-      navigate(`/dealer/${data.dealerId}`);
+      navigate(`/`);
       console.log('Login successful, dealerId:', data.dealerId);
     } catch (error) {
       setError(error.message);

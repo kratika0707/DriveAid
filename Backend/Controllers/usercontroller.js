@@ -63,3 +63,13 @@ exports.logoutUser =async(req,res)=>{
           res.status(500).json({ error: 'An error occurred while fetching notifications' });
         }
       }
+
+      exports.markAsRead = async (req, res) => {
+        try {
+          const { notificationId } = req.params;
+          await UserNotification.findByIdAndUpdate(notificationId, { read: true });
+          res.status(200).json({ message: 'Notification marked as read' });
+        } catch (error) {
+          res.status(500).json({ message: 'Error marking notification as read', error });
+        }
+      };

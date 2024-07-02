@@ -33,7 +33,7 @@ const MechanicLogin = () => {
       const data = await response.json();
       mechlogin(phone, data.mechanicId); // Save user and dealerId in authState
       console.log('Login successful, mechanicId:', data.mechanicId);
-      navigate(`/mechanic/${data.mechanicId}`);
+      navigate(`/`);
       console.log('Login successful, mechanicId:', data.mechanicId);
     } catch (error) {
       setError(error.message);
