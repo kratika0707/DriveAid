@@ -22,7 +22,11 @@ const UserNotifications = () => {
     fetchUserNotifications();
 
     const ws = new WebSocket('ws://localhost:8000');
-
+    
+    ws.onopen = () => {
+        console.log('WebSocket connection established');
+      };
+  
     
     ws.onmessage = (event) => {
       const message = JSON.parse(event.data);
@@ -33,6 +37,15 @@ const UserNotifications = () => {
         setNewNotifications((prev) => [...prev, newNotification]);
       }
     };
+
+    ws.onerror = (error) => {
+        console.error('WebSocket error:', error);
+      };
+  
+      ws.onclose = () => {
+        console.log('WebSocket connection closed');
+      };
+  
 
     return () => ws.close(); // Close WebSocket connection on component unmount
   }, [userId]);

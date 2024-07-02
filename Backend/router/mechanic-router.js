@@ -1,7 +1,7 @@
 const express = require('express');
 const router = express.Router();
 const Mechanic = require('../model/mechanic');
-const {loginMechanic, registerMechanic} =require('../Controllers/mechaniccontroller');
+const {loginMechanic, registerMechanic, getNotifications} =require('../Controllers/mechaniccontroller');
 router.post('/', async (req, res) => {
     try {
         const mechanic = new Mechanic(req.body);
@@ -14,5 +14,5 @@ router.post('/', async (req, res) => {
 
 router.post('/login', loginMechanic);
 router.post('/register', registerMechanic);
-
+router.get('/:mechanicId/notifications',getNotifications);
 module.exports = router;

@@ -1,6 +1,6 @@
 const Mechanic = require('../model/mechanic');
 const bcrypt = require('bcryptjs');
-
+const MechNotification= require('../model/Mechnotification');
 exports.registerMechanic = async (req, res) => {
   const { dealerId,name, phone, password} = req.body;
 
@@ -54,3 +54,14 @@ exports.loginMechanic = async (req, res) => {
 
 
 
+exports.getNotifications =async(req,res) =>{
+  try {
+    const { mechanicId } = req.params;
+    const Mechnotifications = await MechNotification.find({ MechanicId: mechanicId });
+    console.log(req.params);
+    res.status(200).json(Mechnotifications);
+  } catch (error) {
+    console.error('Error fetching notifications:', error);
+    res.status(500).json({ error: 'An error occurred while fetching notifications' });
+  }
+}

@@ -65,7 +65,10 @@ const Navbar = () => {
                             <button className="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNavAltMarkup" aria-controls="navbarNavAltMarkup" aria-expanded="false" aria-label="Toggle navigation">
                                 <span className="navbar-toggler-icon"></span>
                             </button>
-
+                            <div>
+                                <Link to={`/mechanic/notifications/${mechauthState.mechanicId}`}>Notifications</Link>
+                            </div>
+                            
                             <div className="collapse navbar-collapse me-5" id="navbarNavAltMarkup">
                                 <div className="navbar-nav ms-auto">
                                     <Link className="nav-link active me-5" aria-current="page" to={`/mechanic/${mechauthState.mechanicId}`} style={{ fontWeight: '500', fontSize: '1.25rem', color: 'black' }}>Home</Link>

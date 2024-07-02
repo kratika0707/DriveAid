@@ -4,10 +4,12 @@ const Dealer = require("../model/Dealer");
 const Mechanic =require("../model/mechanic");
 const { sendNotification } = require('../WebSocket');
 const { sendNotificationtoUser} =require('../SocketServer');
+const { sendNotificationtoMech} =require('../MechSocket');
 const UserNotification =require('../model/Usernotifications')
-
+const MechNotification= require('../model/Mechnotification')
 // Assuming you have a Notification model
 const Notification = require('../model/Notifications');
+
 
 exports.bookService = async (req, res) => {
   const { userid, carmodel, issue, location, dateofservice, timeofservice, servicestatus } = req.body;
@@ -95,7 +97,7 @@ exports.bookService = async (req, res) => {
       sendNotificationtoUser(userid, {
         type: 'SERVICE_ASSIGNED',
         payload: {
-          UserId: userid,
+          userId: userid,
           serviceId: newService._id,
           message: newUserNotification.message,
           link: `user/service/${newService._id}`
@@ -192,6 +194,52 @@ exports.allocatemechanic= async(req,res)=>{
       service.servicestatus = 3;
       await service.save();
       res.json(service);
+
+
+      const newMechNotification = new MechNotification({
+        MechanicId: mechanicId,
+        serviceId: serviceId,
+        message: `you have been assigned a service request`,
+        link: `user/service/`
+      });
+
+      await newMechNotification.save();
+
+      sendNotificationtoMech(mechanicId, {
+        type: 'SERVICE_ASSIGNED',
+        payload: {
+          mechanicId: mechanicId,
+          serviceId: serviceId,
+          message: newMechNotification.message,
+          link: `user/service/${serviceId}`
+        },
+      });
+
+
+
+      const newUserNotification = new UserNotification({
+        UserId: service.userid,
+        DealerId: service.dealerId,
+        serviceId: serviceId,
+        message: `A mechanic has been assigned to your service request`,
+        link: `user/service/`
+      });
+
+      await newUserNotification.save();
+
+      sendNotificationtoUser(service.userid, {
+        type: 'SERVICE_ASSIGNED',
+        payload: {
+          userId: service.userid,
+          serviceId: serviceId,
+          message: newUserNotification.message,
+          link: `user/service/${serviceId}`
+        },
+      });
+
+
+
+
     } catch (error) {
       res.status(500).send('Error allocating mechanic');
     }

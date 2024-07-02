@@ -13,6 +13,7 @@ import Mechadd from './Components/Dealer/Mechanicadd/Mechadd';
 import Mechanics from './Components/Dealer/Mechanicadd/Mechanics';
 import Servicehistory from './Components/Dealer/Servicehistory/Servicehistory';
 import Servicesdealer from './Components/Dealer/Servicehistory/Servicesdealer';
+import MechNotification from './Components/Mechanic/MechNotifications';
 function App() {
   return (
 
@@ -31,6 +32,7 @@ function App() {
           <Route path='/dealer/mechanics/:dealerId' element={<Mechanics/>}/>
           <Route path='/dealer/services/:dealerId' element={<Servicesdealer/>}/>
           <Route path='/dealer/notifications/:dealerId/dealer/service/:serviceId' element={<Servicehistory/>}/>
+          <Route path='/mechanic/notifications/:mechanicId' element={<MechNotification/>}/>
         </Routes>
       </BrowserRouter>
     </>
