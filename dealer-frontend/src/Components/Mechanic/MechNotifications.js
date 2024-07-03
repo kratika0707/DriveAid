@@ -90,7 +90,7 @@ const MechNotification = () => {
       {Object.keys(groupedNotifications).map((date, index) => (
         <div key={index} style={{ marginBottom: '20px', position: 'relative' }}>
           <h3 style={{ marginBottom: '20px', color: 'black', fontSize: '1.15rem', textAlign: 'center', borderRadius: '20px', display: 'inline-block', padding: '5px 10px', backgroundColor: 'lightgray', paddingLeft: '1.5%', paddingRight: '1.5%' }}>
-            {formatDate(date)}
+            {formatDatee(date)}
           </h3>
           <div style={{ border: '1px solid black', paddingBottom: '10px', paddingLeft: '15px' }}>
             {groupedNotifications[date].map((notification, i) => (

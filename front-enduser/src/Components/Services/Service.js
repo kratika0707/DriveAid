@@ -1,5 +1,5 @@
-import React from 'react'
-import image from '../Assets/pexels-olly-3807277.jpg'
+import React from 'react';
+import image from '../Assets/pexels-olly-3807277.jpg';
 import s1 from '../Assets/service1.jpg';
 import s2 from '../Assets/service-2.jpg';
 import s3 from '../Assets/service3.jpeg';
@@ -12,7 +12,7 @@ const Service = () => {
         <div className="container1" style={{ position: 'relative', height: '100vh', width: '100vw', margin: 0, padding: 0 }}>
           <img src={image} alt="car" style={{ position: 'absolute', top: 0, left: 0, height: '90%', width: '100vw', objectFit: 'cover', zIndex: '0' }} />
           <div style={{ position: 'absolute', top: 0, left: 0, width: '100%', height: '90%', display: 'flex', alignItems: 'center', justifyContent: 'center', zIndex: '1', padding: '20px', textAlign: 'center', backgroundColor: 'rgba(0,0,0,0.6)' }}>
-            <h1 className='about' style={{ color: 'white', fontSize: '5vw' }}>our Services</h1>
+            <h1 className='about' style={{ color: 'white', fontSize: '5vw' }}>Our Services</h1>
           </div>
         </div>
 
@@ -28,7 +28,7 @@ const Service = () => {
                     <div id="service-1" className="row g-4 align-items-center">
                       <div className="col-md-6">
                         <div className="position-relative h-100">
-                          <img className="img-fluid w-100" src={s1} style={{ objectFit: 'cover', minHeight: '100vh' }} alt="Diagnostic Services" />
+                          <img className="img-fluid w-100" src={s1} style={{ objectFit: 'cover', minHeight: '70vh', maxHeight: '90vh' }} alt="Diagnostic Services" />
                         </div>
                       </div>
                       <div className="col-md-6">
@@ -40,7 +40,7 @@ const Service = () => {
                     <div id="service-2" className="row g-4 align-items-center">
                       <div className="col-md-6 order-md-2">
                         <div className="position-relative h-100">
-                          <img className="img-fluid w-100" src={s2} style={{ objectFit: 'cover', minHeight: '100vh' }} alt="Battery Services" />
+                          <img className="img-fluid w-100" src={s2} style={{ objectFit: 'cover', minHeight: '70vh', maxHeight: '70vh' }} alt="Battery Services" />
                         </div>
                       </div>
                       <div className="col-md-6 order-md-1">
@@ -52,7 +52,7 @@ const Service = () => {
                     <div id="service-3" className="row g-4 align-items-center">
                       <div className="col-md-6">
                         <div className="position-relative h-100">
-                          <img className="img-fluid w-100" src={s3} style={{ objectFit: 'cover', minHeight: '100vh' }} alt="Tire Services" />
+                          <img className="img-fluid w-100" src={s3} style={{ objectFit: 'cover', minHeight: '70vh', maxHeight: '90vh' }} alt="Tire Services" />
                         </div>
                       </div>
                       <div className="col-md-6">
@@ -64,7 +64,7 @@ const Service = () => {
                     <div id="service-4" className="row g-4 align-items-center">
                       <div className="col-md-6 order-md-2">
                         <div className="position-relative h-100">
-                          <img className="img-fluid w-100" src={s4} style={{ objectFit: 'cover', minHeight: '100vh' }} alt="Engine Services" />
+                          <img className="img-fluid w-100" src={s4} style={{ objectFit: 'cover', minHeight: '70vh', maxHeight: '90vh' }} alt="Engine Services" />
                         </div>
                       </div>
                       <div className="col-md-6 order-md-1">
@@ -76,9 +76,6 @@ const Service = () => {
                 </div>
               </div>
             </div>
-
-
-
           </div>
         </div>
       </div>
@@ -86,4 +83,4 @@ const Service = () => {
   )
 }
 
-export default Service
+export default Service;

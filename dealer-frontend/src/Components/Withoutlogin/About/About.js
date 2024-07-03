@@ -1,11 +1,13 @@
-import React from 'react'
+import React from 'react';
+import { Icon } from '@iconify/react';
+import arrowRight from '@iconify-icons/tabler/arrow-right';
 import { GiArchiveRegister } from "react-icons/gi";
 import { MdOutlineMenuBook } from "react-icons/md";
 import { VscSignIn } from "react-icons/vsc";
 const About = () => {
     return (
         <>
-            <div className="container" style={{marginTop:'2%'}}>
+            {/* <div className="container" style={{marginTop:'2%'}}>
                 <div className="container" style={{height:'150px', width:'70%',marginTop:'5%',marginBottom:'5%',display:'flex',justifyContent:'center',alignContent:'center',flexDirection:'column',alignItems:'center',border:'1px solid #6693d0',borderRadius:'15px',backgroundColor:'#6693d0'}}>
                 <p style={{fontWeight:'500',fontSize:'1.25rem',color:'white'}}>Join DriveAid Today: Enjoy Exclusive Benefits and Boost Your Business 
                     with Our Dealer Registration Offer!
@@ -40,7 +42,34 @@ const About = () => {
                         </div>
                     </div>
                 </div>
+            </div> */}
+
+
+<section id="about">
+      <div style={{ overflow: 'hidden' }}>
+        <div className="container-fluid border-bottom">
+          <div className="container">
+            <div className="row align-items-center">
+              <div className="col-md-6 padding-medium pe-5 border-end">
+                
+                <p className="header-top mb-3">Why choose us</p>
+                <h2 className="display-4">always remember DriveAid for your car</h2>
+              </div>
+              <div className="col-md-6 padding-medium-2 ps-md-5">
+                <p className="ms-md-5">DriveAid connects customers with trusted, nearby mechanics and dealers for fast, reliable vehicle repairs. 
+                  We ensure prompt service, real-time updates, and access to quality parts. 
+                  Experience hassle-free vehicle care with DriveAid, getting you back on the road quickly and safely.
+                </p>
+                <a href="/about" className="btn btn-primary ms-5 mt-3">
+                  About us
+                  <Icon icon={arrowRight} className="arrow-icon" />
+                </a>
+              </div>
             </div>
+          </div>
+        </div>
+      </div>
+    </section>
         </>
     )
 }

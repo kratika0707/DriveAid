@@ -61,14 +61,14 @@ const Navbar = () => {
                 <li className="nav-item">
                   <a className="nav-link text-black text-uppercase mx-2 px-3 mb-2 mb-lg-0" href="/user/history" >History</a>
                 </li>
-                <li className="nav-item">
+                {/* <li className="nav-item">
                   <ScrollLink className="nav-link text-black text-uppercase mx-2 px-3 mb-2 mb-lg-0" to="service">Services</ScrollLink>
-                </li>
+                </li> */}
                 <li className="nav-item">
                   <a className="nav-link text-black text-uppercase mx-2 px-3 mb-2 mb-lg-0" href="/feedback">Feedback</a>
                 </li>
                 <li className="nav-item">
-                  <a href="/booking" className="btn btn-outline-primary mx-2 px-3 py-2" style={{ backgroundColor: '#ea422b' }}>
+                  <a href="/booking" className="nav-link text-black text-uppercase mx-2 px-3 mb-2 mb-lg-0" >
                     Service Request
                   </a>
                 </li>
@@ -77,6 +77,7 @@ const Navbar = () => {
                   <li className="nav-item">
                   <a className="nav-link text-black text-uppercase mx-2 px-3 mb-2 mb-lg-0" href="/user/notification" >Notifications</a>
                 </li>
+                
                   <li className="nav-item">
                     <button onClick={handlelogout} className="btn btn-outline-primary mx-2 px-3 py-2" style={{ backgroundColor: '#ea422b' }}>
                       Logout

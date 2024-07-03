@@ -16,6 +16,9 @@ import Servicesdealer from './Components/Dealer/Servicehistory/Servicesdealer';
 import MechNotification from './Components/Mechanic/MechNotifications';
 import Servicedetails from './Components/Mechanic/Services/Servicedetails';
 import Listing from './Components/Buying/Listing';
+import './Components/fontawesome';
+import Bikes from './Components/Buying/Bikes';
+import Footer from './Components/Withoutlogin/Footer/Footer';
 function App() {
   return (
 
@@ -37,7 +40,9 @@ function App() {
           <Route path='/mechanic/notifications/:mechanicId' element={<MechNotification/>}/>
           <Route path='/mechanic/service/:serviceId' element={<Servicedetails/>}/>
           <Route path='/buy/:mechanicId' element={<Listing/>}/>
+          <Route path='/buyparts/:mechanicId' element={<Bikes/>}/>
         </Routes>
+        {/* <Footer/> */}
       </BrowserRouter>
     </>
   );

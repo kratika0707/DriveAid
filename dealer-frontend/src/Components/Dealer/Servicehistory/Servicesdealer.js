@@ -11,7 +11,8 @@ const Servicesdealer = () => {
     const fetchServices = async () => {
       try {
         const response = await axios.get(`http://localhost:5000/api/dealers/${authState.dealerId}/services`);
-        setServices(response.data);
+        const reversed=response.data.reverse();
+        setServices(reversed);
         console.log(services)
       } catch (error) {
         console.error('Error fetching services:', error);

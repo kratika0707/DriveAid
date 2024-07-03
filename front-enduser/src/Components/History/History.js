@@ -32,7 +32,9 @@ const History = () => {
   const fetchServiceHistory = async (userId) => {
     try {
       const response = await axios.get(`http://localhost:5000/api/services/history/${userId}`);
-      setServiceHistory(response.data);
+      const reversedServiceHistory = response.data.reverse();
+
+      setServiceHistory(reversedServiceHistory);
     } catch (error) {
       console.error('Error fetching service history:', error);
     }

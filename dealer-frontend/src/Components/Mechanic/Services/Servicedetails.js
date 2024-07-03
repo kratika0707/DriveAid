@@ -43,7 +43,20 @@ const Servicedetails = () => {
 
   // Allocate mechanic to the service
   
- 
+  const handleDirectionsClick = () => {
+    if (navigator.geolocation) {
+      navigator.geolocation.getCurrentPosition((position) => {
+        const mechanicLat = position.coords.latitude;
+        const mechanicLng = position.coords.longitude;
+        const userLat = service.location.latitude;
+        const userLng = service.location.longitude;
+        const googleMapsUrl = `https://www.google.com/maps/dir/?api=1&origin=${mechanicLat},${mechanicLng}&destination=${userLat},${userLng}&travelmode=driving`;
+        window.open(googleMapsUrl, '_blank');
+      });
+    } else {
+      alert('Geolocation is not supported by this browser.');
+    }
+  };
 
   if (error) {
     return <div>Error: {error}</div>;
@@ -68,6 +81,7 @@ const Servicedetails = () => {
         <li>Dealer ID: {service.dealerId}</li>
       </ul>
 
+      <button onClick={handleDirectionsClick}>Get Directions</button>
     
     </div>
   );

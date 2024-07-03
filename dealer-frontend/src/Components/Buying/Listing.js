@@ -1,4 +1,5 @@
 import React from 'react'
+import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 // import '../Buying/Buying.css'
 const Listing = () => {
   return (
@@ -16,7 +17,7 @@ const Listing = () => {
           <div className="d-flex float-end">
             
             
-            <a href="https://github.com/mdbootstrap/bootstrap-material-design" className="border rounded py-1 px-3 nav-link d-flex align-items-center" target="_blank"> <i className="fas fa-shopping-cart m-1 me-md-2"></i><p className="d-none d-md-block mb-0">My cart</p> </a>
+            <a href="" className="border rounded py-1 px-3 nav-link d-flex align-items-center" > <i className="fas fa-shopping-cart m-1 me-md-2"></i><p className="d-none d-md-block mb-0">My cart</p> </a>
           </div>
         </div>
     
@@ -293,14 +294,14 @@ const Listing = () => {
               <option value="2">High rated</option>
               <option value="3">Randomly</option>
             </select> */}
-            <div className="btn-group shadow-0 border">
+            {/* <div className="btn-group shadow-0 border">
               <a href="#" className="btn btn-light" title="List view">
                 <i className="fa fa-bars fa-lg"></i>
               </a>
               <a href="#" className="btn btn-light active" title="Grid view">
                 <i className="fa fa-th fa-lg"></i>
               </a>
-            </div>
+            </div> */}
           </div>
         </header>
 
@@ -320,7 +321,7 @@ const Listing = () => {
                     </div>
                   </div>
                   <div className="col-xl-6 col-md-5 col-sm-7">
-                    <h5>Rucksack Backpack Jeans</h5>
+                    <h5>Product 1</h5>
                     <div className="d-flex flex-row">
                       <div className="text-warning mb-1 me-2">
                         <i className="fa fa-star"></i>
@@ -373,7 +374,7 @@ const Listing = () => {
                     </div>
                   </div>
                   <div className="col-xl-6 col-md-5 col-sm-7">
-                    <h5>Men's Denim Jeans Shorts</h5>
+                    <h5>Product 2</h5>
                     <div className="d-flex flex-row">
                       <div className="text-warning mb-1 me-2">
                         <i className="fa fa-star"></i>
@@ -426,7 +427,7 @@ const Listing = () => {
                     </div>
                   </div>
                   <div className="col-xl-6 col-md-5 col-sm-7">
-                    <h5>T-shirt for Men Blue Cotton Base</h5>
+                    <h5>Product 3</h5>
                     <div className="d-flex flex-row">
                       <div className="text-warning mb-1 me-2">
                         <i className="fa fa-star"></i>
@@ -478,7 +479,7 @@ const Listing = () => {
                     </div>
                   </div>
                   <div className="col-xl-6 col-md-5 col-sm-7">
-                    <h5>Winter Jacket for Men and Women</h5>
+                    <h5>Product 4</h5>
                     <div className="d-flex flex-row">
                       <div className="text-warning mb-1 me-2">
                         <i className="fa fa-star"></i>
@@ -530,7 +531,7 @@ const Listing = () => {
                     </div>
                   </div>
                   <div className="col-xl-6 col-md-5 col-sm-7">
-                    <h5>T-shirt for Men Blue Cotton Base</h5>
+                    <h5>Product 5</h5>
                     <div className="d-flex flex-row">
                       <div className="text-warning mb-1 me-2">
                         <i className="fa fa-star"></i>

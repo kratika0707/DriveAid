@@ -73,8 +73,18 @@ const Navbar = () => {
                             <button className="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNavAltMarkup" aria-controls="navbarNavAltMarkup" aria-expanded="false" aria-label="Toggle navigation">
                                 <span className="navbar-toggler-icon"></span>
                             </button>
+                            <Link className="nav-link active me-5" aria-current="page" to={`/`} style={{ fontWeight: '500', fontSize: '1.25rem', color: 'black' }}>Home</Link>
+                            <div style={{marginLeft:'5%'}}>
+                                <Link to={`/dealer/mechanicadd/${authState.dealerId}`}>Add mechanics</Link>
+                            </div>
+                            <div style={{marginLeft:'5%'}}>
+                                <Link to={`/dealer/mechanics/${authState.dealerId}`}>Mechanics</Link>
+                            </div>
+                            <div style={{marginLeft:'5%'}}>
+                                <Link to={`/dealer/services/${authState.dealerId}`}>Services</Link>
+                            </div>
                             <Link to={`/dealer/notifications/${authState.dealerId}`}>
-                                    <FaBell size={24} style={{ position: 'relative' }}>
+                                    <FaBell size={24} style={{ position: 'relative', marginLeft:'15%' }}>
                                         {unreadCount > 0 && (
                                             <span style={{
                                                 position: 'absolute',
@@ -91,18 +101,9 @@ const Navbar = () => {
                                         )}
                                     </FaBell>
                                 </Link>
-                            <div style={{marginLeft:'5%'}}>
-                                <Link to={`/dealer/mechanicadd/${authState.dealerId}`}>Add mechanics</Link>
-                            </div>
-                            <div style={{marginLeft:'5%'}}>
-                                <Link to={`/dealer/mechanics/${authState.dealerId}`}>Mechanics</Link>
-                            </div>
-                            <div style={{marginLeft:'5%'}}>
-                                <Link to={`/dealer/services/${authState.dealerId}`}>Services</Link>
-                            </div>
                             <div className="collapse navbar-collapse me-5" id="navbarNavAltMarkup">
                                 <div className="navbar-nav ms-auto">
-                                    <Link className="nav-link active me-5" aria-current="page" to={`/`} style={{ fontWeight: '500', fontSize: '1.25rem', color: 'black' }}>Home</Link>
+                                    
                                     <button className="btn btn-primary me-5" onClick={handleLogout}>Logout</button>
                                 </div>
                             </div>
@@ -114,8 +115,10 @@ const Navbar = () => {
                             <button className="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNavAltMarkup" aria-controls="navbarNavAltMarkup" aria-expanded="false" aria-label="Toggle navigation">
                                 <span className="navbar-toggler-icon"></span>
                             </button>
+                            <Link  aria-current="page" to={`/`} style={{ fontWeight: '500', fontSize: '1.25rem', color: 'black' }}>Home</Link>
                             <div style={{marginLeft:'5%', marginRight:'5%'}}>
-                                <Link to={`/buy/${mechauthState.mechanicId}`}>Buy Parts</Link>
+                                {/* <Link to={`/buy/${mechauthState.mechanicId}`}>Buy Parts</Link> */}
+                                <Link to={`/buyparts/${mechauthState.mechanicId}`}>Buy Parts</Link>
                             </div>
                             <div>
                                 <Link to={`/mechanic/notifications/${mechauthState.mechanicId}`}>
@@ -140,7 +143,7 @@ const Navbar = () => {
                             
                             <div className="collapse navbar-collapse me-5" id="navbarNavAltMarkup">
                                 <div className="navbar-nav ms-auto">
-                                    <Link className="nav-link active me-5" aria-current="page" to={`/`} style={{ fontWeight: '500', fontSize: '1.25rem', color: 'black' }}>Home</Link>
+                                    
                                     <button className="btn btn-primary me-5" onClick={handleLogout}>Logout</button>
                                 </div>
                             </div>
