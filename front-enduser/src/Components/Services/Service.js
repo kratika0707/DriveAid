@@ -17,7 +17,7 @@ const Service = () => {
         </div>
 
         <div className="container-xxl service py-5" id="services">
-          <div className="container">
+          <div >
             <div className="text-center wow fadeInUp" data-wow-delay="0.1s">
               <h1 className="mb-5">Explore Our Services</h1>
             </div>

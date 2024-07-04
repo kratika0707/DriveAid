@@ -1,6 +1,7 @@
 const Mechanic = require('../model/mechanic');
 const bcrypt = require('bcryptjs');
 const MechNotification= require('../model/Mechnotification');
+const Service =require('../model/Service');
 exports.registerMechanic = async (req, res) => {
   const { dealerId,name, phone, password} = req.body;
 
@@ -73,5 +74,15 @@ exports.markAsRead = async (req, res) => {
     res.status(200).json({ message: 'Notification marked as read' });
   } catch (error) {
     res.status(500).json({ message: 'Error marking notification as read', error });
+  }
+};
+
+exports.getServices= async(req,res)=>{
+  const { mechanicId } = req.params;
+  try {
+    const services = await Service.find({ mechanicId });
+    res.json(services);
+  } catch (err) {
+    res.status(500).json({ error: 'Error fetching services' });
   }
 };

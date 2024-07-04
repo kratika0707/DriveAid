@@ -30,10 +30,18 @@ const Notification = () => {
     ws.onmessage = (event) => {
       const message = JSON.parse(event.data);
       if (message.type === 'NEW_SERVICE_REQUEST' && message.payload.dealerId === dealerId) {
-        const newNotification = { ...message.payload, isNew: true };
-        setNotifications(prevNotifications => [...prevNotifications, newNotification]);
-        setNewNotifications(prev => [...prev, newNotification]);
+        const newNotification = { ...message.payload, isNew: true, createdAt: new Date() };
+        setNotifications(prevNotifications => [newNotification, ...prevNotifications]);
+        setNewNotifications(prev => [newNotification, ...prev]);
       }
+    };
+
+    ws.onerror = (error) => {
+      console.error('WebSocket error:', error);
+    };
+
+    ws.onclose = () => {
+      console.log('WebSocket connection closed');
     };
 
     return () => ws.close();
@@ -90,45 +98,33 @@ const Notification = () => {
     }
   };
 
-
-
-
   return (
-    <>
-    {/* <div>
-      <h2>Notifications</h2>
-      {notifications.map((notification, index) => (
-        <div
-          key={index}
-          style={{ backgroundColor: newNotifications.some(notif => notif._id === notification._id) ? 'yellow' : 'white' }}
-        >
-          <p>{notification.message}</p>
-          <Link to={`${notification.link}/${notification.serviceId}`} onClick={() => handleNotificationClick(notification._id)}>
-            View Service Request
-          </Link>
-        </div>
-      ))}
-    </div> */}
     <div className="container" style={{ minHeight: '100vh', display: 'flex', flexDirection: 'column', alignItems: 'center', justifyContent: 'flex-start', margin: '10px auto', width: '70%' }}>
-      <h2 style={{ margin: '2%', fontSize: '2.5rem' }}>Notifications</h2>
+      <h2 className='text-uppercase' style={{ margin: '2%', fontSize: '2.5rem', marginTop: '8%', color:'black', fontWeight:'600', fontFamily:'sans-serif' }}>Notifications</h2>
       <div style={{ width: '100%', overflowY: 'auto', margin: '1%' }}>
         {Object.keys(groupedNotifications).map((date, index) => (
           <div key={index} style={{ marginBottom: '20px', position: 'relative' }}>
-            <h3 style={{ marginBottom: '20px', color: 'black', fontSize: '1.15rem', textAlign: 'center', borderRadius: '20px', display: 'inline-block', padding: '5px 10px', backgroundColor: 'lightgray', paddingLeft: '1.5%', paddingRight: '1.5%' }}>
+            <h3 className='text-uppercase' style={{ marginBottom: '20px', color: 'black', fontWeight:'700',fontSize: '1.15rem', textAlign: 'center', borderRadius: '20px', display: 'inline-block', padding: '5px 10px', backgroundColor: '#ed6754', paddingLeft: '1.5%', paddingRight: '1.5%' }}>
               {formatDatee(date)}
             </h3>
-            <div style={{ border: '1px solid black', paddingBottom: '10px', paddingLeft: '15px' }}>
+            <div style={{ border: '1px solid white' }}>
               {groupedNotifications[date].map((notification, i) => (
                 <div
                   key={i}
-                  style={{ backgroundColor: notification.read ? 'white' : 'yellow', padding: '10px', marginBottom: '5px', borderBottom: '1px solid grey' }}
+                  style={{ marginBottom: '15px', padding: '10px', borderBottom: '1px solid grey', boxShadow: '0 4px 8px rgba(0,0,0,0.2)' }}
                 >
-                  <div style={{ display: 'flex', alignItems: 'center' }}>
-                    <p style={{ fontWeight: 'bold', marginRight: '20px' }}>{formatTime(notification.createdAt)}</p>
-                    <div>
-                      <p>{notification.message}</p>
-                      <Link to={`${notification.link}/${notification.serviceId}`} onClick={() => handleNotificationClick(notification._id)}>
-                        View Service Request
+                  <div style={{ display: 'flex', alignItems: 'center', justifyContent: 'space-between', margin: '10px', height:'35px' }}>
+                    <p style={{ fontSize: '1rem', margin: 0, color: 'black', fontWeight: '700', flexShrink: 0 }}>
+                      {formatTime(notification.createdAt)}
+                    </p>
+                    <div style={{ flex: 1, marginLeft: '20px' }}>
+                      <Link to={`${notification.link}/${notification.serviceId}`} onClick={() => handleNotificationClick(notification._id)} style={{ textDecoration: 'none', display: 'flex', alignItems: 'center' }}>
+                        <p style={{ fontWeight: notification.read ? '400' : '600', color: notification.read ? 'grey' : 'black', margin: 0, fontSize: '1rem', whiteSpace: 'nowrap', overflow: 'hidden', textOverflow: 'ellipsis' }}>
+                          {notification.message}
+                        </p>
+                        {!notification.read && (
+                          <span style={{ backgroundColor: 'red', color: 'white', borderRadius: '4px', padding: '2px 4px', marginLeft: '10px', fontSize: '0.8rem' }}>New</span>
+                        )}
                       </Link>
                     </div>
                   </div>
@@ -139,7 +135,6 @@ const Notification = () => {
         ))}
       </div>
     </div>
-    </>
   );
 };
 

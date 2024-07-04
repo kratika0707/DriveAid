@@ -48,15 +48,15 @@ const Navbar = () => {
         <nav className="navbar navbar-expand-lg navbar-light bg-light">
             {!authState.isAuthenticated && !mechauthState.isAuthenticated ? (
                 <div className="container-fluid">
-                    <Link className="navbar-brand ms-3" to="/" style={{ fontWeight: '800', fontSize: '2rem' }}>DriveAid</Link>
+                    <Link className="navbar-brand ms-3" to="/" style={{ fontWeight: '800', fontSize: '2rem', color: '#ea422b', letterSpacing: '0.075rem' }}>DriveAid</Link>
                     <button className="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNavAltMarkup" aria-controls="navbarNavAltMarkup" aria-expanded="false" aria-label="Toggle navigation">
                         <span className="navbar-toggler-icon"></span>
                     </button>
                     <div className="collapse navbar-collapse me-5" id="navbarNavAltMarkup">
                         <div className="navbar-nav ms-auto">
-                            <Link className="nav-link active me-5" aria-current="page" to="/" style={{ fontWeight: '500', fontSize: '1.25rem', color: 'black' }}>Home</Link>
+                            <Link className="nav-link active me-5" aria-current="page" to="/" style={{ fontWeight: '600', fontSize: '1.25rem', color: 'black' }}>Home</Link>
                             <div className="nav-item dropdown">
-                                <a className="nav-link dropdown-toggle me-5" id="navbarDropdown" href="/" role="button" data-bs-toggle="dropdown" aria-expanded="false" style={{ fontWeight: '500', fontSize: '1.25rem', color: 'black' }}>Login</a>
+                                <a className="nav-link dropdown-toggle me-5" id="navbarDropdown" href="/" role="button" data-bs-toggle="dropdown" aria-expanded="false" style={{ fontWeight: '600', fontSize: '1.25rem', color: 'black' }}>Login</a>
                                 <ul className="dropdown-menu dropdown-menu-end" aria-labelledby="navbarDropdown">
                                     <li><Link className="dropdown-item" to="/dealer/login">Dealer</Link></li>
                                     <li><Link className="dropdown-item" to="/mechanic/login">Mechanic</Link></li>
@@ -69,56 +69,77 @@ const Navbar = () => {
                 <div className="container-fluid">
                     {authState.isAuthenticated && (
                         <>
-                            <Link className="navbar-brand ms-3" to={`/`} style={{ fontWeight: '800', fontSize: '2rem' }}>DriveAid</Link>
-                            <button className="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNavAltMarkup" aria-controls="navbarNavAltMarkup" aria-expanded="false" aria-label="Toggle navigation">
-                                <span className="navbar-toggler-icon"></span>
-                            </button>
-                            <Link className="nav-link active me-5" aria-current="page" to={`/`} style={{ fontWeight: '500', fontSize: '1.25rem', color: 'black' }}>Home</Link>
-                            <div style={{marginLeft:'5%'}}>
-                                <Link to={`/dealer/mechanicadd/${authState.dealerId}`}>Add mechanics</Link>
-                            </div>
-                            <div style={{marginLeft:'5%'}}>
-                                <Link to={`/dealer/mechanics/${authState.dealerId}`}>Mechanics</Link>
-                            </div>
-                            <div style={{marginLeft:'5%'}}>
-                                <Link to={`/dealer/services/${authState.dealerId}`}>Services</Link>
-                            </div>
-                            <Link to={`/dealer/notifications/${authState.dealerId}`}>
-                                    <FaBell size={24} style={{ position: 'relative', marginLeft:'15%' }}>
-                                        {unreadCount > 0 && (
-                                            <span style={{
-                                                position: 'absolute',
-                                                top: '-10px',
-                                                right: '-10px',
-                                                background: 'red',
-                                                borderRadius: '50%',
-                                                color: 'white',
-                                                padding: '2px 6px',
-                                                fontSize: '12px'
-                                            }}>
-                                                {unreadCount}
-                                            </span>
-                                        )}
-                                    </FaBell>
-                                </Link>
-                            <div className="collapse navbar-collapse me-5" id="navbarNavAltMarkup">
-                                <div className="navbar-nav ms-auto">
-                                    
-                                    <button className="btn btn-primary me-5" onClick={handleLogout}>Logout</button>
+                            <nav className="navbar navbar-expand-lg navbar-light bg-light">
+                                <div className="container-fluid">
+                                    <Link className="navbar-brand" to={`/`} style={{ fontWeight: '800', fontSize: '2rem', color: '#ea422b', letterSpacing: '0.075rem' }}>
+                                        DriveAid
+                                    </Link>
+                                    <button className="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNavAltMarkup" aria-controls="navbarNavAltMarkup" aria-expanded="false" aria-label="Toggle navigation">
+                                        <span className="navbar-toggler-icon"></span>
+                                    </button>
+                                    <div className="collapse navbar-collapse" id="navbarNavAltMarkup">
+                                        <div className="navbar-nav ms-auto">
+                                            <Link className="nav-link active" aria-current="page" to={`/`} style={{ fontWeight: '500', fontSize: '1.25rem', color: 'black', marginRight: '20px', marginLeft:'350px' }}>Home</Link>
+                                            <Link className="nav-link" to={`/dealer/mechanicadd/${authState.dealerId}`} style={{ fontWeight: '500', fontSize: '1.25rem', color: 'black', marginRight: '20px' }}>Add Mechanics</Link>
+                                            <Link className="nav-link" to={`/dealer/mechanics/${authState.dealerId}`} style={{ fontWeight: '500', fontSize: '1.25rem', color: 'black', marginRight: '20px' }}>Mechanics</Link>
+                                            <Link className="nav-link" to={`/dealer/services/${authState.dealerId}`} style={{ fontWeight: '500', fontSize: '1.25rem', color: 'black', marginRight: '20px' }}>Services</Link>
+                                            <Link className="nav-link" to={`/dealer/notifications/${authState.dealerId}`} style={{ position: 'relative', fontWeight: '500', fontSize: '1.25rem', color: 'black', marginRight: '20px' }}>
+                                                <FaBell size={24} />
+                                                {unreadCount > 0 && (
+                                                    <span style={{
+                                                        position: 'absolute',
+                                                        top: '-10px',
+                                                        right: '-10px',
+                                                        background: 'red',
+                                                        borderRadius: '50%',
+                                                        color: 'white',
+                                                        padding: '2px 6px',
+                                                        fontSize: '12px'
+                                                    }}>
+                                                        {unreadCount}
+                                                    </span>
+                                                )}
+                                            </Link>
+                                            <div className="dropdown" style={{ position: 'relative', marginLeft: '10px' }}>
+                      <i
+                        className="bi bi-person-circle profile-icon"
+                        id="dropdownMenuButton"
+                        data-toggle="dropdown"
+                        aria-haspopup="true"
+                        aria-expanded="false"
+                      ></i>
+                      <div className="dropdown-menu dropdown-menu-right dropdown-menu-custom" aria-labelledby="dropdownMenuButton" style={{ border: '1px solid black' }}>
+                        <a className="dropdown-item" href="/user/history" style={{ fontSize: '1.15rem', color: 'black', borderBottom: '1px solid black', fontWeight: '400' }}>
+                          View Profile
+                        </a>
+                        <button className="dropdown-item" style={{ fontSize: '1.15rem', color: 'black', fontWeight: '400' }} onClick={handleLogout}>
+                          Logout
+                        </button>
+                      </div>
+                    </div>
+                                            
+                                        </div>
+                                    </div>
                                 </div>
-                            </div>
+                            </nav>
+
+
                         </>
                     )}
                     {mechauthState.isAuthenticated && (
                         <>
-                            <Link className="navbar-brand ms-3" to={`/`} style={{ fontWeight: '800', fontSize: '2rem' }}>DriveAid</Link>
+                            <Link className="navbar-brand ms-3" to={`/`} style={{ fontWeight: '800', fontSize: '2rem', color: "#ea422b", letterSpacing: '0.075rem' }}>DriveAid</Link>
                             <button className="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNavAltMarkup" aria-controls="navbarNavAltMarkup" aria-expanded="false" aria-label="Toggle navigation">
                                 <span className="navbar-toggler-icon"></span>
                             </button>
-                            <Link  aria-current="page" to={`/`} style={{ fontWeight: '500', fontSize: '1.25rem', color: 'black' }}>Home</Link>
-                            <div style={{marginLeft:'5%', marginRight:'5%'}}>
-                                {/* <Link to={`/buy/${mechauthState.mechanicId}`}>Buy Parts</Link> */}
+                            <Link aria-current="page" to={`/`} style={{ fontWeight: '500', fontSize: '1.25rem', color: 'black' }}>Home</Link>
+                            {/* <div style={{marginLeft:'5%', marginRight:'5%'}}>
+                                <Link to={`/buy/${mechauthState.mechanicId}`}>Buy Parts</Link>
                                 <Link to={`/buyparts/${mechauthState.mechanicId}`}>Buy Parts</Link>
+                            </div> */}
+                            <div style={{ marginLeft: '5%', marginRight: '5%' }}>
+                                {/* <Link to={`/buy/${mechauthState.mechanicId}`}>Buy Parts</Link> */}
+                                <Link to={`/mechanic/servicehistory/${mechauthState.mechanicId}`}>Service history</Link>
                             </div>
                             <div>
                                 <Link to={`/mechanic/notifications/${mechauthState.mechanicId}`}>
@@ -140,10 +161,10 @@ const Navbar = () => {
                                     </FaBell>
                                 </Link>
                             </div>
-                            
+
                             <div className="collapse navbar-collapse me-5" id="navbarNavAltMarkup">
                                 <div className="navbar-nav ms-auto">
-                                    
+
                                     <button className="btn btn-primary me-5" onClick={handleLogout}>Logout</button>
                                 </div>
                             </div>

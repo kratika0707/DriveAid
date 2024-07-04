@@ -63,7 +63,7 @@ const Mechadd = () => {
 
   return (
     <>
-      <div className="container">
+      <div style={{margin:'4%'}}>
       <form onSubmit={handleSubmit}>
       <div className="mb-3">
           <label htmlFor="exampleInputPhone" className="form-label">Name</label>

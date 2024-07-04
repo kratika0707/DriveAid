@@ -3,9 +3,9 @@ import React from 'react'
 const Details = () => {
   return (
     <>
-      <section id="process" className="my-5">
+      <section id="process" className="my-5 mx-5" >
       <div style={{ overflow: 'hidden' }}>
-        <div className="container" >
+        <div  >
           <div className="row">
             <div className="col-md-6 col-lg-3">
               <div className="py-3 py-md-5 px-3">

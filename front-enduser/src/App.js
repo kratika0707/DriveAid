@@ -16,6 +16,7 @@ import Footer from './Components/Footer/Footer';
 import Logout from './Components/Login/Logout';
 import Servicehis from './Components/History/Servicehis';
 import Notifications from './Components/Notifications/Notifications';
+import Profile from './Components/Profile/Profile';
 
 function App() {
   return (
@@ -27,6 +28,7 @@ function App() {
         <Route index element={<UserHome/>}/>
         <Route path="/about" element={<About1/>}/>
         <Route path='/services' element={<Service/>}/>
+        <Route path='/profile' element={<Profile/>}/>
         <Route path='/booking' element={<Booking/>}/>
         <Route path='/feedback' element={<Feedback/>}/>
         <Route path='/user/history' element={<History/>}/>

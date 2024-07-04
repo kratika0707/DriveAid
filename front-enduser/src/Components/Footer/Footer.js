@@ -9,7 +9,7 @@ import youtubeIcon from '@iconify/icons-mdi/youtube';
 import { Link as ScrollLink } from 'react-scroll';
 const Footer = () => {
   return (
-    <section id="footer"style={{backgroundColor:'white', borderTop:'1px solid grey'}} >
+    <section  style={{backgroundColor:'white', borderTop:'1px solid grey'}} >
         {/* <div className="container footer-container" style={{ display: 'flex', justifyContent: 'space-between', alignItems: 'flex-start', padding: '0.5rem 0', overflowX: 'hidden' }}>
         <footer className="py-2" style={{ display: 'flex', flexDirection: 'row', width: '100%', justifyContent: 'space-between' }}>
           <div className="col-md-7 mt-0">
@@ -35,7 +35,7 @@ const Footer = () => {
 
       {/* <footer className="d-flex flex-wrap justify-content-between align-items-center border-top"></footer> */}
 
-      <div className="container" >
+      <div style={{ marginLeft:'7%', marginRight:'2%'}} >
       
         <footer className="d-flex   " style={{height:'3.5rem'}}>
         <div className="footer-links col-md-8" style={{ display: 'flex', flexDirection: 'row', alignItems: 'center', marginTop: '2%', fontSize: '1.1rem', marginBottom: '1%',marginRight:'1.5%' }}>

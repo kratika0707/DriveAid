@@ -45,24 +45,24 @@ const About = () => {
             </div> */}
 
 
-<section id="about">
+<section id="about" >
       <div style={{ overflow: 'hidden' }}>
-        <div className="container-fluid border-bottom">
-          <div className="container">
-            <div className="row align-items-center">
-              <div className="col-md-6 padding-medium pe-5 border-end">
+        <div className="container-fluid border-bottom" style={{marginBottom:'5%'}}>
+          <div >
+            <div className="row align-items-center" style={{display:'flex', alignItems:'center'}}>
+              <div className="col-md-6 padding-medium pe-5 border-end" style={{padding:'10%',}}>
                 
-                <p className="header-top mb-3">Why choose us</p>
-                <h2 className="display-4">always remember DriveAid for your car</h2>
+                <p className="header-top mb-3" style={{color:'rgb(234, 66, 43)', fontSize:'1rem', fontWeight:'500', letterSpacing:'0.1rem'}}>WHY CHOOSE US</p>
+                <h2 className="display-4" style={{fontWeight:'600', letterSpacing:'0.001rem', fontSize:'3.25rem', color:'black'}}>ALWAYS REMEMBER DRIVEAID FOR YOUR CAR</h2>
               </div>
               <div className="col-md-6 padding-medium-2 ps-md-5">
-                <p className="ms-md-5">DriveAid connects customers with trusted, nearby mechanics and dealers for fast, reliable vehicle repairs. 
+                <p className="ms-md-5" style={{color:'black', fontSize:'1rem'}}>DriveAid connects customers with trusted, nearby mechanics and dealers for fast, reliable vehicle repairs. 
                   We ensure prompt service, real-time updates, and access to quality parts. 
                   Experience hassle-free vehicle care with DriveAid, getting you back on the road quickly and safely.
                 </p>
-                <a href="/about" className="btn btn-primary ms-5 mt-3">
-                  About us
-                  <Icon icon={arrowRight} className="arrow-icon" />
+                <a href="/about" className="btn  ms-5 mt-3" style={{backgroundColor:'rgb(234, 66, 43)', color:'white', fontSize:'1.25rem',fontWeight:'500', padding:'10px 20px',margin:'20px',borderRadius:'25px' }}>
+                  ABOUT US
+                  {/* <Icon icon={arrowRight} className="arrow-icon" /> */}
                 </a>
               </div>
             </div>

@@ -1,0 +1,13 @@
+.container {
+    min-height: 100vh;
+    margin-top: 10%;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+
+.card {
+    width: 85%;
+    margin-bottom: 20px;
+    text-align: center;
+}

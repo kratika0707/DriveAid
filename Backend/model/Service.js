@@ -28,12 +28,20 @@ const service = new mongoose.Schema({
         type:String,
         required:true
     },
+    enginemodel:{
+        type:String,
+        required:true
+    },
     servicestatus:{
         type:Number,
         required:true,
         default:1
     },
     issue:{
+        type:String,
+        required:true
+    },
+    detail:{
         type:String,
         required:true
     },

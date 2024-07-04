@@ -13,8 +13,8 @@ const UserNotifications = () => {
       try {
         const response = await axios.get(`http://localhost:5000/api/users/${userId}/notifications`);
         const sortedNotifications = response.data.sort((a, b) => new Date(b.createdAt) - new Date(a.createdAt));
-      setNotifications(sortedNotifications);
-      setNewNotifications(sortedNotifications.filter(notification => !notification.read));
+        setNotifications(sortedNotifications);
+        setNewNotifications(sortedNotifications.filter(notification => !notification.read));
       } catch (error) {
         console.error('Error fetching user notifications:', error);
       }
@@ -23,11 +23,11 @@ const UserNotifications = () => {
     fetchUserNotifications();
 
     const ws = new WebSocket('ws://localhost:8000');
-    
+
     ws.onopen = () => {
       console.log('WebSocket connection established');
     };
-  
+
     ws.onmessage = (event) => {
       const message = JSON.parse(event.data);
       if (message.type === 'SERVICE_ASSIGNED' && message.payload.userId === userId) {
@@ -40,11 +40,11 @@ const UserNotifications = () => {
     ws.onerror = (error) => {
       console.error('WebSocket error:', error);
     };
-  
+
     ws.onclose = () => {
       console.log('WebSocket connection closed');
     };
-  
+
     return () => ws.close();
   }, [userId]);
 
@@ -105,7 +105,7 @@ const UserNotifications = () => {
 
   return (
     <>
-    {/* <div style={{ height: 'auto', minHeight: '100vh', marginTop: '10%' }}>
+      {/* <div style={{ height: 'auto', minHeight: '100vh', marginTop: '10%' }}>
       <h2>Your Notifications</h2>
       {notifications.map((notification, index) => (
         <div
@@ -122,36 +122,40 @@ const UserNotifications = () => {
         </div>
       ))}
     </div> */}
-    <div className="container" style={{ minHeight: '100vh', display: 'flex', flexDirection: 'column', alignItems: 'center', justifyContent: 'flex-start', margin: '10px auto', width: '70%' }}>
-      <h2 style={{ margin: '2%', fontSize: '2.5rem', marginTop:'8%' }}>Notifications</h2>
-      <div style={{ width: '100%', overflowY: 'auto', margin: '1%' }}>
-        {Object.keys(groupedNotifications).map((date, index) => (
-          <div key={index} style={{ marginBottom: '20px', position: 'relative' }}>
-            <h3 style={{ marginBottom: '20px', color: 'black', fontSize: '1.15rem', textAlign: 'center', borderRadius: '20px', display: 'inline-block', padding: '5px 10px', backgroundColor: '#ed6754', paddingLeft: '1.5%', paddingRight: '1.5%' }}>
-              {formatDatee(date)}
-            </h3>
-            <div style={{ border: '1px solid black', paddingBottom: '10px', paddingLeft: '15px' }}>
-              {groupedNotifications[date].map((notification, i) => (
-                <div
-                  key={i}
-                  style={{ backgroundColor: notification.read ? 'none' : 'yellow', padding: '10px', marginBottom: '5px', borderBottom: '1px solid grey' }}
-                >
-                  <div style={{ display: 'flex', alignItems: 'center' }}>
-                    <p style={{ fontWeight: 'bold', marginRight: '20px' }}>{formatTime(notification.createdAt)}</p>
-                    <div>
-                      <p>{notification.message}</p>
-                      <Link to={`/${userId}/user/service/${notification.serviceId}`} onClick={() => handleNotificationClick(notification._id)}>
-                        View Service Request
-                      </Link>
+      <div className="container" style={{ minHeight: '100vh', display: 'flex', flexDirection: 'column', alignItems: 'center', justifyContent: 'flex-start', margin: '10px auto', width: '70%' }}>
+        <h2 style={{ margin: '2%', fontSize: '2.5rem', marginTop: '8%' }}>Notifications</h2>
+        <div style={{ width: '100%', overflowY: 'auto', margin: '1%' }}>
+          {Object.keys(groupedNotifications).map((date, index) => (
+            <div key={index} style={{ marginBottom: '20px', position: 'relative' }}>
+              <h3 style={{ marginBottom: '20px', color: 'white', fontSize: '1.15rem', textAlign: 'center', borderRadius: '20px', display: 'inline-block', padding: '5px 10px', backgroundColor: '#ea422b', paddingLeft: '1.5%', paddingRight: '1.5%' }}>
+                {formatDatee(date)}
+              </h3>
+              <div style={{ border: '1px solid white' }}>
+                {groupedNotifications[date].map((notification, i) => (
+                  <div
+                    key={i}
+                    style={{ marginBottom: '15px', padding: '10px', borderBottom: '1px solid grey', boxShadow: '0 4px 8px rgba(0,0,0,0.2)' }}
+                  >
+                    <div style={{ display: 'flex', alignItems: 'center' }}>
+                      <p style={{ fontWeight: 'bold', marginRight: '20px', marginTop:'15px' }}>{formatTime(notification.createdAt)}</p>
+                      <div>
+                        <Link to={`/${userId}/user/service/${notification.serviceId}`} onClick={() => handleNotificationClick(notification._id)} style={{ textDecoration: 'none', display: 'flex', alignItems: 'center' }}>
+                          <p style={{ fontWeight: notification.read ? '400' : '600', color: notification.read ? 'grey' : 'black', margin: 0, width:'500px' }}>
+                            {notification.message}
+                          </p>
+                          {!notification.read && (
+                            <span style={{ backgroundColor: '#ea422b', color: 'white', borderRadius: '4px', padding: '2px 4px', marginLeft: '10px', fontSize: '0.8rem' }}>New</span>
+                          )}
+                        </Link>
+                      </div>
                     </div>
                   </div>
-                </div>
-              ))}
+                ))}
+              </div>
             </div>
-          </div>
-        ))}
+          ))}
+        </div>
       </div>
-    </div>
     </>
   );
 };

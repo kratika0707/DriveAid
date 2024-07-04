@@ -14,6 +14,8 @@ const Booking = () => {
   const [phone, setPhone] = useState('');
   const [issue, setIssue] = useState('');
   const [carmodel, setCarModel] = useState('');
+  const [enginemodel, setEngineModel] = useState('');
+  const [detail,setDetail] =useState('');
   const [useri, setUseri] = useState(null);
   const [modalIsOpen, setModalIsOpen] = useState(false);
   const [location, setLocation] = useState({ latitude: null, longitude: null });
@@ -73,7 +75,9 @@ const Booking = () => {
         userid: userId,
         location: loc,
         carmodel,
+        enginemodel,
         issue,
+        detail,
         dateofservice: date,
         timeofservice: time,
       };
@@ -83,7 +87,9 @@ const Booking = () => {
 
       setPhone('');
       setCarModel('');
+      setEngineModel('');
       setIssue('');
+      setDetail('');
       setLocation({ latitude: null, longitude: null });
       setSuccessMessage('Request submitted successfully!');
 
@@ -109,6 +115,7 @@ const Booking = () => {
       <div className="container1" style={{ position: 'relative', height: '120vh', width: '100vw', margin: 0, padding: 0 }}>
         <img src={image} alt="car" style={{ position: 'absolute', top: 0, left: 0, height: '90%', width: '100vw', objectFit: 'cover', zIndex: '0' }} />
       </div>
+      <div  style={{height:'150vh', marginLeft:'5%'}}>
       <div>
         {successMessage && (
           <div className="alert alert-success mt-3" role="alert">
@@ -120,7 +127,7 @@ const Booking = () => {
         </div>
         <p style={{ marginLeft: '5%', color: 'black', fontSize: '1.5em', marginBottom: '2%' }}>In urgent need? Book our service now and get immediate assistance wherever you are.</p>
       </div>
-      <div className='container' style={{ height: '100vh' }}>
+      <div  style={{ height: '100vh' }}>
         <form onSubmit={submit}>
           <div className="mb-3" style={{ width: '50%' }}>
             <label htmlFor="exampleInputPhone" className="form-label">Contact Number</label>
@@ -146,22 +153,46 @@ const Booking = () => {
               style={{ height: '40px', fontSize: '80%' }}
             />
           </div>
-          <div className="mb-3" style={{ width: '70%' }}>
-            <label htmlFor="exampleInputIssue" className="form-label">Your Issue</label>
-            <textarea
+          <div className="mb-3" style={{ width: '50%' }}>
+            <label htmlFor="exampleInputModel" className="form-label">Your Engine Model</label>
+            <input
+              type="text"
+              value={enginemodel}
+              onChange={(e) => setEngineModel(e.target.value)}
+              className="form-control"
+              placeholder='Engine Model'
+              id="exampleInputModel"
+              style={{ height: '40px', fontSize: '80%' }}
+            />
+          </div>
+          <div className="mb-3" style={{ width: '50%' }}>
+            <label htmlFor="exampleInputModel" className="form-label">Your Issue</label>
+            <input
+              type="text"
               value={issue}
               onChange={(e) => setIssue(e.target.value)}
               className="form-control"
+              placeholder='Type your issue here'
+              id="exampleInputModel"
+              style={{ height: '40px', fontSize: '80%' }}
+            />
+          </div>
+          <div className="mb-3" style={{ width: '70%' }}>
+            <label htmlFor="exampleInputIssue" className="form-label">Other Details</label>
+            <textarea
+              value={detail}
+              onChange={(e) => setDetail(e.target.value)}
+              className="form-control"
               id="exampleInputIssue"
               rows="4"
-              placeholder='Type your issue here'
+              placeholder='Other details'
               style={{ minHeight: '80px', resize: 'vertical', fontSize: '80%' }}
             ></textarea>
           </div>
           <button type="submit" className="btn btn-primary" style={{ height: '40px', width: 'auto', marginTop: '1%', lineHeight: '5px' }}>Submit</button>
         </form>
       </div>
-
+      </div>
       <Modal
         isOpen={modalIsOpen}
         onRequestClose={() => setModalIsOpen(false)}

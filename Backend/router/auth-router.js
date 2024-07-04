@@ -1,7 +1,7 @@
 const express = require('express');
 const router = express.Router();
 const User = require('../model/user');
-const { loginUser, logoutUser , getNotifications, markAsRead} = require('../Controllers/usercontroller');
+const { loginUser, logoutUser , getNotifications, markAsRead, fetchuserdetails} = require('../Controllers/usercontroller');
 
 router.post('/', async (req, res) => {
     try {
@@ -17,5 +17,5 @@ router.post('/login',loginUser);
 router.post('/logout',logoutUser);
 router.get('/:userId/notifications',getNotifications);
 router.patch('/notifications/:notificationId', markAsRead);
-
+router.get('/userdetails/:userId', fetchuserdetails);
 module.exports = router;

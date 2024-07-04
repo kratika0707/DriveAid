@@ -12,7 +12,7 @@ const Notification = require('../model/Notifications');
 
 
 exports.bookService = async (req, res) => {
-  const { userid, carmodel, issue, location, dateofservice, timeofservice, servicestatus } = req.body;
+  const { userid, carmodel,enginemodel, issue, detail, location, dateofservice, timeofservice, servicestatus } = req.body;
 
   if (!userid || !carmodel || !issue || !dateofservice || !location || !timeofservice) {
     console.log('Missing required fields', req.body);
@@ -26,8 +26,10 @@ exports.bookService = async (req, res) => {
       dateofservice,
       timeofservice,
       carmodel,
+      enginemodel,
       servicestatus,
       issue,
+      detail,
     });
 
    
@@ -211,7 +213,7 @@ exports.allocatemechanic= async(req,res)=>{
           mechanicId: mechanicId,
           serviceId: serviceId,
           message: newMechNotification.message,
-          link: `user/service/${serviceId}`
+          link: `mechanic/service/${serviceId}`
         },
       });
 

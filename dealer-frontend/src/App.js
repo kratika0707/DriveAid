@@ -19,6 +19,7 @@ import Listing from './Components/Buying/Listing';
 import './Components/fontawesome';
 import Bikes from './Components/Buying/Bikes';
 import Footer from './Components/Withoutlogin/Footer/Footer';
+import MechServiceHistory from './Components/Mechanic/Services/MechServiceHistory';
 function App() {
   return (
 
@@ -37,10 +38,12 @@ function App() {
           <Route path='/dealer/mechanics/:dealerId' element={<Mechanics/>}/>
           <Route path='/dealer/services/:dealerId' element={<Servicesdealer/>}/>
           <Route path='/dealer/notifications/:dealerId/dealer/service/:serviceId' element={<Servicehistory/>}/>
+          <Route path='/dealer/notifications/:dealerId/dealer/service/:serviceId/:serviceId' element={<Servicehistory/>}/>
           <Route path='/mechanic/notifications/:mechanicId' element={<MechNotification/>}/>
           <Route path='/mechanic/service/:serviceId' element={<Servicedetails/>}/>
           <Route path='/buy/:mechanicId' element={<Listing/>}/>
           <Route path='/buyparts/:mechanicId' element={<Bikes/>}/>
+          <Route path='/mechanic/servicehistory/:mechanicId' element={<MechServiceHistory/>}/>
         </Routes>
         {/* <Footer/> */}
       </BrowserRouter>

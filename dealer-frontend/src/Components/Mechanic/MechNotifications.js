@@ -11,6 +11,29 @@ const MechNotification = () => {
 
   useEffect(() => {
     fetchNotifications();
+
+    // WebSocket setup
+    // const ws = new WebSocket('ws://localhost:7000');
+
+    // ws.onopen = () => {
+    //   console.log('Connected to WebSocket');
+    // };
+
+    // ws.onmessage = (event) => {
+    //   const data = JSON.parse(event.data);
+    //   if (data.mechanicId === mechanicId) {
+    //     setNotifications((prevNotifications) => [data, ...prevNotifications]);
+    //     setHighlightedNotifications((prevHighlighted) => [data, ...prevHighlighted]);
+    //   }
+    // };
+
+    // ws.onclose = () => {
+    //   console.log('Disconnected from WebSocket');
+    // };
+
+    // return () => {
+    //   ws.close();
+    // };
   }, [mechanicId]);
 
   const fetchNotifications = async () => {
@@ -80,42 +103,72 @@ const MechNotification = () => {
     }
   };
 
-
   return (
     <>
-     <div>
-  <div className="container" style={{ minHeight: '100vh', display: 'flex', flexDirection: 'column', alignItems: 'center', justifyContent: 'flex-start', margin: '10px auto', width: '70%' }}>
-    <h2 style={{ margin: '2%', fontSize: '2.5rem' }}>Notifications</h2>
-    <div style={{ width: '100%', overflowY: 'auto', margin: '1%' }}>
-      {Object.keys(groupedNotifications).map((date, index) => (
-        <div key={index} style={{ marginBottom: '20px', position: 'relative' }}>
-          <h3 style={{ marginBottom: '20px', color: 'black', fontSize: '1.15rem', textAlign: 'center', borderRadius: '20px', display: 'inline-block', padding: '5px 10px', backgroundColor: 'lightgray', paddingLeft: '1.5%', paddingRight: '1.5%' }}>
-            {formatDatee(date)}
-          </h3>
-          <div style={{ border: '1px solid black', paddingBottom: '10px', paddingLeft: '15px' }}>
-            {groupedNotifications[date].map((notification, i) => (
-              <div
-                key={i}
-                style={{ backgroundColor: highlightedNotifications.includes(notification) ? 'yellow' : 'white', padding: '10px', marginBottom: '5px', borderBottom: '1px solid grey' }}
-              >
-                <div style={{ display: 'flex', alignItems: 'center' }}>
-                  <p style={{ fontWeight: 'bold', marginRight: '20px' }}>{formatTime(notification.createdAt)}</p>
-                  <div>
-                    <p>{notification.message}</p>
-                    <Link to={`/mechanic/service/${notification.serviceId}`} onClick={() => handleNotificationClick(notification._id)}>
-                      View Service Request
-                    </Link>
+    {/* <div className="container" style={{ minHeight: '100vh', display: 'flex', flexDirection: 'column', alignItems: 'center', justifyContent: 'flex-start', margin: '10px auto', width: '70%' }}>
+      <h2 style={{ margin: '2%', fontSize: '2.5rem' }}>Notifications</h2>
+      <div style={{ width: '100%', overflowY: 'auto', margin: '1%' }}>
+        {Object.keys(groupedNotifications).map((date, index) => (
+          <div key={index} style={{ marginBottom: '20px', position: 'relative' }}>
+            <p style={{ marginBottom: '20px', color: 'black', fontSize: '1rem', textAlign: 'center', borderRadius: '20px', display: 'inline-block', padding: '5px 10px', backgroundColor: '#ed6754', paddingLeft: '1.5%', paddingRight: '1.5%', fontWeight:'600', letterSpacing:'0.0725rem' }}>
+              {formatDatee(date)}
+            </p>
+            <div style={{ border: '1px solid black', paddingBottom: '10px', paddingLeft: '15px' }}>
+              {groupedNotifications[date].map((notification, i) => (
+                <div
+                  key={i}
+                  style={{ backgroundColor: highlightedNotifications.includes(notification) ? 'yellow' : 'white', padding: '10px', marginBottom: '5px', borderBottom: '1px solid grey' }}
+                >
+                  <div style={{ display: 'flex', alignItems: 'center' }}>
+                    <p style={{ fontWeight: 'bold', marginRight: '20px' }}>{formatTime(notification.createdAt)}</p>
+                    <div>
+                      <p>{notification.message}</p>
+                      <Link to={`/mechanic/service/${notification.serviceId}`} onClick={() => handleNotificationClick(notification._id)}>
+                        View Service Request
+                      </Link>
+                    </div>
                   </div>
                 </div>
-              </div>
-            ))}
+              ))}
+            </div>
           </div>
+        ))}
+      </div>
+    </div> */}
+    <div className="container" style={{ minHeight: '100vh', display: 'flex', flexDirection: 'column', alignItems: 'center', justifyContent: 'flex-start', margin: '10px auto', width: '70%' }}>
+        <h2 className="text-uppercase" style={{ margin: '2%', fontSize: '2.5rem', marginTop: '8%',color:'black', fontWeight:'600', fontFamily:'sans-serif' }}>Notifications</h2>
+        <div style={{ width: '100%', overflowY: 'auto', margin: '1%' }}>
+          {Object.keys(groupedNotifications).map((date, index) => (
+            <div key={index} style={{ marginBottom: '20px', position: 'relative' }}>
+              <h3 className='text-uppercase' style={{ marginBottom: '20px', fontWeight:'700',color: 'black', fontSize: '1.15rem', textAlign: 'center', borderRadius: '20px', display: 'inline-block', padding: '5px 10px', backgroundColor: '#ed6754', paddingLeft: '1.5%', paddingRight: '1.5%' }}>
+                {formatDatee(date)}
+              </h3>
+              <div style={{ border: '1px solid white' }}>
+                {groupedNotifications[date].map((notification, i) => (
+                  <div
+                    key={i}
+                    style={{ marginBottom: '15px', padding: '10px', borderBottom: '1px solid grey', boxShadow: '0 4px 8px rgba(0,0,0,0.2)' }}
+                  >
+                    <div style={{ display: 'flex', alignItems: 'center' }}>
+                      <p style={{ fontWeight: 'bold', marginRight: '20px', marginTop:'15px' }}>{formatTime(notification.createdAt)}</p>
+                      <div>
+                        <Link to={`/mechanic/service/${notification.serviceId}`} onClick={() => handleNotificationClick(notification._id)} style={{ textDecoration: 'none', display: 'flex', alignItems: 'center' }}>
+                          <p style={{ fontWeight: notification.read ? '400' : '600', color: notification.read ? 'grey' : 'black', margin: 0, width:'500px' }}>
+                            {notification.message}
+                          </p>
+                          {!notification.read && (
+                            <span style={{ backgroundColor: 'red', color: 'white', borderRadius: '4px', padding: '2px 4px', marginLeft: '10px', fontSize: '0.8rem' }}>New</span>
+                          )}
+                        </Link>
+                      </div>
+                    </div>
+                  </div>
+                ))}
+              </div>
+            </div>
+          ))}
         </div>
-      ))}
-    </div>
-  </div>
-</div>
-
+      </div>
     </>
   );
 };

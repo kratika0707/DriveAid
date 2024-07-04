@@ -4,14 +4,14 @@ import About from '../About/About'
 const Home = () => {
     return (
         <>
-            <section id="hero" style={{ backgroundImage: `url(${logo})`, paddingTop: '10%', height: '110vh',width:'100vw' }}>
+            <section id="hero" style={{ backgroundImage: `url(${logo})`, paddingTop: '0.5%', height: '110vh',width:'100vw' }}>
                 <div className="container" >
                     <div className="row">
-                        <div className="col-md-6 text-left" >
-                            <p className="display-1 text-black mb-3" style={{ fontWeight: '400', fontSize: '2rem', display: 'inline' }}>Expand Your Reach with 
+                        <div className="col-md-6 text-left"  >
+                            <p className="display-1 text-black mb-3" style={{ fontWeight: '450', fontSize: '2rem', display: 'inline'}}>Expand Your Reach with 
                             </p>
-                            <p className="display-1 text-black mb-3" style={{ fontWeight: '400', fontSize: '2rem', display: 'inline' }}> DriveAid</p>
-                            <p className="display-1 text-black mb-3" style={{ fontWeight: '400', fontSize: '2rem' }}>Join Us to Serve Better</p>
+                            <p className="display-1 text-black mb-3" style={{ fontWeight: '450', fontSize: '2rem', display: 'inline' }}> DriveAid</p>
+                            <p className="display-1 text-black mb-3" style={{ fontWeight: '450', fontSize: '2rem' }}>Join Us to Serve Better</p>
 
                             <p className="display-1 text-black mb-3" style={{ fontWeight: '400', fontSize: '1rem' }}>
                                 DriveAid supports mechanics with easy access to service assignments, 

@@ -1,5 +1,5 @@
 import React, { useState, useEffect, useContext } from 'react';
-import { Navigate, useParams } from 'react-router-dom';
+import { Navigate, useNavigate, useParams } from 'react-router-dom';
 import axios from 'axios';
 import { AuthContext } from '../../../Context/AuthContext';
 
@@ -10,8 +10,27 @@ const Servicehistory = () => {
   const [selectedMechanic, setSelectedMechanic] = useState('');
   const [error, setError] = useState(null);
 const [done, setDone]= useState(false); 
+const [userdetail, setUserdetail] = useState(null);
+  const [fetched, setFetched] = useState(false);
  const authState = useContext(AuthContext);
+const navigate= useNavigate();
 
+useEffect(() => {
+  if (service) {
+    fetchUserDetails();
+  }
+}, [service]);
+
+
+const fetchUserDetails = async () => {
+  try {
+    const response = await axios.get(`http://localhost:5000/api/users/userdetails/${service.userid}`);
+    setUserdetail(response.data);
+    setFetched(true);
+  } catch (error) {
+    console.error('Error fetching user details:', error);
+  }
+};
   // Function to convert Decimal128 to string
   const convertDecimal128ToString = (decimal128) => {
     return decimal128 ? decimal128.$numberDecimal.toString() : null;
@@ -81,16 +100,21 @@ const [done, setDone]= useState(false);
   if (!service) {
     return <div>Loading...</div>;
   }
-
+  const stages = [
+    'Service Booked',
+    'Dealer Assigned',
+    'Mechanic Allotted',
+    'Completed'
+  ];
   return (
-    <div>
+    <>
+    {/* <div>
       <h1>Service Details</h1>
       <ul>
         <li>User Id: {service.userid}</li>
         <li>Service ID: {service._id}</li>
         <li>Car Model: {service.carmodel}</li>
         <li>Issue: {service.issue}</li>
-        {/* <li>Location: {service.location.latitude}, {service.location.longitude}</li> */}
         <li>Date of Service: {service.dateofservice}</li>
         <li>Time of Service: {service.timeofservice}</li>
         <li>Service Status: {service.servicestatus}</li>
@@ -109,7 +133,99 @@ const [done, setDone]= useState(false);
       </select>
       <button onClick={allocateMechanic}>Allocate Mechanic</button>
       </div>}
+    </div> */}
+
+<div className='servicemech' style={{ display: 'flex', flexDirection: 'column', alignItems: 'center', marginTop: '3%', marginBottom: '5%', fontFamily:'sans-serif', }}>
+<p style={{ marginBottom: '4%',  color:'black', fontSize:'2.5rem', fontWeight:'600' }}>Service Details</p>
+<div className="card" style={{ width: '85%', textAlign: 'center', boxShadow: '0 4px 8px grey', color:'black', border:'none' }}>
+  <div className="card-header d-flex justify-content-between" style={{ backgroundColor: '#f7ddda', padding: '10px', borderBottom: '1px solid black', }}>
+    <p style={{ fontSize: '0.9rem',margin:0, marginLeft: '5%' }}><strong>Service Date:</strong> {new Date(service.dateofservice).toLocaleDateString()}</p>
+    <p style={{ fontSize: '0.9rem', margin: 0,marginRight: '5%' }}><strong>Service Id:</strong> #{service._id}</p>
+  </div>
+  <div className="card-body" style={{ display: 'flex', flexDirection: 'row', justifyContent: 'center' }}>
+    <div style={{ width: '70%', textAlign: 'left', padding: '20px' }}>
+      {fetched ? (
+        <>
+          <p><strong>Phone Number:</strong> {userdetail.phone}</p>
+          {/* Add more user details as needed */}
+        </>
+      ) : (
+        <p>Loading user details...</p>
+      )}
+      <p><strong>Car Model:</strong> {service.carmodel}</p>
+      <p><strong>Engine Model:</strong> {service.enginemodel}</p>
+      <p><strong>Issue:</strong> {service.issue}</p>
+      <p><strong>Details:</strong> {service.detail}</p>
+      { service.servicestatus===2 &&  
+      <div style={{ display: 'flex', alignItems: 'center' }}>
+  <div style={{ position: 'relative', marginRight: '10px' }}>
+    <select
+      value={selectedMechanic}
+      onChange={(e) => setSelectedMechanic(e.target.value)}
+      style={{
+        appearance: 'none', // Remove default dropdown arrow
+        WebkitAppearance: 'none',
+        MozAppearance: 'none',
+        padding: '7px 10px',
+        height: '40px',
+        fontSize: '16px',
+        borderRadius: '15px',
+        border: '1px solid #ccc',
+        background: 'white', // Background color for the select
+        position: 'relative',
+        zIndex: 1,
+      }}
+    >
+      <option value="">Select Mechanic</option>
+      {mechanics.map((mechanic) => (
+        <option key={mechanic._id} value={mechanic._id}>
+          {mechanic.name}
+        </option>
+      ))}
+    </select>
+    
+  </div>
+  <button
+    onClick={allocateMechanic}
+    style={{
+      padding: '7px 15px',
+      fontSize: '16px',
+      backgroundColor: '#ea422b',
+      border: '1px solid #ea422b',
+      color: 'white',
+      borderRadius: '15px'
+    }}
+  >
+    Allocate 
+  </button>
+</div>
+
+    }
     </div>
+    <div style={{ flex: '1', textAlign: 'left', padding: '20px', maxWidth: '300px' }}>
+            <p><strong>Service Progress:</strong></p>
+            <div style={{ position: 'relative' }}>
+              {stages.map((stage, index) => (
+                <div key={index} style={{ display: 'flex', alignItems: 'center', marginBottom: '20px' }}>
+                  <div style={{
+                    width: '20px',
+                    height: '20px',
+                    borderRadius: '50%',
+                    background: index < service.servicestatus ? '#ea422b' : 'grey',
+                    marginRight: '10px'
+                  }}></div>
+                  <p style={{ margin: 0 }}>{stage}</p>
+                </div>
+              ))}
+              <div style={{ position: 'absolute', top: '10px', left: '10px', width: '2px', height: 'calc(100% - 20px)', background: 'grey' }}>
+                <div style={{ height: `${(service.servicestatus / stages.length) * 100}%`, background: '#ea422b', width: '100%' }}></div>
+              </div>
+            </div>
+          </div>
+  </div>
+</div>
+</div>
+</>
   );
 };
 

@@ -1,9 +1,10 @@
+/* Notification.css */
 .notification-popup {
     position: fixed;
     top: 0;
     right: 0;
     bottom: 0;
-    width: 70%; /* Adjust width as needed */
+    width: 70%;
     background-color: white;
     z-index: 1000;
     box-shadow: -4px 0 5px -2px rgba(0, 0, 0, 0.1);
@@ -13,23 +14,14 @@
   }
   
   .notification-popup.show {
-    transform: translateX(30%); /* Adjust distance from right side */
+    transform: translateX(30%);
   }
-  body{
-    margin-top:20px;
-    background-color: #f0f2f5;
+  
+  .container {
+    margin-top: 10%; /* Adjust for consistent spacing */
   }
-  .dropdown-list-image {
-    position: relative;
-    height: 2.5rem;
-    width: 2.5rem;
+  
+  .navbar {
+    background-color: white; /* Ensure background color is consistent */
   }
-  .dropdown-list-image img {
-    height: 2.5rem;
-    width: 2.5rem;
-  }
-  .btn-light {
-    color: #2cdd9b;
-    background-color: #e5f7f0;
-    border-color: #d8f7eb;
-  }
+  

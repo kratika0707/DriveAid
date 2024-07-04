@@ -1,7 +1,7 @@
 const express = require('express');
 const router = express.Router();
 const Mechanic = require('../model/mechanic');
-const {loginMechanic, registerMechanic, getNotifications, markAsRead} =require('../Controllers/mechaniccontroller');
+const {loginMechanic, registerMechanic, getNotifications, markAsRead, getServices} =require('../Controllers/mechaniccontroller');
 router.post('/', async (req, res) => {
     try {
         const mechanic = new Mechanic(req.body);
@@ -17,5 +17,5 @@ router.post('/register', registerMechanic);
 router.get('/:mechanicId/notifications',getNotifications);
 // routes/mechanic-router.js
 router.patch('/notifications/:notificationId', markAsRead);
-
+router.get('/:mechanicId/services',getServices);
 module.exports = router;

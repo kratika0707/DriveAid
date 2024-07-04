@@ -31,3 +31,17 @@
         left: auto;
     }
 }
+.profile-icon {
+    font-size: 2rem; /* Adjust as needed */
+    color: black;
+    cursor: pointer;
+    
+  }
+  
+  .dropdown-menu-custom {
+    /* Adjust this value to position the dropdown correctly */
+    width: 170px; /* Adjust the width as per your content */
+    white-space: normal; 
+    margin-right: 20px;/* Ensures text wraps */
+  }
+  
