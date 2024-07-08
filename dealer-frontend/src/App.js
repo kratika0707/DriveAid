@@ -20,6 +20,8 @@ import './Components/fontawesome';
 import Bikes from './Components/Buying/Bikes';
 import Footer from './Components/Withoutlogin/Footer/Footer';
 import MechServiceHistory from './Components/Mechanic/Services/MechServiceHistory';
+import Profile from './Components/Mechanic/Profile/Profile';
+import DProfile from './Components/Dealer/Profile/DProfile';
 function App() {
   return (
 
@@ -44,8 +46,10 @@ function App() {
           <Route path='/buy/:mechanicId' element={<Listing/>}/>
           <Route path='/buyparts/:mechanicId' element={<Bikes/>}/>
           <Route path='/mechanic/servicehistory/:mechanicId' element={<MechServiceHistory/>}/>
+          <Route path='/mechanic/profile/:mechanicId' element={<Profile/>}/>
+          <Route path='/dealer/profile/:dealerId' element={<DProfile/>}/>
         </Routes>
-        {/* <Footer/> */}
+        <Footer/>
       </BrowserRouter>
     </>
   );

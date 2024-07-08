@@ -202,12 +202,12 @@ h6,
     --bs-btn-bg: var(--accent-color);
     --bs-btn-border-color: var(--accent-color);
     --bs-btn-hover-color: #fff;
-    --bs-btn-hover-bg: #ea422b;
-    --bs-btn-hover-border-color: #ea422b;
+    --bs-btn-hover-bg: black;
+    --bs-btn-hover-border-color: black;
     --bs-btn-focus-shadow-rgb: 49, 132, 253;
     --bs-btn-active-color: #fff;
-    --bs-btn-active-bg: #ea422b;
-    --bs-btn-active-border-color: #ea422b;
+    --bs-btn-active-bg: black;
+    --bs-btn-active-border-color: black;
     --bs-btn-active-shadow: inset 0 3px 5px rgba(0, 0, 0, 0.125);
     --bs-btn-disabled-color: #fff;
     --bs-btn-disabled-bg: #0d6efd;

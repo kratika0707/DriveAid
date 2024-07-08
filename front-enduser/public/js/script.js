@@ -8,10 +8,10 @@
     var scroll = $(window).scrollTop();
 
     if (scroll >= 200) {
-      $('.navbar.fixed-top').addClass("bg-white");
+      $('.navbar.fixed-top').addClass("bg-black");
       // $('.navbar.fixed-top').addClass("border-black");
     }else{
-      $('.navbar.fixed-top').removeClass("bg-white");
+      $('.navbar.fixed-top').removeClass("bg-black");
     }
   }
 

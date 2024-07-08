@@ -63,46 +63,50 @@ const Mechadd = () => {
 
   return (
     <>
-      <div style={{margin:'4%'}}>
-      <form onSubmit={handleSubmit}>
+      <div style={{ display: 'flex', justifyContent: 'center', alignItems: 'center', height: '90vh', backgroundColor: 'white' }}>
+  <div style={{ margin: '4%', width: '50%' }}>
+    <h1 style={{ color: 'black', fontWeight: '600', textAlign: 'center' }}>Add Mechanic</h1>
+    <form onSubmit={handleSubmit}>
       <div className="mb-3">
-          <label htmlFor="exampleInputPhone" className="form-label">Name</label>
-          <input
-            type="text"
-            className="form-control"
-            id="exampleInputPhone"
-            aria-describedby="PhoneHelp"
-            value={name}
-            onChange={(e) => setName(e.target.value)}
-          />
-        </div>
-        <div className="mb-3">
-          <label htmlFor="exampleInputPhone" className="form-label">Contact Number</label>
-          <input
-            type="text"
-            className="form-control"
-            id="exampleInputPhone"
-            aria-describedby="PhoneHelp"
-            value={phone}
-            onChange={(e) => setPhone(e.target.value)}
-          />
-        </div>
-        <div className="mb-3">
-          <label htmlFor="exampleInputPassword1" className="form-label">Password</label>
-          <input
-            type="password"
-            className="form-control"
-            id="exampleInputPassword1"
-            value={password}
-            onChange={(e) => setPassword(e.target.value)}
-          />
-        </div>
-        {error && <div className="alert alert-danger">{error}</div>}
-        <button type="submit" className="btn btn-primary">
-          {isLoading ? 'Loading...' : 'Submit'}
-        </button>
-      </form>
-    </div>
+        <label htmlFor="exampleInputName" className="form-label">Name</label>
+        <input
+          type="text"
+          className="form-control"
+          id="exampleInputName"
+          aria-describedby="nameHelp"
+          value={name}
+          onChange={(e) => setName(e.target.value)}
+        />
+      </div>
+      <div className="mb-3">
+        <label htmlFor="exampleInputPhone" className="form-label">Contact Number</label>
+        <input
+          type="text"
+          className="form-control"
+          id="exampleInputPhone"
+          aria-describedby="PhoneHelp"
+          value={phone}
+          onChange={(e) => setPhone(e.target.value)}
+        />
+      </div>
+      <div className="mb-3">
+        <label htmlFor="exampleInputPassword1" className="form-label">Password</label>
+        <input
+          type="password"
+          className="form-control"
+          id="exampleInputPassword1"
+          value={password}
+          onChange={(e) => setPassword(e.target.value)}
+        />
+      </div>
+      {error && <div className="alert alert-danger">{error}</div>}
+      <button type="submit" className="btn text-uppercase" style={{backgroundColor:'#0078d6', padding: '5px 20px',color:'white', fontWeight:'600'}}>
+        {isLoading ? 'Loading...' : 'Submit'}
+      </button>
+    </form>
+  </div>
+</div>
+
     </>
   )
 }

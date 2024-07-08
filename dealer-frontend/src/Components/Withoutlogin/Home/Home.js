@@ -1,6 +1,8 @@
 import React from 'react'
 import logo from '../../Assets/car41.jpg'
 import About from '../About/About'
+import Details from './Details'
+import Footer from '../Footer/Footer'
 const Home = () => {
     return (
         <>
@@ -13,7 +15,7 @@ const Home = () => {
                             <p className="display-1 text-black mb-3" style={{ fontWeight: '450', fontSize: '2rem', display: 'inline' }}> DriveAid</p>
                             <p className="display-1 text-black mb-3" style={{ fontWeight: '450', fontSize: '2rem' }}>Join Us to Serve Better</p>
 
-                            <p className="display-1 text-black mb-3" style={{ fontWeight: '400', fontSize: '1rem' }}>
+                            <p className="display-1 text-black mb-3" style={{ fontWeight: '400', fontSize: '1rem', width:'72%' }}>
                                 DriveAid supports mechanics with easy access to service assignments, 
                                 real-time updates, and tools for managing schedules and skill development.
                                 </p>
@@ -26,6 +28,8 @@ const Home = () => {
                 </div>
             </section>
             <About/>
+            <Details/>
+            
         </>
     )
 }

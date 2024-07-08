@@ -1,7 +1,7 @@
 const express = require('express');
 const router = express.Router();
 const Dealer = require('../model/Dealer');
-const { registerDealer,loginDealer, getMechanics,getNotifications, markAsRead } = require('../Controllers/dealercontroller');
+const { registerDealer,loginDealer, getMechanics,getNotifications, markAsRead, fetchdealerbyId, changepassword } = require('../Controllers/dealercontroller');
 const {getServicesByDealer} = require('../Controllers/servicecontroller')
 
 
@@ -33,4 +33,6 @@ router.get('/:dealerId/mechanics',getMechanics);
 router.get('/:dealerId/notifications',getNotifications);
 router.get('/:dealerId/services', getServicesByDealer);
 router.patch('/notifications/:notificationId',markAsRead);
+router.get('/findbyId/:dealerId', fetchdealerbyId);
+router.post('/changepassword', changepassword);
 module.exports = router;

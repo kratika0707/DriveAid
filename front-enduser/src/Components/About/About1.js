@@ -9,13 +9,13 @@ const About1 = () => {
 
             </div>
             <div className="container-xxl py-5" id="about">
-                <div className="container">
-                    <div className="row g-5">
+                <div >
+                    <div className="row g-5"  style={{marginLeft:'5%', marginRight:'5%'}}>
                         <div style={{ top: 0, left: 0, display: 'flex', alignItems: 'center', justifyContent: 'center', padding: '10px', textAlign: 'center' }}>
-                            <h1 className='about' style={{ color: '#ea422b', fontSize: '5vw' }}>About Us</h1>
+                            <h1 className='about' style={{ color: '#0078d6', fontSize: '5vw' }}>About Us</h1>
                         </div>
                         <div >
-                            <h2 style={{ width: 'auto', color: '#ea422b', display: 'inline' }}>DriveAid</h2>
+                            <h2 style={{ width: 'auto', color: 'black', display: 'inline' }}>DriveAid</h2>
                             <h2 style={{ width: 'auto', color: 'black', display: 'inline' }}> Your Trusted Road Companion</h2>
                             <p style={{ paddingTop: '2%' }}>DriveAid connects you with trusted, nearby mechanics and dealers for fast, 
                                 reliable vehicle repairs. We ensure prompt service, real-time updates, and access to quality parts. 

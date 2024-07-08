@@ -136,11 +136,11 @@ const MechNotification = () => {
       </div>
     </div> */}
     <div className="container" style={{ minHeight: '100vh', display: 'flex', flexDirection: 'column', alignItems: 'center', justifyContent: 'flex-start', margin: '10px auto', width: '70%' }}>
-        <h2 className="text-uppercase" style={{ margin: '2%', fontSize: '2.5rem', marginTop: '8%',color:'black', fontWeight:'600', fontFamily:'sans-serif' }}>Notifications</h2>
+        <h2 className="text-uppercase" style={{ margin: '2%', fontSize: '2.5rem', marginTop: '5%',color:'black', fontWeight:'700', fontFamily:'sans-serif' }}>Notifications</h2>
         <div style={{ width: '100%', overflowY: 'auto', margin: '1%' }}>
           {Object.keys(groupedNotifications).map((date, index) => (
             <div key={index} style={{ marginBottom: '20px', position: 'relative' }}>
-              <h3 className='text-uppercase' style={{ marginBottom: '20px', fontWeight:'700',color: 'black', fontSize: '1.15rem', textAlign: 'center', borderRadius: '20px', display: 'inline-block', padding: '5px 10px', backgroundColor: '#ed6754', paddingLeft: '1.5%', paddingRight: '1.5%' }}>
+              <h3 className='text-uppercase' style={{ marginBottom: '20px', fontWeight:'700',color:'white', fontSize: '1.15rem', textAlign: 'center', borderRadius: '20px', display: 'inline-block', padding: '5px 10px', backgroundColor: '#0078d6', paddingLeft: '1.5%', paddingRight: '1.5%' }}>
                 {formatDatee(date)}
               </h3>
               <div style={{ border: '1px solid white' }}>
@@ -150,18 +150,19 @@ const MechNotification = () => {
                     style={{ marginBottom: '15px', padding: '10px', borderBottom: '1px solid grey', boxShadow: '0 4px 8px rgba(0,0,0,0.2)' }}
                   >
                     <div style={{ display: 'flex', alignItems: 'center' }}>
-                      <p style={{ fontWeight: 'bold', marginRight: '20px', marginTop:'15px' }}>{formatTime(notification.createdAt)}</p>
-                      <div>
-                        <Link to={`/mechanic/service/${notification.serviceId}`} onClick={() => handleNotificationClick(notification._id)} style={{ textDecoration: 'none', display: 'flex', alignItems: 'center' }}>
-                          <p style={{ fontWeight: notification.read ? '400' : '600', color: notification.read ? 'grey' : 'black', margin: 0, width:'500px' }}>
-                            {notification.message}
-                          </p>
-                          {!notification.read && (
-                            <span style={{ backgroundColor: 'red', color: 'white', borderRadius: '4px', padding: '2px 4px', marginLeft: '10px', fontSize: '0.8rem' }}>New</span>
-                          )}
-                        </Link>
-                      </div>
-                    </div>
+  <p style={{ fontWeight: 'bold', marginRight: '15px', marginTop: '15px',marginLeft:'15px', color: 'black', width: '100px' }}>{formatTime(notification.createdAt)}</p>
+  <div style={{ flex: 1 }}>
+    <Link to={`/mechanic/service/${notification.serviceId}`} onClick={() => handleNotificationClick(notification._id)} style={{ textDecoration: 'none', display: 'flex', alignItems: 'center' }}>
+      <p style={{ fontWeight: notification.read ? '400' : '600', color: notification.read ? 'grey' : 'black', margin: 0, flex: 1 }}>
+        {notification.message}
+      </p>
+      {!notification.read && (
+        <span style={{ backgroundColor: '#0078d6', color: 'white', borderRadius: '4px', padding: '2px 4px', marginLeft: '10px', fontSize: '0.8rem' }}>New</span>
+      )}
+    </Link>
+  </div>
+</div>
+
                   </div>
                 ))}
               </div>

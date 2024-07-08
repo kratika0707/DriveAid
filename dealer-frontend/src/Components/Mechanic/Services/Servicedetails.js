@@ -90,32 +90,33 @@ const Servicedetails = () => {
 
   return (
     <>
-    <div className='servicemech' style={{ display: 'flex', flexDirection: 'column', alignItems: 'center', marginTop: '5%', marginBottom: '5%', fontFamily:'sans-serif', }}>
+    <div className='servicemech' style={{ display: 'flex', flexDirection: 'column', alignItems: 'center', marginTop: '5%', marginBottom: '5%', fontFamily:'sans-serif', color:'black'}}>
       <p style={{ marginBottom: '4%',  color:'black', fontSize:'2.5rem', fontWeight:'800' }}>Service Details</p>
       <div className="card" style={{ width: '85%', textAlign: 'center', boxShadow: '0 4px 8px grey', color:'black', border:'none' }}>
-        <div className="card-header d-flex justify-content-between" style={{ backgroundColor: '#f7ddda', padding: '10px', borderBottom: '1px solid black', }}>
-          <p style={{ fontSize: '0.9rem',margin:0, marginLeft: '5%' }}><strong>Service Date:</strong> {new Date(service.dateofservice).toLocaleDateString()}</p>
-          <p style={{ fontSize: '0.9rem', margin: 0,marginRight: '5%' }}><strong>Service Id:</strong> #{service._id}</p>
+        <div className="card-header d-flex justify-content-between" style={{ backgroundColor: '#d4e3ff', padding: '10px', borderBottom: '1px solid black', }}>
+          <p style={{ fontSize: '0.9rem',margin:0, marginLeft: '5%', color:'black' }}><strong>Service Date:</strong> {new Date(service.dateofservice).toLocaleDateString()}</p>
+          <p style={{ fontSize: '0.9rem', margin: 0,marginRight: '5%' , color:'black'}}><strong>Service Id:</strong> #{service._id}</p>
         </div>
         <div className="card-body" style={{ display: 'flex', flexDirection: 'row', justifyContent: 'center' }}>
-          <div style={{ width: '70%', textAlign: 'left', padding: '20px' }}>
+          <div style={{ width: '70%', textAlign: 'left', padding: '20px' , color:'black'}}>
             {fetched ? (
               <>
-                <p><strong>Phone Number:</strong> {userdetail.phone}</p>
+                <p style={{color:'black'}}><strong>Phone Number:</strong> {userdetail.phone}</p>
                 {/* Add more user details as needed */}
               </>
             ) : (
               <p>Loading user details...</p>
             )}
-            <p><strong>Car Model:</strong> {service.carmodel}</p>
-            <p><strong>Engine Model:</strong> {service.enginemodel}</p>
-            <p><strong>Issue:</strong> {service.issue}</p>
-            <p><strong>Details:</strong> {service.detail}</p>
-            <button className='btn btn-primary' style={{ padding: '10px 10px', marginTop: '10px', width: '30%', border:'1px solid ', borderRadius:'15px',backgroundColor:'#ea422b',color:'white', fontWeight:'500' }} onClick={handleBuyClick}>Complete Service</button>
+            <p style={{color:'black'}}><strong>Car Model:</strong> {service.carmodel}</p>
+            <p style={{color:'black'}}><strong>Engine Model:</strong> {service.enginemodel}</p>
+            <p style={{color:'black'}}><strong>Issue:</strong> {service.issue}</p>
+            <p style={{color:'black'}}><strong>Details:</strong> {service.detail}</p>
+            
           </div>
           <div style={{ width: '30%', textAlign: 'center', padding: '20px' }}>
-            <button className='btn btn-primary' style={{ padding: '10px 12px', marginBottom: '10px', width: '80%',border:'1px solid ', borderRadius:'15px',backgroundColor:'#ea422b',color:'white', fontWeight:'500' }} onClick={handleDirectionsClick}>Get Directions</button>
-            <button className='btn btn-primary' style={{ padding: '10px 15px', width: '80%',border:'1px solid ', borderRadius:'15px',backgroundColor:'#ea422b',color:'white', fontWeight:'500' }} onClick={handleBuyClick}>Buy Products</button>
+            <button className='btn btn-primary' style={{ padding: '10px 12px', marginBottom: '10px', width: '80%',border:'1px solid ', borderRadius:'15px',backgroundColor:'#0078d6',color:'white', fontWeight:'500' }} onClick={handleDirectionsClick}>Get Directions</button>
+            <button className='btn btn-primary' style={{ padding: '10px 15px', width: '80%',border:'1px solid ', borderRadius:'15px',backgroundColor:'#0078d6',color:'white', fontWeight:'500' }} onClick={handleBuyClick}>Buy Products</button>
+            <button className='btn btn-primary' style={{ padding: '10px 12px',marginTop:'4%', marginBottom: '10px', width: '80%',border:'1px solid ', borderRadius:'15px',backgroundColor:'#0078d6',color:'white', fontWeight:'500' }} onClick={handleBuyClick}>Complete Service</button>
           </div>
         </div>
       </div>

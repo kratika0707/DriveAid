@@ -36,7 +36,7 @@ const MechServiceHistory = () => {
 
     return (
         <div className="container" style={{ minHeight: '100vh', marginTop: '5%', display: 'flex', flexDirection: 'column', alignItems: 'center' }}>
-        <h1 style={{ marginBottom: '4%', fontSize: '2.4rem' }}>Service History</h1>
+        <h1 style={{ marginBottom: '4%', fontSize: '2.4rem' ,color:'black'}}>Service History</h1>
         {services.length > 0 ? (
           services.map(service => (
             <div
@@ -54,15 +54,15 @@ const MechServiceHistory = () => {
               onMouseEnter={() => setHoveredCard(service._id)}
               onMouseLeave={() => setHoveredCard(null)}
             >
-              <div className="card-header d-flex justify-content-between" style={{ backgroundColor: '#f7ddda', padding: '10px', borderBottom: '1px solid #ccc', color: 'black', }}>
-                <p style={{ fontSize: '1rem', margin: 0 }}>Service Date: {new Date(service.dateofservice).toLocaleDateString()}</p>
-                <p style={{ fontSize: '1rem', margin: 0 }}>Service Id: #{service._id}</p>
+              <div className="card-header d-flex justify-content-between" style={{ backgroundColor: '#d4e3ff', padding: '10px', borderBottom: '1px solid #ccc', color: 'black', }}>
+                <p style={{ fontSize: '1rem', margin: 0 ,color:'black' }}>Service Date: {new Date(service.dateofservice).toLocaleDateString()}</p>
+                <p style={{ fontSize: '1rem', margin: 0 ,color:'black'}}>Service Id: #{service._id}</p>
               </div>
               <div className="card-body" style={{ textAlign: 'left', marginLeft: '20px' }}>
-                <p><strong>Car Model:</strong> {service.carmodel}</p>
-                <p><strong>Engine Model:</strong> {service.enginemodel}</p>
-                <p><strong>Issue:</strong> {service.issue}</p>
-                <Link to={`/mechanic/service/${service._id}`} className="btn " style={{ padding: '10px 15px', borderRadius:'20px', backgroundColor:'#ea422b',color:'white', fontWeight:'500'}}>View details</Link>
+                <p style={{color:'black'}}><strong>Car Model:</strong> {service.carmodel}</p>
+                <p style={{color:'black'}}><strong>Engine Model:</strong> {service.enginemodel}</p>
+                <p style={{color:'black'}}><strong>Issue:</strong> {service.issue}</p>
+                <Link to={`/mechanic/service/${service._id}`} className="btn text-uppercase" style={{ padding: '8px 20px',  backgroundColor:'#0078d6',color:'white', fontWeight:'600'}}>View details</Link>
               </div>
             </div>
           ))

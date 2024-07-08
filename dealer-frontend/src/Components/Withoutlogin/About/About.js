@@ -52,7 +52,7 @@ const About = () => {
             <div className="row align-items-center" style={{display:'flex', alignItems:'center'}}>
               <div className="col-md-6 padding-medium pe-5 border-end" style={{padding:'10%',}}>
                 
-                <p className="header-top mb-3" style={{color:'rgb(234, 66, 43)', fontSize:'1rem', fontWeight:'500', letterSpacing:'0.1rem'}}>WHY CHOOSE US</p>
+                <p className="header-top mb-3" style={{color:'#0078d6', fontSize:'1rem', fontWeight:'600', letterSpacing:'0.1rem'}}>WHY CHOOSE US</p>
                 <h2 className="display-4" style={{fontWeight:'600', letterSpacing:'0.001rem', fontSize:'3.25rem', color:'black'}}>ALWAYS REMEMBER DRIVEAID FOR YOUR CAR</h2>
               </div>
               <div className="col-md-6 padding-medium-2 ps-md-5">
@@ -60,7 +60,7 @@ const About = () => {
                   We ensure prompt service, real-time updates, and access to quality parts. 
                   Experience hassle-free vehicle care with DriveAid, getting you back on the road quickly and safely.
                 </p>
-                <a href="/about" className="btn  ms-5 mt-3" style={{backgroundColor:'rgb(234, 66, 43)', color:'white', fontSize:'1.25rem',fontWeight:'500', padding:'10px 20px',margin:'20px',borderRadius:'25px' }}>
+                <a href="/about" className="btn  ms-5 mt-3" style={{backgroundColor:'#0078d6', color:'white', fontSize:'1.25rem',fontWeight:'600', padding:'10px 25px',margin:'20px' }}>
                   ABOUT US
                   {/* <Icon icon={arrowRight} className="arrow-icon" /> */}
                 </a>

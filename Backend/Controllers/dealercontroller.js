@@ -5,6 +5,7 @@ const Mechanic = require('../model/mechanic');
 
 const Notification=require('../model/Notifications');
 
+
 // Controller to handle dealer registration
 exports.registerDealer = async (req, res) => {
     const { name, phone, email, password, location } = req.body;
@@ -94,3 +95,36 @@ exports.markAsRead = async (req, res) => {
     res.status(500).json({ message: 'Error marking notification as read', error });
   }
 };
+exports.fetchdealerbyId = async(req,res)=>{
+  try{
+    const {dealerId} =req.params;
+    const dealerfind= await Dealer.findById(dealerId);
+    res.status(200).json(dealerfind);
+  }catch(error){
+    console.error('Error fetching dealer:', error);
+    res.status(500).json({ error: 'An error occurred while fetching dealer' });
+  }
+}
+
+
+exports.changepassword =async(req,res)=>{
+  const { dealerId, currentPassword, newPassword } = req.body;
+
+  try {
+    const dealer = await Dealer.findById(dealerId);
+    if (!dealer) {
+      return res.status(404).json({ message: 'Dealer not found' });
+    }
+
+    if (dealer.password !== currentPassword) {
+      return res.status(400).json({ message: 'Current password is incorrect' });
+    }
+
+    dealer.password = newPassword;
+    await dealer.save();
+
+    res.status(200).json({ message: 'Password changed successfully' });
+  } catch (err) {
+    res.status(500).json({ message: 'Server error', error: err.message });
+  }
+}

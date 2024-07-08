@@ -9,7 +9,7 @@ import youtubeIcon from '@iconify/icons-mdi/youtube';
 import { Link as ScrollLink } from 'react-scroll';
 const Footer = () => {
   return (
-    <section  style={{backgroundColor:'white', borderTop:'1px solid grey'}} >
+    <section  style={{backgroundColor:'black', borderTop:'1px solid grey', height:"280px", marginTop:"2%"}} >
         {/* <div className="container footer-container" style={{ display: 'flex', justifyContent: 'space-between', alignItems: 'flex-start', padding: '0.5rem 0', overflowX: 'hidden' }}>
         <footer className="py-2" style={{ display: 'flex', flexDirection: 'row', width: '100%', justifyContent: 'space-between' }}>
           <div className="col-md-7 mt-0">
@@ -37,35 +37,39 @@ const Footer = () => {
 
       <div style={{ marginLeft:'7%', marginRight:'2%'}} >
       
-        <footer className="d-flex   " style={{height:'3.5rem'}}>
-        <div className="footer-links col-md-8" style={{ display: 'flex', flexDirection: 'row', alignItems: 'center', marginTop: '2%', fontSize: '1.1rem', marginBottom: '1%',marginRight:'1.5%' }}>
-            <a href="/about" className="nav-link text-uppercase p-0">
-              <p style={{ marginRight: '0.5rem', color: 'black' }}>About us</p>
-            </a>
-            <a href="/services" className="nav-link text-uppercase p-0">
-              <p style={{ marginRight:'0.5rem',marginLeft: '0.5rem', color: 'black' }}>|</p>
-            </a>
-            <a href="/services" className="nav-link text-uppercase p-0">
-              <p style={{ marginRight:'0.5rem',marginLeft: '0.5rem', color: 'black' }}>Our services</p>
-            </a>
-            <a href="/services" className="nav-link text-uppercase p-0">
-              <p style={{ marginRight:'0.5rem',marginLeft: '0.5rem', color: 'black' }}>|</p>
-            </a>
-            <a href="/services" className="nav-link text-uppercase p-0">
-              <p style={{ marginLeft: '0.5rem', color: 'black' }}>Feedback</p>
-            </a>
-          </div>
-          <div className="d-flex" style={{justifyContent:'right', color:'black',fontSize:'1rem',marginTop:'1%'}}>
-            <p>© 2024 DriveAid | All Rights Reserved</p>
-          </div>
-          {/* <div className="col-md-6 d-flex align-items-center justify-content-end">
-            <p>© 2023 Designed By:
-              <a href="https://templatesjungle.com/" className="website-link text-decoration-none" target="_blank" rel="noreferrer">
-                <b>TemplatesJungle</b>
-              </a>
-            </p>
-          </div> */}
-        </footer>
+      <footer className="" style={{ height: '3.5rem', display: "flex", flexDirection: "column", justifyContent: "space-between", marginTop: "4%" }}>
+  <div>
+    <a href="/about" className="nav-link text-uppercase p-0">
+      <p style={{ color: 'white' }}>About us</p>
+    </a>
+    <p style={{ color: 'white' }}>DriveAid connects you with trusted, nearby mechanics and dealers for fast, reliable vehicle repairs.
+       We ensure prompt service, real-time updates, and access to quality parts.
+       Experience hassle-free vehicle care with DriveAid, getting you back on the road quickly and safely.</p>
+  </div>
+  <div className="footer-links  d-flex flex-row" style={{ justifyContent: 'flex-start', alignItems: 'center', fontSize: '1.1rem', marginBottom: '5%', marginTop: '5%' }}>
+        <a href="/services" className="nav-link text-uppercase " style={{ marginRight: '10px' }}>
+          <p style={{ color: 'white' }}>Our services</p>
+        </a>
+        <a className="nav-link text-uppercase p-0" style={{ marginRight: '10px' }}>
+          <p style={{ color: 'white' }}>|</p>
+        </a>
+        <a href="/about" className="nav-link text-uppercase " style={{ marginRight: '10px' }}>
+          <p style={{ color: 'white' }}>About Us</p>
+        </a>
+        <a className="nav-link text-uppercase p-0" style={{ marginRight: '10px' }}>
+          <p style={{ color: 'white' }}>|</p>
+        </a>
+        <a href="/feedback" className="nav-link text-uppercase ">
+          <p style={{ color: 'white' }}>Feedback</p>
+        </a>
+        <div className="d-flex align-items-end" style={{ justifyContent:'right',color: 'white', fontSize: '1rem', marginTop: 'auto',  marginLeft: '40%' }}>
+        <p>© 2024 DriveAid | All Rights Reserved</p>
+      </div>
+      </div>
+      
+</footer>
+
+
       </div>
     </section>
   );

@@ -127,7 +127,7 @@ const UserNotifications = () => {
         <div style={{ width: '100%', overflowY: 'auto', margin: '1%' }}>
           {Object.keys(groupedNotifications).map((date, index) => (
             <div key={index} style={{ marginBottom: '20px', position: 'relative' }}>
-              <h3 style={{ marginBottom: '20px', color: 'white', fontSize: '1.15rem', textAlign: 'center', borderRadius: '20px', display: 'inline-block', padding: '5px 10px', backgroundColor: '#ea422b', paddingLeft: '1.5%', paddingRight: '1.5%' }}>
+              <h3 style={{ marginBottom: '20px', color: 'white', fontSize: '1.15rem', textAlign: 'center', borderRadius: '20px', display: 'inline-block', padding: '5px 10px', backgroundColor: '#0078d6', paddingLeft: '1.5%', paddingRight: '1.5%' }}>
                 {formatDatee(date)}
               </h3>
               <div style={{ border: '1px solid white' }}>
@@ -144,7 +144,7 @@ const UserNotifications = () => {
                             {notification.message}
                           </p>
                           {!notification.read && (
-                            <span style={{ backgroundColor: '#ea422b', color: 'white', borderRadius: '4px', padding: '2px 4px', marginLeft: '10px', fontSize: '0.8rem' }}>New</span>
+                            <span style={{ backgroundColor: '#0078d6', color: 'white', borderRadius: '4px', padding: '2px 4px', marginLeft: '10px', fontSize: '0.8rem' }}>New</span>
                           )}
                         </Link>
                       </div>

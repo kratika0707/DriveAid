@@ -30,13 +30,12 @@ class Bikes extends Component {
     render() {
         return (
             <div style={{ backgroundColor: "white" }}>
-                <h3 style={{ marginLeft: "82%" }}>
-                    <b>Cart Items <AiOutlineShoppingCart />: {this.state.CartItems}</b>
+                <h3 style={{ marginLeft: "90%", marginTop: "2%", display: "inline-block"}}>
+                    <b><AiOutlineShoppingCart /></b>
                 </h3>
-                <br /><br />
-                <h3 style={{ marginLeft: "30px", fontFamily: "a" }}><b>Auto Parts for Sale</b></h3>
+                <h3 style={{ marginLeft: "30px", fontFamily: "a", textAlign: "center"}}><b>Auto Parts for Sale</b></h3>
                 <br />
-                <div className="card-container">
+                <div className="card-container" style={{marginLeft: "10%", marginRight: "10%"}}>
                     {this.state.details.map((detail, index) => (
                         <UserPurchaseCard
                             key={index}

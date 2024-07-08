@@ -86,3 +86,37 @@ exports.getServices= async(req,res)=>{
     res.status(500).json({ error: 'Error fetching services' });
   }
 };
+
+exports.fetchmechanicbyId = async(req,res)=>{
+  try{
+    const {mechanicId} =req.params;
+    const mechanicfind= await Mechanic.findById(mechanicId);
+    res.status(200).json(mechanicfind);
+  }catch(error){
+    console.error('Error fetching dealer:', error);
+    res.status(500).json({ error: 'An error occurred while fetching dealer' });
+  }
+}
+
+
+exports.changepassword =async(req,res)=>{
+  const { mechanicId, currentPassword, newPassword } = req.body;
+
+  try {
+    const mechanic = await Mechanic.findById(mechanicId);
+    if (!mechanic) {
+      return res.status(404).json({ message: 'Mechanic not found' });
+    }
+
+    if (mechanic.password !== currentPassword) {
+      return res.status(400).json({ message: 'Current password is incorrect' });
+    }
+
+    mechanic.password = newPassword;
+    await mechanic.save();
+
+    res.status(200).json({ message: 'Password changed successfully' });
+  } catch (err) {
+    res.status(500).json({ message: 'Server error', error: err.message });
+  }
+}

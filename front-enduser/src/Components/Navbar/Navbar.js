@@ -41,36 +41,36 @@ const Navbar = () => {
 
   return (
     <>
-      <nav className="navbar fixed-top navbar-expand-lg container-fluid p-4" style={{ height: '70px', justifyContent: 'center', backgroundColor: 'white', paddingBottom: '7%' }}>
+      <nav className="navbar fixed-top navbar-expand-lg container-fluid p-4" style={{ height: '70px', justifyContent: 'center', backgroundColor: 'black', paddingBottom: '7%' }}>
         <div className="container-fluid">
-          <h1 style={{ color: '#ea422b', height: '50px', fontWeight: '1500', paddingBottom: '5px' }}>
+          <h1 style={{ color: 'white', height: '50px', fontWeight: '1500', paddingBottom: '5px' }}>
             DriveAid
           </h1>
           <button className="navbar-toggler" type="button" data-bs-toggle="offcanvas" data-bs-target="#offcanvasNavbar" aria-controls="offcanvasNavbar" style={{ marginBottom: '25px' }}>
-            <Icon icon={menuHamburger} className="hamburger-menu" style={{ color: '#ea422b', border: 'none', }} />
+            <Icon icon={menuHamburger} className="hamburger-menu" style={{ color: 'white', border: 'none', }} />
           </button>
-          <div className="offcanvas offcanvas-end" tabIndex="-1" id="offcanvasNavbar" aria-labelledby="offcanvasNavbarLabel" style={{ backgroundColor: 'white' }}>
+          <div className="offcanvas offcanvas-end" tabIndex="-1" id="offcanvasNavbar" aria-labelledby="offcanvasNavbarLabel" style={{ backgroundColor: 'black' }}>
             <div className="offcanvas-header">
-              <h5 className="offcanvas-title" id="offcanvasNavbarLabel" style={{ color: '#ea422b' }}>Menu</h5>
-              <button type="button" className="btn-close btn-close-dark text-reset" data-bs-dismiss="offcanvas" aria-label="Close"></button>
+              <h5 className="offcanvas-title" id="offcanvasNavbarLabel" style={{ color: 'white' }}>Menu</h5>
+              <button type="button" className="btn-close btn-close-light text-reset" data-bs-dismiss="offcanvas" aria-label="Close"></button>
             </div>
             <div className="offcanvas-body">
               <ul className="navbar-nav align-items-center justify-content-end justify-content-xxl-center flex-grow-1 pe-3">
                 <li className="nav-item">
-                  <a className="nav-link text-black text-uppercase mx-2 px-3 mb-2 mb-lg-0" style={{ fontSize: '1.15rem' }} aria-current="page" href="/">Home</a>
+                  <a className="nav-link text-white text-uppercase mx-2 px-3 mb-2 mb-lg-0" style={{ fontSize: '1.15rem' }} aria-current="page" href="/">Home</a>
                 </li>
                 <li className="nav-item">
-                  <a className="nav-link text-black text-uppercase mx-2 px-3 mb-2 mb-lg-0" style={{ fontSize: '1.15rem' }} href="/feedback">Feedback</a>
+                  <a className="nav-link text-white text-uppercase mx-2 px-3 mb-2 mb-lg-0" style={{ fontSize: '1.15rem' }} href="/feedback">Feedback</a>
                 </li>
                 <li className="nav-item">
-                  <a href="/booking" className="nav-link text-black text-uppercase mx-2 px-3 mb-2 mb-lg-0" style={{ fontSize: '1.15rem' }}>
+                  <a href="/booking" className="nav-link text-white text-uppercase mx-2 px-3 mb-2 mb-lg-0" style={{ fontSize: '1.15rem' }}>
                     Service Request
                   </a>
                 </li>
                 {isAuthenticated ? (
                   <>
                     <a href={'/user/notification'}>
-                      <FaBell size={30} style={{ color: 'black', position: 'relative', marginTop: '9%' }}>
+                      <FaBell size={30} style={{ color: 'white', position: 'relative', marginTop: '9%' }}>
                         <span style={{
                           position: 'absolute',
                           top: '-10px',
@@ -105,7 +105,7 @@ const Navbar = () => {
                   </>
                 ) : (
                   <li className="nav-item">
-                    <button onClick={() => setShowLoginModal(true)} className="btn  mx-2 px-3 py-2" style={{ backgroundColor: '#ea422b', color:'white', borderRadius:'20px' }}>
+                    <button onClick={() => setShowLoginModal(true)} className="btn  mx-2 px-3 py-2" style={{ backgroundColor: 'black', color:'white', borderRadius:'20px' }}>
                       Login
                     </button>
                   </li>

@@ -41,7 +41,7 @@ const Feedback = () => {
         <label className="form-label">Rate our service:</label>
         <StarRating rating={userRating} onRatingChange={handleRatingChange} />
       </div>
-      <button type="submit" className="btn btn-primary" style={{ height: '40px', width: 'auto', marginTop: '1%',marginBottom:'2%',lineHeight:'5px' }}>Submit</button>
+      <button type="submit" className="btn btn-primary" style={{ height: '40px', width: 'auto', marginTop: '1%',marginBottom:'2%',lineHeight:'5px', backgroundColor:'#0078d6', fontWeight:'500' }}>Submit</button>
     </form>
     </div>
     </>

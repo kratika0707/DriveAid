@@ -123,7 +123,7 @@ const Booking = () => {
           </div>
         )}
         <div style={{ top: 0, left: 0, width: '100%', height: '90%', display: 'flex', alignItems: 'center', justifyContent: 'center', padding: '20px', textAlign: 'center' }}>
-          <h2 className='about' style={{ color: '#ea422b', fontSize: '3vw' }}>Book a Service</h2>
+          <h2 className='about' style={{ color: 'black', fontSize: '3vw' }}>Book a Service</h2>
         </div>
         <p style={{ marginLeft: '5%', color: 'black', fontSize: '1.5em', marginBottom: '2%' }}>In urgent need? Book our service now and get immediate assistance wherever you are.</p>
       </div>
@@ -189,7 +189,7 @@ const Booking = () => {
               style={{ minHeight: '80px', resize: 'vertical', fontSize: '80%' }}
             ></textarea>
           </div>
-          <button type="submit" className="btn btn-primary" style={{ height: '40px', width: 'auto', marginTop: '1%', lineHeight: '5px' }}>Submit</button>
+          <button type="submit" className="btn btn-primary" style={{ height: '40px', width: 'auto', marginTop: '1%', lineHeight: '5px', backgroundColor:'#0078d6', fontWeight:'500' }}>Submit</button>
         </form>
       </div>
       </div>

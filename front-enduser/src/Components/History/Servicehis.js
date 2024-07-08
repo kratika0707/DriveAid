@@ -39,7 +39,7 @@ const Servicehis = () => {
     <div className='servicemech' style={{ display: 'flex', flexDirection: 'column', alignItems: 'center', marginTop: '5%', marginBottom: '5%', fontFamily:'sans-serif' }}>
       <p style={{ marginBottom: '2%',marginTop:'2%', color:'black', fontSize:'2rem', fontWeight:'600' }}>Service Details</p>
       <div className="card" style={{ width: '85%', textAlign: 'center', boxShadow: '0 4px 8px grey', color:'black', border:'none' }}>
-        <div className="card-header d-flex justify-content-between" style={{ backgroundColor: '#f7ddda', padding: '10px', borderBottom: '1px solid black', }}>
+        <div className="card-header d-flex justify-content-between" style={{ backgroundColor: '#d4e3ff', padding: '10px', borderBottom: '1px solid black', }}>
           <p style={{ fontSize: '0.9rem',margin:0, marginLeft: '5%' }}><strong>Service Date:</strong> {new Date(service.dateofservice).toLocaleDateString()}</p>
           <p style={{ fontSize: '0.9rem', margin: 0,marginRight: '5%' }}><strong>Service Id:</strong> #{service._id}</p>
         </div>
@@ -59,14 +59,14 @@ const Servicehis = () => {
                     width: '20px',
                     height: '20px',
                     borderRadius: '50%',
-                    background: index < service.servicestatus ? '#ea422b' : 'grey',
+                    background: index < service.servicestatus ? '#0078d6' : 'grey',
                     marginRight: '10px'
                   }}></div>
                   <p style={{ margin: 0 }}>{stage}</p>
                 </div>
               ))}
               <div style={{ position: 'absolute', top: '10px', left: '10px', width: '2px', height: 'calc(100% - 20px)', background: 'grey' }}>
-                <div style={{ height: `${(service.servicestatus / stages.length) * 100}%`, background: '#ea422b', width: '100%' }}></div>
+                <div style={{ height: `${(service.servicestatus / stages.length) * 100}%`, background: '#0078d6', width: '100%' }}></div>
               </div>
             </div>
           </div>
