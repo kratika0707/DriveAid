@@ -22,15 +22,21 @@ const mechanicRoutes = require('./router/mechanic-router');
 const notificationRoutes = require('./router/notificationrouter');
 const usernotificationRoutes = require('./router/usernotificationrouter');
 const mechnotificationRoutes = require('./router/Mechnotificationrouter');
+const orderroutes = require('./router/Order-router');
+const productroutes = require('./router/Productrouter');
+const Cartroutes = require('./router/cart-router');
 
 
 app.use('/api/users', userRoutes);
 app.use('/api/services', serviceRoutes);
 app.use('/api/dealers', dealerRoutes);
 app.use('/api/mechanic', mechanicRoutes);
-app.use('api/notification',notificationRoutes);
+app.use('/api/notification',notificationRoutes);
 app.use('/api/usernotifications',usernotificationRoutes);
 app.use('/api/mechnotifications', mechnotificationRoutes);
+app.use('/api/orders', orderroutes);
+app.use('/api/products', productroutes);
+app.use('/api/cart', Cartroutes);
 
 const DB = process.env.MONGODB_URI;
 

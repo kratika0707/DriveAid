@@ -1,0 +1,8 @@
+.remove-item {
+    position: absolute;
+    top: 10px;
+    right: 10px;
+    cursor: pointer;
+    color: red; /* Customize the color as needed */
+    font-size: 1.5rem; /* Adjust the size as needed */
+}

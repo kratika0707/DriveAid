@@ -109,7 +109,28 @@ const Booking = () => {
       submit(new Event('submit'));
     }
   }
-
+  const carModels = ['Honda Civic', 'Honda Accord' ,'Toyota Camry','Toyota Corolla', 'Ford Fusion', 'Ford Focus']; // Example car models
+  const hondaCivicModels = ['1.5L Turbo', '2.0L VTEC', '1.8L Hybrid'];
+  const hondaAccordModels = ['2.0L Turbo', '1.5L VTEC', '3.5L V6'];
+  const toyotaCamryModels = ['2.5L Inline-4', '3.5L V6', 'Hybrid 2.5L']; 
+  const toyotaCorollaModels= ['1.8L Inline-4', '2.0L Hybrid', '1.6L Diesel'];
+  const fordFusionModels = ['2.5L Inline-4', '2.0L EcoBoost', 'Hybrid 2.0L']; 
+  const fordFocusModels = ['1.0L EcoBoost', '2.0L Inline-4', 'Electric'];
+  
+  const issues = [
+    'Car Breakdown',
+  'Battery Issue',
+  'Brake Issue',
+  'Tire Issue',
+  'Engine Overheating',
+  'Fuel Leak',
+  'Electrical Malfunction',
+  'Transmission Failure',
+  'Steering Problems',
+  'Suspension Issues',
+  'Coolant System Problems',
+  'Lockout (Keys Locked Inside)'
+  ]; 
   return (
     <>
       <div className="container1" style={{ position: 'relative', height: '120vh', width: '100vw', margin: 0, padding: 0 }}>
@@ -138,45 +159,68 @@ const Booking = () => {
               className="form-control"
               placeholder='+91 00000-00000'
               id="exampleInputPhone"
-              style={{ height: '40px', fontSize: '80%' }}
+              style={{ height: '50px', fontSize: '100%' }}
             />
           </div>
           <div className="mb-3" style={{ width: '50%' }}>
-            <label htmlFor="exampleInputModel" className="form-label">Your Car Model</label>
-            <input
-              type="text"
-              value={carmodel}
-              onChange={(e) => setCarModel(e.target.value)}
-              className="form-control"
-              placeholder='Car Model'
-              id="exampleInputModel"
-              style={{ height: '40px', fontSize: '80%' }}
-            />
-          </div>
-          <div className="mb-3" style={{ width: '50%' }}>
-            <label htmlFor="exampleInputModel" className="form-label">Your Engine Model</label>
-            <input
-              type="text"
-              value={enginemodel}
-              onChange={(e) => setEngineModel(e.target.value)}
-              className="form-control"
-              placeholder='Engine Model'
-              id="exampleInputModel"
-              style={{ height: '40px', fontSize: '80%' }}
-            />
-          </div>
-          <div className="mb-3" style={{ width: '50%' }}>
-            <label htmlFor="exampleInputModel" className="form-label">Your Issue</label>
-            <input
-              type="text"
-              value={issue}
-              onChange={(e) => setIssue(e.target.value)}
-              className="form-control"
-              placeholder='Type your issue here'
-              id="exampleInputModel"
-              style={{ height: '40px', fontSize: '80%' }}
-            />
-          </div>
+              <label htmlFor="exampleInputModel" className="form-label">Your Car Model</label>
+              <select
+                className="form-control"
+                value={carmodel}
+                onChange={(e) => setCarModel(e.target.value)}
+                style={{ height: '50px', fontSize: '100%' }}
+              >
+                <option value="">Select Car Model</option>
+                {carModels.map((model) => (
+                  <option key={model} value={model}>{model}</option>
+                ))}
+              </select>
+            </div>
+            {carmodel && (
+              <div className="mb-3" style={{ width: '50%' }}>
+                <label htmlFor="exampleInputEngineModel" className="form-label">Your Engine Model</label>
+                <select
+                  className="form-control"
+                  value={enginemodel}
+                  onChange={(e) => setEngineModel(e.target.value)}
+                  style={{ height: '50px', fontSize: '100%' }}
+                >
+                  <option value="">Select Engine Model</option>
+                  {carmodel === 'Honda Civic' && hondaCivicModels.map((model) => (
+                    <option key={model} value={model}>{model}</option>
+                  ))}
+                  {carmodel === 'Honda Accord' && hondaAccordModels.map((model) => (
+                    <option key={model} value={model}>{model}</option>
+                  ))}
+                  {carmodel === 'Toyota Camry' && toyotaCamryModels.map((model) => (
+                    <option key={model} value={model}>{model}</option>
+                  ))}
+                  {carmodel === 'Toyota Corolla' && toyotaCorollaModels.map((model) => (
+                    <option key={model} value={model}>{model}</option>
+                  ))}
+                  {carmodel === 'Ford Fusion' && fordFusionModels.map((model) => (
+                    <option key={model} value={model}>{model}</option>
+                  ))}
+                  {carmodel === 'Ford Focus' && fordFocusModels.map((model) => (
+                    <option key={model} value={model}>{model}</option>
+                  ))}
+                </select>
+              </div>
+            )}
+            <div className="mb-3" style={{ width: '50%' }}>
+              <label htmlFor="exampleInputIssue" className="form-label">Your Issue</label>
+              <select
+                className="form-control"
+                value={issue}
+                onChange={(e) => setIssue(e.target.value)}
+                style={{ height: '50px', fontSize: '100%' }}
+              >
+                <option value="">Select Issue</option>
+                {issues.map((issue) => (
+                  <option key={issue} value={issue}>{issue}</option>
+                ))}
+              </select>
+            </div>
           <div className="mb-3" style={{ width: '70%' }}>
             <label htmlFor="exampleInputIssue" className="form-label">Other Details</label>
             <textarea
@@ -186,7 +230,7 @@ const Booking = () => {
               id="exampleInputIssue"
               rows="4"
               placeholder='Other details'
-              style={{ minHeight: '80px', resize: 'vertical', fontSize: '80%' }}
+              style={{ minHeight: '80px', resize: 'vertical', fontSize: '100%' }}
             ></textarea>
           </div>
           <button type="submit" className="btn btn-primary" style={{ height: '40px', width: 'auto', marginTop: '1%', lineHeight: '5px', backgroundColor:'#0078d6', fontWeight:'500' }}>Submit</button>

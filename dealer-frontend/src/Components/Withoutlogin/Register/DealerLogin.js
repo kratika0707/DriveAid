@@ -43,35 +43,39 @@ const DealerLogin = () => {
 
   return (
     <>
-    <div className="container">
-      <form onSubmit={handleSubmit}>
-        <div className="mb-3">
-          <label htmlFor="exampleInputPhone" className="form-label">Contact Number</label>
-          <input
-            type="text"
-            className="form-control"
-            id="exampleInputPhone"
-            aria-describedby="PhoneHelp"
-            value={phone}
-            onChange={(e) => setPhone(e.target.value)}
-          />
-        </div>
-        <div className="mb-3">
-          <label htmlFor="exampleInputPassword1" className="form-label">Password</label>
-          <input
-            type="password"
-            className="form-control"
-            id="exampleInputPassword1"
-            value={password}
-            onChange={(e) => setPassword(e.target.value)}
-          />
-        </div>
-        {error && <div className="alert alert-danger">{error}</div>}
-        <button type="submit" className="btn btn-primary">
-          {isLoading ? 'Loading...' : 'Submit'}
-        </button>
-      </form>
-    </div>
+    <div className="d-flex justify-content-center align-items-center mt-4" style={{height: '60vh'}}>
+  <div className="w-50">
+    <h2 className='mb-4 text-center'>Login As a Dealer</h2>
+    <form onSubmit={handleSubmit}>
+      <div className="mb-3">
+        <label htmlFor="exampleInputPhone" className="form-label">Contact Number</label>
+        <input
+          type="text"
+          className="form-control"
+          id="exampleInputPhone"
+          aria-describedby="PhoneHelp"
+          value={phone}
+          onChange={(e) => setPhone(e.target.value)}
+        />
+      </div>
+      <div className="mb-3">
+        <label htmlFor="exampleInputPassword1" className="form-label">Password</label>
+        <input
+          type="password"
+          className="form-control"
+          id="exampleInputPassword1"
+          value={password}
+          onChange={(e) => setPassword(e.target.value)}
+        />
+      </div>
+      {error && <div className="alert alert-danger">{error}</div>}
+      <button type="submit" className="btn btn-primary">
+        {isLoading ? 'Loading...' : 'Submit'}
+      </button>
+    </form>
+  </div>
+</div>
+
     </>
   );
 };

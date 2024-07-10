@@ -11,15 +11,15 @@ const {getServicesByDealer} = require('../Controllers/servicecontroller')
 
 
 
-router.post('/', async (req, res) => {
-    try {
-        const dealer = new Dealer(req.body);
-        await dealer.save();
-        res.status(201).send(dealer);
-    } catch (error) {
-        res.status(400).send(error);
-    }
-});
+// router.post('/', async (req, res) => {
+//     try {
+//         const dealer = new Dealer(req.body);
+//         await dealer.save();
+//         res.status(201).send(dealer);
+//     } catch (error) {
+//         res.status(400).send(error);
+//     }
+// });
 
 
 

@@ -2,6 +2,7 @@ const Mechanic = require('../model/mechanic');
 const bcrypt = require('bcryptjs');
 const MechNotification= require('../model/Mechnotification');
 const Service =require('../model/Service');
+const Order = require('../model/Order');
 exports.registerMechanic = async (req, res) => {
   const { dealerId,name, phone, password} = req.body;
 
@@ -120,3 +121,14 @@ exports.changepassword =async(req,res)=>{
     res.status(500).json({ message: 'Server error', error: err.message });
   }
 }
+
+exports.orderHistory =async(req,res)=>{
+  const { mechanicId } = req.params;
+  try {
+    const orders = await Order.find({ mechanicId: mechanicId }); // Replace with your actual query
+    res.json(orders);
+  } catch (err) {
+    res.status(500).json({ error: 'Failed to fetch orders' });
+  }
+}
+

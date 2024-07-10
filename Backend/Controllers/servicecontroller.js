@@ -201,7 +201,7 @@ exports.allocatemechanic= async(req,res)=>{
       const newMechNotification = new MechNotification({
         MechanicId: mechanicId,
         serviceId: serviceId,
-        message: `you have been assigned a service request`,
+        message: `You have been assigned a service request`,
         link: `user/service/`
       });
 
@@ -248,3 +248,28 @@ exports.allocatemechanic= async(req,res)=>{
   
   
 }
+
+
+exports.completeService = async (req, res) => {
+  const { serviceId } = req.params;
+  console.log(serviceId)
+  console.log(`Received request to complete service with ID: ${serviceId}`);
+  
+  try {
+    const service = await Service.findById(serviceId);
+    if (!service) {
+      console.log(`Service with ID ${serviceId} not found`);
+      return res.status(404).json({ error: 'Service not found' });
+    }
+
+    service.servicestatus = 4; // Update the status to 4
+    
+    await service.save();
+    
+    console.log(`Service status updated to 4 for service ID: ${serviceId}`);
+    res.status(200).json({ message: 'Service status updated successfully' });
+  } catch (error) {
+    console.error('Error updating service status:', error);
+    res.status(500).json({ error: 'Failed to update service status' });
+  }
+};

@@ -9,6 +9,11 @@ export const AuthProvider = ({ children }) => {
     user: null,
     dealerId: null
   });
+ const [mechauthState, setMechAuthState] = useState({
+    isAuthenticated: false,
+    user: null,
+    mechanicId: null
+  });
 
   useEffect(() => {
     const storedDealerAuth = localStorage.getItem('dealerauth');
@@ -43,12 +48,7 @@ export const AuthProvider = ({ children }) => {
     localStorage.removeItem('dealerauth');
   };
 
-  const [mechauthState, setMechAuthState] = useState({
-    isAuthenticated: false,
-    user: null,
-    mechanicId: null
-  });
-
+ 
   const mechlogin = (user, mechanicId) => {
     setMechAuthState({
       isAuthenticated: true,

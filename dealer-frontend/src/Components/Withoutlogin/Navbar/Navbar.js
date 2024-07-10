@@ -11,19 +11,12 @@ const Navbar = () => {
 
     useEffect(() => {
         if (mechauthState.isAuthenticated) {
-            fetchUnreadNotifications();
+            
             setupWebSocket();
         }
     }, [mechauthState]);
 
-    const fetchUnreadNotifications = async () => {
-        try {
-            const response = await axios.get(`http://localhost:5000/api/mechanic/${mechauthState.mechanicId}/notifications/unread`);
-            setUnreadCount(response.data.unreadCount);
-        } catch (error) {
-            console.error('Error fetching unread notifications:', error);
-        }
-    };
+    
 
     const setupWebSocket = () => {
         const ws = new WebSocket('ws://localhost:7000');

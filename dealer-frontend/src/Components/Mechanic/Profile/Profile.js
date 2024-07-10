@@ -4,6 +4,7 @@ import axios from 'axios';
 import { AuthContext } from '../../../Context/AuthContext';
 
 const Profile = () => {
+  const {mechanicId} = useParams();
   const [mechanic, setMechanic] = useState(null);
   const [isLoading, setIsLoading] = useState(true);
   const [error, setError] = useState(null);
@@ -13,8 +14,8 @@ const Profile = () => {
   const [passwordError, setPasswordError] = useState(null);
   const [successMessage, setSuccessMessage] = useState(null);
   const [showChangePassword, setShowChangePassword] = useState(false); // State to control showing change password form
-  const mechauthState = useContext(AuthContext);
-  const { mechanicId } = useParams();
+  const {mechauthState} = useContext(AuthContext);
+  
 
   useEffect(() => {
     const fetchMechanicDetails = async () => {

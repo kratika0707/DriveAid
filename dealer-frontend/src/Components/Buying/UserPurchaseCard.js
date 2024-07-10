@@ -1,19 +1,27 @@
 import React from 'react';
 import { Button, Card } from 'react-bootstrap';
+import { Link } from 'react-router-dom';
 
 const UserPurchaseCard = (props) => {
+    const handleAddToCart = () => {
+        props.addToCart(); // Invoke the addToCart function passed as prop
+        // Optionally, you can add logic here to update DB via axios post request
+    };
+
     return (
         <div className="card-item">
             <Card style={{ width: '18rem' }}>
+                <Link  to={`/productdetail/${props.mechanicId}/${props.id}`}>
                 <Card.Img variant="top" src={props.pic} />
+                </Link>
+                
                 <Card.Body>
-                    <Card.Title>{props.name}</Card.Title>
+                    <Link to={`/productdetail/${props.mechanicId}/${props.id}`}><Card.Title>{props.name}</Card.Title></Link>
                     <Card.Text>
-                        {/* {props.description}
-                        <br /> */}
-                        <b>Total Quantity left: {props.items}</b>
+                        {/* {props.description} */}
+                        <b>Price: ${props.items}</b>
                     </Card.Text>
-                    <Button variant="primary" onClick={props.method}>Add to Cart</Button>
+                    <Button variant="primary" onClick={handleAddToCart}>Add to Cart</Button>
                 </Card.Body>
             </Card>
         </div>
