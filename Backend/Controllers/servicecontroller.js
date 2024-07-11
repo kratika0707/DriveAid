@@ -212,6 +212,8 @@ exports.allocatemechanic= async(req,res)=>{
         payload: {
           mechanicId: mechanicId,
           serviceId: serviceId,
+          _id:newMechNotification._id,
+          createdAt:newMechNotification.createdAt,
           message: newMechNotification.message,
           link: `mechanic/service/${serviceId}`
         },
@@ -235,7 +237,10 @@ exports.allocatemechanic= async(req,res)=>{
           userId: service.userid,
           serviceId: serviceId,
           message: newUserNotification.message,
-          link: `user/service/${serviceId}`
+          _id:newUserNotification._id,
+          createdAt:newUserNotification.createdAt,
+          read:'false',
+          link: `${service.userid}/user/service/${serviceId}`
         },
       });
 

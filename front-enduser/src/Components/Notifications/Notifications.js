@@ -22,30 +22,28 @@ const UserNotifications = () => {
 
     fetchUserNotifications();
 
-    const ws = new WebSocket('ws://localhost:8000');
+   const ws = new WebSocket('ws://localhost:8000');
 
     ws.onopen = () => {
-      console.log('WebSocket connection established');
+      console.log('Connected to WebSocket');
     };
 
     ws.onmessage = (event) => {
-      const message = JSON.parse(event.data);
-      if (message.type === 'SERVICE_ASSIGNED' && message.payload.userId === userId) {
-        const newNotification = { ...message.payload, isNew: true };
-        setNotifications((prev) => [...prev, newNotification]);
-        setNewNotifications((prev) => [...prev, newNotification]);
+      const data = JSON.parse(event.data);
+      console.log(data);
+      if (data.payload.userid === userId) {
+        setNotifications((prevNotifications) => [data.payload, ...prevNotifications]);
+        setNewNotifications((prevHighlighted) => [data.payload, ...prevHighlighted]);
       }
     };
 
-    ws.onerror = (error) => {
-      console.error('WebSocket error:', error);
-    };
-
     ws.onclose = () => {
-      console.log('WebSocket connection closed');
+      console.log('Disconnected from WebSocket');
     };
 
-    return () => ws.close();
+    return () => {
+      ws.close();
+    };
   }, [userId]);
 
   const handleNotificationClick = async (notificationId) => {

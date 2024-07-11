@@ -59,10 +59,12 @@ const Navbar = () => {
     };
 
     return (
-        <nav className="navbar navbar-expand-lg " style={{backgroundColor:'black', width:'100vw'}}>
+        <nav className="navbar navbar-expand-lg " style={{backgroundColor:'black', width:'100vw', height:'80px' }}>
             {!authState.isAuthenticated && !mechauthState.isAuthenticated ? (
                 <div className="container-fluid">
-                    <Link className="navbar-brand ms-3" to="/" style={{ fontWeight: '800', fontSize: '2rem', color: 'white', letterSpacing: '0.075rem' }}>DriveAid</Link>
+                    <Link className="navbar-brand text-uppercase" to="/" style={{ fontWeight: '800', fontSize: '2rem', color: "white", letterSpacing: '0.075rem'}}>
+                                        DriveAid
+                                    </Link>
                     <button className="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNavAltMarkup" aria-controls="navbarNavAltMarkup" aria-expanded="false" aria-label="Toggle navigation">
                         <span className="navbar-toggler-icon"></span>
                     </button>
@@ -83,9 +85,9 @@ const Navbar = () => {
                 <div className="container-fluid">
                     {authState.isAuthenticated && (
                         <>
-                            <nav className="navbar navbar-expand-lg " style={{backgroundColor:'black'}}>
+                            <nav className="navbar navbar-expand-lg " style={{backgroundColor:'black', }}>
                                 <div className="container-fluid">
-                                    <Link className="navbar-brand text-uppercase" to={`/`} style={{ fontWeight: '750', fontSize: '2rem', color: 'white', letterSpacing: '0.075rem' }}>
+                                    <Link className="navbar-brand text-uppercase" to={`/`} style={{ fontWeight: '750', fontSize: '2rem', color: 'white', letterSpacing: '0.075rem',  }}>
                                         {dealer ? dealer.bname : 'Driveaid'}
                                     </Link>
                                     <button className="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNavAltMarkup" aria-controls="navbarNavAltMarkup" aria-expanded="false" aria-label="Toggle navigation">

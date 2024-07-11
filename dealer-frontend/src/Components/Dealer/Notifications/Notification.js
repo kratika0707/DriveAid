@@ -27,24 +27,26 @@ const Notification = () => {
   useEffect(() => {
     const ws = new WebSocket('ws://localhost:8080');
 
+    ws.onopen = () => {
+      console.log('Connected to WebSocket');
+    };
+
     ws.onmessage = (event) => {
-      const message = JSON.parse(event.data);
-      if (message.type === 'NEW_SERVICE_REQUEST' && message.payload.dealerId === dealerId) {
-        const newNotification = { ...message.payload, isNew: true, createdAt: new Date() };
-        setNotifications(prevNotifications => [newNotification, ...prevNotifications]);
-        setNewNotifications(prev => [newNotification, ...prev]);
+      const data = JSON.parse(event.data);
+      console.log(data);
+      if (data.payload.dealerId === dealerId) {
+        setNotifications((prevNotifications) => [data.payload, ...prevNotifications]);
+        setNewNotifications((prevHighlighted) => [data.payload, ...prevHighlighted]);
       }
     };
 
-    ws.onerror = (error) => {
-      console.error('WebSocket error:', error);
-    };
-
     ws.onclose = () => {
-      console.log('WebSocket connection closed');
+      console.log('Disconnected from WebSocket');
     };
 
-    return () => ws.close();
+    return () => {
+      ws.close();
+    };
   }, [dealerId]);
 
   const handleNotificationClick = async (notificationId) => {
