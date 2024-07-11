@@ -133,7 +133,7 @@ const Servicedetails = () => {
 
   return (
     <>
-      <div className="servicemech" style={{ display: 'flex', flexDirection: 'column', alignItems: 'center', marginBottom: '5%', fontFamily: 'sans-serif', color: 'black' }}>
+      <div className="servicemech" style={{ display: 'flex', flexDirection: 'column', alignItems: 'center', marginBottom: '5%', fontFamily: 'sans-serif', color: 'black', marginTop:'2%' }}>
   <p style={{ marginBottom: '4%', color: 'black', fontSize: '2.5rem', fontWeight: '800' }}>Service Details</p>
   {service.servicestatus !== 3 && (
     <div>
@@ -145,6 +145,12 @@ const Servicedetails = () => {
       <p style={{ fontSize: '0.9rem', margin: 0, marginLeft: '5%', color: 'black' }}><strong>Service Date:</strong> {new Date(service.dateofservice).toLocaleDateString()}</p>
       <p style={{ fontSize: '0.9rem', margin: 0, marginRight: '5%', color: 'black' }}><strong>Service Id:</strong> #{service._id}</p>
     </div>
+    {service.servicestatus === 3 && (
+      <div style={{ width: '100%', textAlign: 'center',paddingTop:'1%',height:'30px' }}>
+        <Link style={{ color: '#0078d6',  fontWeight: '500', fontSize: '1.5rem', marginLeft:'75%' }} onClick={handleDirectionsClick}><FaLocationDot /></Link>
+        <Link style={{ color: '#0078d6', fontWeight: '500', fontSize: '1.5rem' ,marginLeft:'3%'}} onClick={handleBuyClick}><FaCartShopping /></Link>
+      </div>
+    )}
     <div className="card-body" style={{ display: 'flex', flexDirection: 'row', justifyContent: 'space-between', alignItems: 'flex-start' }}>
       <div style={{ width: '50%', textAlign: 'left', padding: '20px', color: 'black' }}>
         {fetched ? (
@@ -159,25 +165,16 @@ const Servicedetails = () => {
         <p style={{ color: 'black' }}><strong>Issue:</strong> {service.issue}</p>
         <p style={{ color: 'black' }}><strong>Details:</strong> {service.detail}</p>
       </div>
-      <div style={{ width: '50%',  padding: '20px', color: 'black' }}>
-        <p style={{marginBottom:'2%', fontSize:'1.45rem', fontWeight:'600'}}>Service Pricing Details</p>
-        <p><strong>Total Service Value:</strong> Rs. {totalprice}</p>
-        <p><strong>Service Charge:</strong> Rs. 1000</p>
-        
-        
-          {orders.map((order, index) => (
-            <p key={index}><strong>Order {1+index}:</strong> {order.value}</p>
-          ))}
-        
-        
+      <div style={{ width: '50%', padding: '20px', color: 'black', textAlign: 'left' , marginLeft:'15%'}}>
+        <p style={{ marginBottom: '2%', fontSize: '1.45rem', fontWeight: '600' }}>Pricing Details</p>
+        <p style={{ marginLeft: '20px' }}><strong>Total Service Value:</strong> Rs. {totalprice}</p>
+        <p style={{ marginLeft: '20px' }}><strong>Service Charge:</strong> Rs. 1000</p>
+        {orders.map((order, index) => (
+          <p key={index} style={{ marginLeft: '20px' }}><strong>Order {1 + index}:</strong> Rs. {order.value}</p>
+        ))}
       </div>
     </div>
-    {service.servicestatus === 3 && (
-      <div style={{ width: '30%', textAlign: 'center', padding: '20px' }}>
-        <Link style={{ color: '#0078d6', marginBottom: '10px', fontWeight: '500', fontSize: '1.5rem' }} onClick={handleDirectionsClick}><FaLocationDot /></Link>
-        <Link style={{ color: '#0078d6', marginBottom: '10px', fontWeight: '500', fontSize: '1.5rem' }} onClick={handleBuyClick}><FaCartShopping /></Link>
-      </div>
-    )}
+    
   </div>
   {orders.length > 0 ? (
     orders.map((order) => (
@@ -232,6 +229,7 @@ const Servicedetails = () => {
     </div>
   )}
 </div>
+
 
 
     </>

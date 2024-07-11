@@ -108,33 +108,7 @@ const fetchUserDetails = async () => {
   ];
   return (
     <>
-    {/* <div>
-      <h1>Service Details</h1>
-      <ul>
-        <li>User Id: {service.userid}</li>
-        <li>Service ID: {service._id}</li>
-        <li>Car Model: {service.carmodel}</li>
-        <li>Issue: {service.issue}</li>
-        <li>Date of Service: {service.dateofservice}</li>
-        <li>Time of Service: {service.timeofservice}</li>
-        <li>Service Status: {service.servicestatus}</li>
-        <li>Dealer ID: {service.dealerId}</li>
-      </ul>
-
-    { !done &&  <div>
-      <h2>Allocate Mechanic</h2>
-      <select value={selectedMechanic} onChange={(e) => setSelectedMechanic(e.target.value)}>
-        <option value="">Select Mechanic</option>
-        {mechanics.map((mechanic) => (
-          <option key={mechanic._id} value={mechanic._id}>
-            {mechanic.name}
-          </option>
-        ))}
-      </select>
-      <button onClick={allocateMechanic}>Allocate Mechanic</button>
-      </div>}
-    </div> */}
-
+  
 <div className='servicemech' style={{ display: 'flex', flexDirection: 'column', alignItems: 'center', marginTop: '3%', marginBottom: '5%', fontFamily:'sans-serif', }}>
 <p style={{ marginBottom: '4%',  color:'black', fontSize:'2.5rem', fontWeight:'600' }}>Service Details</p>
 <div className="card" style={{ width: '85%', textAlign: 'center', boxShadow: '0 4px 8px grey', color:'black', border:'none' }}>
@@ -147,7 +121,7 @@ const fetchUserDetails = async () => {
       {fetched ? (
         <>
           <p style={{color:'black',marginBottom:'1%'}}><strong>Phone Number:</strong> {userdetail.phone}</p>
-          {/* Add more user details as needed */}
+          
         </>
       ) : (
         <p>Loading user details...</p>
