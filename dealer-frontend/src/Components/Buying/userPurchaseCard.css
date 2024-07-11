@@ -1,0 +1,17 @@
+.card-item {
+    margin-bottom: 20px; /* Adjust as needed */
+}
+
+.card-title-link {
+    display: block;
+    height: 3em; /* Adjust height based on your design */
+    overflow: hidden;
+    text-overflow: ellipsis;
+    white-space: nowrap; /* Prevent text wrapping */
+}
+
+.card-title {
+    font-size: 1rem; /* Adjust font size as needed */
+    line-height: 2; /* Adjust line height as needed */
+    margin-bottom: 0; /* Remove default margin */
+}

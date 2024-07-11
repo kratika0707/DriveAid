@@ -45,7 +45,7 @@ const CartItem = ({ item, onRemove }) => {
     const price = parseFloat(product.price);
 
     return (
-        <div className="card mb-6 position-relative">
+        <div className=" mb-3 position-relative" style={{border:'1px solid #ccc'}}>
             <FontAwesomeIcon 
                 icon={faTimes}
                 className="position-absolute"
@@ -57,9 +57,9 @@ const CartItem = ({ item, onRemove }) => {
                     <img src={product.image} style={{margin:'25%'}} className="card-img" alt={product.title} />
                 </div>
                 <div className="col-md-9">
-                    <div className="card-body">
+                    <div className="card-body" style={{marginTop:'3%', marginLeft:'3%', minHeight:'200px'}}>
                         <h5 className="card-title">{product.title}</h5>
-                        <p className="card-text">Price: ${!isNaN(price) ? (item.quantity * price).toFixed(2) : 'N/A'}</p>
+                        <p className="card-text">Price: Rs.{!isNaN(price) ? (item.quantity * price).toFixed(2) : 'N/A'}</p>
                         <p className="card-text">Quantity: {item.quantity}</p>
                     </div>
                 </div>

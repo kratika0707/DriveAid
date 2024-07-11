@@ -79,7 +79,7 @@ const Cart = () => {
             <Navbar />
             <div className="container mt-4">
                 {removalMessage && <div className="alert alert-success">{removalMessage}</div>}
-                <h5 style={{fontSize:'2rem', margin:'1%'}}>Your Cart</h5>
+                <h5 style={{fontSize:'2rem', margin:'1%', fontWeight:'600'}}>Your Cart</h5>
                 <div className="row">
 
                     <div className="col-md-8">
@@ -93,14 +93,14 @@ const Cart = () => {
                             </div>
                         </div>
                     </div>
-                    <div className="col-md-4">
+                    <div className="col-md-4 my-4">
                         <div className="card">
                             <div className="card-body">
                                 <h5 className="card-title">Price Details</h5>
                                 <hr />
                                 <div className="d-flex justify-content-between mb-2">
                                     <span>Price ({cartItems.length} items)</span>
-                                    <span>${totalPrice.toFixed(2)}</span>
+                                    <span>Rs.{totalPrice.toFixed(2)}</span>
                                 </div>
                                 <div className="d-flex justify-content-between mb-2">
                                     <span>Delivery Charges</span>
@@ -109,7 +109,7 @@ const Cart = () => {
                                 <hr />
                                 <div className="d-flex justify-content-between">
                                     <span>Total Amount</span>
-                                    <span>${totalPrice.toFixed(2)}</span>
+                                    <span>Rs.{totalPrice.toFixed(2)}</span>
                                 </div>
                                 <button
                                     className="btn btn-primary btn-block mt-3"
