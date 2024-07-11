@@ -42,28 +42,8 @@ const History = () => {
 
   return (
     <>
-      {/* <div className="container" style={{ height: 'auto', minHeight: '100vh' }}>
-        <h1 style={{ textAlign: 'center', marginTop: '10%' }}>Your Service History</h1>
-        {serviceHistory.length > 0 ? (
-          <ul>
-            {serviceHistory.map((service) => (
-              <Link to={`/${userId}/user/service/${service._id}`} >
-                <li key={service._id}>
-                  <p>{service._id}</p>
-                  <p>Date of Service: {service.dateofservice}</p>
-                  <p>Time of Service: {service.timeofservice}</p>
-                  <p>Car Model: {service.carmodel}</p>
-                  <p>Issue: {service.issue}</p>
-                  <p>Status: {service.servicestatus}</p>
-                </li>
-              </Link>
-            ))}
-          </ul>
-        ) : (
-          <p>No service history available.</p>
-        )}
-      </div> */}
-      <div className="container" style={{ minHeight: '100vh', marginTop: '5%', display: 'flex', flexDirection: 'column', alignItems: 'center' }}>
+      
+      {/* <div className="container" style={{ minHeight: '100vh', marginTop: '5%', display: 'flex', flexDirection: 'column', alignItems: 'center' }}>
         <h1 style={{ marginBottom: '4%', fontSize: '2.4rem', marginTop: '4%' }}>Service History</h1>
         {serviceHistory.length > 0 ? (
           serviceHistory.map(service => (
@@ -98,7 +78,56 @@ const History = () => {
         ) : (
           <p>No services found for this mechanic.</p>
         )}
-      </div>
+      </div> */}
+
+
+      <div className="container" style={{ minHeight: '100vh', marginTop: '6%', display: 'flex', flexDirection: 'column', alignItems: 'center' }}>
+      <h1 style={{ marginBottom: '4%', fontSize: '2.4rem', color: 'black', fontWeight: '800' }}>Service History</h1>
+      {serviceHistory.length > 0 ? (
+        <div
+          style={{
+            display: 'grid',
+            gridTemplateColumns: 'repeat(3, 1fr)',
+            gap: '20px',
+            width: '100%',
+            padding: '0 5%',
+          }}
+        >
+          {serviceHistory.map(service => (
+            <div
+              key={service._id}
+              className="card"
+              style={{
+                textAlign: 'center',
+                color: 'black',
+                boxShadow: hoveredCard === service._id ? '0 4px 16px rgba(0,0,0,0.6)' : '0 4px 8px rgba(0,0,0,0.2)',
+                transition: 'box-shadow 0.3s ease-in-out',
+                border: 'none',
+                width: '100%',
+              }}
+              onMouseEnter={() => setHoveredCard(service._id)}
+              onMouseLeave={() => setHoveredCard(null)}
+            >
+              <div className="card-header d-flex" style={{ backgroundColor: '#d4e3ff', padding: '10px', borderBottom: '1px solid #ccc', color: 'black', justifyContent:'space-between' }}>
+                <p style={{ fontSize: '1rem', margin: 0, color: 'black' }}>Date: {new Date(service.dateofservice).toLocaleDateString()}</p>
+                <p style={{ fontSize: '1rem', margin: 0, color: 'black' }}>Id: #{service._id.slice(-6)}</p>
+              </div>
+              <div className="card-body" style={{ textAlign: 'left', padding: '10px 20px' }}>
+                <p style={{ color: 'black' }}><strong>Car Model:</strong> {service.carmodel}</p>
+                <p style={{ color: 'black' }}><strong>Engine Model:</strong> {service.enginemodel}</p>
+                <p style={{ color: 'black' }}><strong>Issue:</strong> {service.issue}</p>
+                <Link to={`/${userId}/user/service/${service._id}`} className="btn text-uppercase" style={{ padding: '8px 20px', backgroundColor: '#0078d6', color: 'white', fontWeight: '600' }}>View details</Link>
+              </div>
+            </div>
+          ))}
+        </div>
+      ) : (
+        <p>No services found for this dealer.</p>
+      )}
+    </div>
+
+
+      
       <Modal
         isOpen={showLoginModal}
         onRequestClose={() => setShowLoginModal(false)}

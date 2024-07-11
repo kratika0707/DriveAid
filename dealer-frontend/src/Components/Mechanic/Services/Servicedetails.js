@@ -143,12 +143,12 @@ const Servicedetails = () => {
   <div className="card" style={{ width: '85%', textAlign: 'center', color: 'black', border: 'none' }}>
     <div className="card-header d-flex justify-content-between" style={{ backgroundColor: '#d4e3ff', padding: '10px', borderBottom: '1px solid black' }}>
       <p style={{ fontSize: '0.9rem', margin: 0, marginLeft: '5%', color: 'black' }}><strong>Service Date:</strong> {new Date(service.dateofservice).toLocaleDateString()}</p>
-      <p style={{ fontSize: '0.9rem', margin: 0, marginRight: '5%', color: 'black' }}><strong>Service Id:</strong> #{service._id}</p>
+      <p style={{ fontSize: '0.9rem', margin: 0, marginRight: '5%', color: 'black' }}><strong>Service Id:</strong> #{service._id.slice(-6)}</p>
     </div>
     {service.servicestatus === 3 && (
       <div style={{ width: '100%', textAlign: 'center',paddingTop:'1%',height:'30px' }}>
         <Link style={{ color: '#0078d6',  fontWeight: '500', fontSize: '1.5rem', marginLeft:'75%' }} onClick={handleDirectionsClick}><FaLocationDot /></Link>
-        <Link style={{ color: '#0078d6', fontWeight: '500', fontSize: '1.5rem' ,marginLeft:'3%'}} onClick={handleBuyClick}><FaCartShopping /></Link>
+        <button style={{ color: '#0078d6', fontWeight: '500', fontSize: '1.5rem' ,marginLeft:'3%', border:'none', backgroundColor:'white'}} onClick={handleBuyClick}><FaCartShopping /></button>
       </div>
     )}
     <div className="card-body" style={{ display: 'flex', flexDirection: 'row', justifyContent: 'space-between', alignItems: 'flex-start' }}>
@@ -166,11 +166,11 @@ const Servicedetails = () => {
         <p style={{ color: 'black' }}><strong>Details:</strong> {service.detail}</p>
       </div>
       <div style={{ width: '50%', padding: '20px', color: 'black', textAlign: 'left' , marginLeft:'15%'}}>
-        <p style={{ marginBottom: '2%', fontSize: '1.45rem', fontWeight: '600' }}>Pricing Details</p>
-        <p style={{ marginLeft: '20px' }}><strong>Total Service Value:</strong> Rs. {totalprice}</p>
-        <p style={{ marginLeft: '20px' }}><strong>Service Charge:</strong> Rs. 1000</p>
+        <p style={{ marginBottom: '2%', fontSize: '1.45rem', fontWeight: '600', color:'black' }}>Pricing Details</p>
+        <p style={{ marginLeft: '20px', color:'black' }}><strong>Total Service Value:</strong> Rs. {totalprice}</p>
+        <p style={{ marginLeft: '20px' , color:'black'}}><strong>Service Charge:</strong> Rs. 1000</p>
         {orders.map((order, index) => (
-          <p key={index} style={{ marginLeft: '20px' }}><strong>Order {1 + index}:</strong> Rs. {order.value}</p>
+          <p key={index} style={{ marginLeft: '20px', color:'black' }}><strong>Order {1 + index}:</strong> Rs. {order.value}</p>
         ))}
       </div>
     </div>

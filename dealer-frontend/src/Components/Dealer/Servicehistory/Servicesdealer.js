@@ -26,22 +26,54 @@ const Servicesdealer = () => {
 
   return (
     <>
-      {/* <div style={{height:'auto'}}>
-        <h1>Your Services</h1>
-        <ul>
-          {services.map((service) => (
-            <Link to={`/dealer/notifications/${authState.dealerId}/dealer/service/${service._id}`}>
-                <li key={service._id}>
-              <p>Service ID: {service._id}</p>
-              <p>Car Model: {service.carmodel}</p>
-              <p>Issue: {service.issue}</p>
-              
-            </li>
-            </Link>
+      <div className="container" style={{ minHeight: '100vh', marginTop: '3%', display: 'flex', flexDirection: 'column', alignItems: 'center' }}>
+      <h1 style={{ marginBottom: '4%', fontSize: '2.4rem', color: 'black', fontWeight: '800' }}>Service History</h1>
+      {services.length > 0 ? (
+        <div
+          style={{
+            display: 'grid',
+            gridTemplateColumns: 'repeat(3, 1fr)',
+            gap: '20px',
+            width: '100%',
+            padding: '0 5%',
+          }}
+        >
+          {services.map(service => (
+            <div
+              key={service._id}
+              className="card"
+              style={{
+                textAlign: 'center',
+                color: 'black',
+                boxShadow: hoveredCard === service._id ? '0 4px 16px rgba(0,0,0,0.6)' : '0 4px 8px rgba(0,0,0,0.2)',
+                transition: 'box-shadow 0.3s ease-in-out',
+                border: 'none',
+                width: '100%',
+              }}
+              onMouseEnter={() => setHoveredCard(service._id)}
+              onMouseLeave={() => setHoveredCard(null)}
+            >
+              <div className="card-header d-flex" style={{ backgroundColor: '#d4e3ff', padding: '10px', borderBottom: '1px solid #ccc', color: 'black', justifyContent:'space-between' }}>
+                <p style={{ fontSize: '1rem', margin: 0, color: 'black' }}>Date: {new Date(service.dateofservice).toLocaleDateString()}</p>
+                <p style={{ fontSize: '1rem', margin: 0, color: 'black' }}>Id: #{service._id.slice(-6)}</p>
+              </div>
+              <div className="card-body" style={{ textAlign: 'left', padding: '10px 20px' }}>
+                <p style={{ color: 'black' }}><strong>Car Model:</strong> {service.carmodel}</p>
+                <p style={{ color: 'black' }}><strong>Engine Model:</strong> {service.enginemodel}</p>
+                <p style={{ color: 'black' }}><strong>Issue:</strong> {service.issue}</p>
+                <Link to={`/dealer/notifications/${authState.dealerId}/dealer/service/${service._id}`} className="btn text-uppercase" style={{ padding: '8px 20px', backgroundColor: '#0078d6', color: 'white', fontWeight: '600' }}>View details</Link>
+              </div>
+            </div>
           ))}
-        </ul>
-      </div> */}
-      <div className="container" style={{ minHeight: '100vh', marginTop: '5%', display: 'flex', flexDirection: 'column', alignItems: 'center'}}>
+        </div>
+      ) : (
+        <p>No services found for this dealer.</p>
+      )}
+    </div>
+
+
+    
+      {/* <div className="container" style={{ minHeight: '100vh', marginTop: '5%', display: 'flex', flexDirection: 'column', alignItems: 'center'}}>
         <h1 style={{ marginBottom: '4%', fontSize: '2.4rem', color:'black' }}>Service History</h1>
         {services.length > 0 ? (
           services.map(service => (
@@ -75,7 +107,7 @@ const Servicesdealer = () => {
         ) : (
           <p>No services found for this mechanic.</p>
         )}
-      </div>
+      </div> */}
     </>
   );
 };
