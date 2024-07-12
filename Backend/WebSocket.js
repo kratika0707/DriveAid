@@ -15,10 +15,10 @@ wss.on('connection', (ws) => {
   });
 });
 
-const sendNotification = (message) => {
+const sendNotification = (dealerId,message) => {
   wss.clients.forEach((client) => {
     if (client.readyState === WebSocket.OPEN) {
-      client.send(JSON.stringify(message));
+      client.send(JSON.stringify(dealerId,message));
     }
   });
 };

@@ -13,4 +13,21 @@ const Usernotification = require('../model/Usernotifications');
 //     }
 // });
 
+
+
+
+// router.delete('/delete', async (req, res) => {
+//     try {
+//       // Delete all entries
+//       await Usernotification.deleteMany({});
+//       res.status(200).json({ message: 'All services have been deleted.' });
+//     } catch (error) {
+//       console.error(error);
+//       res.status(500).json({ message: 'Failed to delete services.' });
+//     }
+//   });
+
+
+
+
 module.exports = router;

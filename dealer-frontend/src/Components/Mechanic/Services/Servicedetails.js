@@ -223,7 +223,7 @@ const Servicedetails = () => {
   )}
   {service.servicestatus === 3 && (
     <div style={{ width: '30%', textAlign: 'center', padding: '20px' }}>
-      <button className="btn btn-primary" style={{ padding: '10px 12px', marginTop: '4%', marginBottom: '10px', width: '80%', border: '1px solid', borderRadius: '15px', backgroundColor: '#0078d6', color: 'white', fontWeight: '500' }} onClick={handleCompleteService}>
+      <button className="btn btn-primary" style={{ padding: '10px 12px',  marginBottom: '10px', width: '80%', border: '1px solid', borderRadius: '15px', backgroundColor: '#0078d6', color: 'white', fontWeight: '500' }} onClick={handleCompleteService}>
         Complete Service
       </button>
     </div>

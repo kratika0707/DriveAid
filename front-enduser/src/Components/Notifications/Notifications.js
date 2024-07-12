@@ -31,7 +31,7 @@ const UserNotifications = () => {
     ws.onmessage = (event) => {
       const data = JSON.parse(event.data);
       console.log(data);
-      if (data.payload.userid === userId) {
+      if (data.payload.userId === userId) {
         setNotifications((prevNotifications) => [data.payload, ...prevNotifications]);
         setNewNotifications((prevHighlighted) => [data.payload, ...prevHighlighted]);
       }

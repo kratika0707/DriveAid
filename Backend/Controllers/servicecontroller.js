@@ -80,11 +80,15 @@ exports.bookService = async (req, res) => {
         type: 'NEW_SERVICE_REQUEST',
         payload: {
           dealerId: nearestDealer._id,
+          _id:newNotification._id,
+          createdAt:newNotification.createdAt,
+          
           serviceId: newService._id,
           message: newNotification.message,
           link: `dealer/service/${newService._id}`
         },
       });
+      
 
       const newUserNotification = new UserNotification({
         UserId: userid,
@@ -101,8 +105,11 @@ exports.bookService = async (req, res) => {
         payload: {
           userId: userid,
           serviceId: newService._id,
+          _id:newUserNotification._id,
+          createdAt:newUserNotification.createdAt,
+          // read:'false',
           message: newUserNotification.message,
-          link: `user/service/${newService._id}`
+          link: `${newService.userid}/user/service/${newService._id}`
         },
       });
 
@@ -239,7 +246,7 @@ exports.allocatemechanic= async(req,res)=>{
           message: newUserNotification.message,
           _id:newUserNotification._id,
           createdAt:newUserNotification.createdAt,
-          read:'false',
+          
           link: `${service.userid}/user/service/${serviceId}`
         },
       });
