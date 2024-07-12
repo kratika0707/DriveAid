@@ -5,6 +5,7 @@ import { AuthContext } from '../../../Context/AuthContext';
 
 const Servicehistory = () => {
   const { serviceId } = useParams();
+  const { dealerId } = useParams();
   const [service, setService] = useState(null);
   const [mechanics, setMechanics] = useState([]);
   const [selectedMechanic, setSelectedMechanic] = useState('');
@@ -122,7 +123,7 @@ const fetchUserDetails = async () => {
   // Fetch the list of available mechanics for the dealer
   const fetchMechanics = async () => {
     try {
-      const response = await axios.get(`http://localhost:5000/api/dealers/${authState.dealerId}/mechanics`);
+      const response = await axios.get(`http://localhost:5000/api/dealers/${dealerId}/mechanics`);
       if (response.status !== 200) {
         throw new Error('No available mechanics found');
       }

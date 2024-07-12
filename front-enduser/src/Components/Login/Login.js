@@ -12,7 +12,7 @@ import PhoneInput from 'react-phone-input-2';
 import { useSelector, useDispatch } from 'react-redux';
 
 import { login, logout } from '../../Redux/Features/userslice';
-import { Navigate } from 'react-router-dom';
+import { useNavigate } from 'react-router-dom';
 
 const Login = ({ phone, onLoginSuccess, urlback }) => {
   
@@ -23,7 +23,7 @@ const Login = ({ phone, onLoginSuccess, urlback }) => {
   const [errorMessage, setErrorMessage] = useState('');
   const burl = "http://localhost:5000/api/users/login";
   const dispatch = useDispatch();
-
+const navigate=useNavigate();
   const handleSendOtp = (e) => {
     e.preventDefault();
     if (!loginPhone) {
@@ -90,6 +90,7 @@ const Login = ({ phone, onLoginSuccess, urlback }) => {
       setUseri(res.user.uid);
       
       toast.success("Correct OTP");
+      navigate('/');
     })
     .catch((err) => {
       console.log(err);

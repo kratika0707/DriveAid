@@ -1,7 +1,7 @@
 import React from 'react';
 import { Icon } from '@iconify/react';
 import arrowRight from '@iconify-icons/tabler/arrow-right';
-import logo from '../Assets/car4.jpg';
+import logo from '../../Assets/car4.jpg';
 import '../Home/Home.css';
 
 const Home = () => {

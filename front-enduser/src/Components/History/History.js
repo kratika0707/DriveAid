@@ -122,7 +122,7 @@ const History = () => {
           ))}
         </div>
       ) : (
-        <p>No services found for this dealer.</p>
+        <p>No services found for you.</p>
       )}
     </div>
 

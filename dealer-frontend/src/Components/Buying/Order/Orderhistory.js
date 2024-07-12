@@ -67,7 +67,8 @@ const OrderHistory = () => {
     return (
       <>
         <Navbar />
-        <div style={{ padding: '20px', maxWidth: '800px', margin: '5% auto', borderRadius: '10px', background: '#f8f9fa', minHeight: '40vh' }}>
+        <div style={{ padding: '20px', maxWidth: '800px', margin: '5% auto', border:'none',  minHeight: '40vh' }}>
+        <h1 style={{ marginBottom: '4%', fontSize: '2.4rem', color: 'black', fontWeight:'600',marginLeft:'35%' }}>Order History</h1>
           No order history found
         </div>
       </>

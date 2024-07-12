@@ -104,6 +104,11 @@ const Notification = () => {
     <div className="container" style={{ minHeight: '100vh', display: 'flex', flexDirection: 'column', alignItems: 'center', justifyContent: 'flex-start', margin: '10px auto', width: '70%' }}>
       <h2 className='text-uppercase' style={{ margin: '2%', fontSize: '2.5rem', marginTop: '8%', color:'black', fontWeight:'600', fontFamily:'sans-serif' }}>Notifications</h2>
       <div style={{ width: '100%', overflowY: 'auto', margin: '1%' }}>
+        {notifications.length ===0 && 
+        <div style={{ display: 'flex', justifyContent: 'center', alignItems: 'center'}}>
+        <p style={{ fontSize: '1rem', marginTop: '1%', textAlign: 'center', color: 'grey' }}>No notifications for you.</p>
+      </div>
+        }
         {Object.keys(groupedNotifications).map((date, index) => (
           <div key={index} style={{ marginBottom: '20px', position: 'relative' }}>
             <h3 className='text-uppercase' style={{ marginBottom: '20px', color: 'white', fontWeight:'700',fontSize: '1.15rem', textAlign: 'center', borderRadius: '20px', display: 'inline-block', padding: '5px 10px', backgroundColor: '#0078d6', paddingLeft: '1.5%', paddingRight: '1.5%' }}>

@@ -1,5 +1,5 @@
 import React, { useState, useEffect } from 'react';
-import image from '../Assets/3331465.jpg';
+import image from '../../Assets/3331465.jpg';
 import axios from 'axios';
 import Modal from 'react-modal';
 import Login from '../Login/Login';

@@ -62,6 +62,7 @@ const AddProductForm = () => {
             setSuccessMessage('Product added successfully');
             // Reset form fields and state after successful submission
             setImage(null);
+            setPrice('');
             setTitle('');
             setDetail('');
             setCategory('');

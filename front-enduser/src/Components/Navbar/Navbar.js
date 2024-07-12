@@ -105,7 +105,7 @@ const Navbar = () => {
                   </>
                 ) : (
                   <li className="nav-item">
-                    <button onClick={() => setShowLoginModal(true)} className="btn  mx-2 px-3 py-2" style={{ backgroundColor: 'black', color:'white', borderRadius:'20px' }}>
+                    <button onClick={() => setShowLoginModal(true)} className="btn  mx-2 px-3 py-2" style={{ backgroundColor: 'black', color:'white', borderRadius:'20px', fontSize:'1.15rem', fontWeight:'500' }}>
                       Login
                     </button>
                   </li>

@@ -60,9 +60,10 @@ exports.loginDealer = async (req, res) => {
 
 exports.getMechanics = async (req, res) => {
   try {
-    const { dealerid } = req.params;
-    const mechanics = await Mechanic.find({ dealerid: dealerid });
-    console.log('mechanics')
+    const { dealerId } = req.params;
+    console.log(dealerId)
+    const mechanics = await Mechanic.find({ dealerId: dealerId });
+    console.log(mechanics)
     res.status(200).json(mechanics);
   } catch (error) {
     console.error('Error fetching mechanics history:', error);
