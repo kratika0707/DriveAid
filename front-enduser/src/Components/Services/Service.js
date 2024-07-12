@@ -1,9 +1,9 @@
 import React from 'react';
-import image from '../Assets/pexels-olly-3807277.jpg';
-import s1 from '../Assets/service1.jpg';
-import s2 from '../Assets/service-2.jpg';
-import s3 from '../Assets/service3.jpeg';
-import s4 from '../Assets/service4.webp';
+import image from '../../Assets/pexels-olly-3807277.jpg';
+import s1 from '../../Assets/service1.jpg';
+import s2 from '../../Assets/service-2.jpg';
+import s3 from '../../Assets/service3.jpeg';
+import s4 from '../../Assets/service4.webp';
 
 const Service = () => {
   return (
