@@ -1,6 +1,5 @@
 import React from 'react'
 import image from '../../Assets/car-service.jpg'
-import '../About/About.css'
 const About1 = () => {
     return (
         <>
