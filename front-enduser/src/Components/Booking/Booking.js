@@ -57,7 +57,12 @@ const Booking = () => {
       }
     });
   }
-
+  useEffect(() => {
+    if (isAuthenticated && user) {
+      setPhone(`+${user}`);
+    }
+  }, [isAuthenticated, user]);
+    
   async function submit(e) {
     e.preventDefault();
     if (!isAuthenticated) {
@@ -154,7 +159,9 @@ const Booking = () => {
             <label htmlFor="exampleInputPhone" className="form-label">Contact Number</label>
             <input
               type="text"
+              
               value={phone}
+              readOnly={isAuthenticated}
               onChange={(e) => setPhone(e.target.value)}
               className="form-control"
               placeholder='+91 00000-00000'

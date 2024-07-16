@@ -52,6 +52,7 @@ const navigate=useNavigate();
         loginPhone: loginPhone,
       });
       setUseri(response.userId);
+      console.log(loginPhone)
       dispatch(login({ user: loginPhone, userId: useri })); // Dispatch login action
       
     } catch (error) {
@@ -90,7 +91,7 @@ const navigate=useNavigate();
       setUseri(res.user.uid);
       
       toast.success("Correct OTP");
-      navigate('/');
+      // navigate('/');
     })
     .catch((err) => {
       console.log(err);
