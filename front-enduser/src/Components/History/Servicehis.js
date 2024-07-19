@@ -175,7 +175,7 @@ const Servicehis = () => {
         { service.servicestatus ===2 ?(
         <>
       <div>
-    <p style={{ color:'black' }}><strong>Allocated Dealer:</strong> {service.dealerId}</p>
+    <p style={{ color:'black' }}><strong>Allocated Dealer:</strong> {deal? deal.bname : service.dealerId}</p>
     </div>
       </>
     ):(

@@ -34,28 +34,28 @@ exports.placeOrder = async (req, res) => {
         const { userid, dealerId } = service;
 
 
-        // const newNotification = new Notification({
-        //   dealerId: dealerId,
-        //   serviceId: serviceId,
-        //   message: `Order placed for a service request`,
-        //   link: `dealer/service`,
-        // });
+        const newNotification = new Notification({
+          dealerId: dealerId,
+          serviceId: serviceId,
+          message: `Order placed for a service request`,
+          link: `dealer/service`,
+        });
   
-        // await newNotification.save();
+        await newNotification.save();
   
-        // // Send the notification to the nearest dealer
-        // sendNotification({
-        //   type: 'NEW_SERVICE_REQUEST',
-        //   payload: {
-        //     dealerId: dealerId,
-        //     _id:newNotification._id,
-        //     createdAt:newNotification.createdAt,
+        // Send the notification to the nearest dealer
+        sendNotification({
+          type: 'NEW_SERVICE_REQUEST',
+          payload: {
+            dealerId: dealerId,
+            _id:newNotification._id,
+            createdAt:newNotification.createdAt,
             
-        //     serviceId: serviceId,
-        //     message: newNotification.message,
-        //     link: `dealer/service/${serviceId}`
-        //   },
-        // });
+            serviceId: serviceId,
+            message: newNotification.message,
+            link: `dealer/service/${serviceId}`
+          },
+        });
 
 
 
